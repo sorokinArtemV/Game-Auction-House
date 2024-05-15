@@ -1,0 +1,52 @@
+﻿[
+  {
+    "Id": 1,
+    "Name": "Thunderfury, Blessed Blade of the Windseeker",
+    "Quality": "Legendary",
+    "Description": "Once carried by the son of Al'Akir, Thunderaan the Windlord, this blade crackles with the fury of a thousand storms.",
+    "ItemLevel": 80,
+    "Icon": "thunderfury_icon.png",
+    "WeaponType": "Sword",
+    "DamageType": "Physical",
+    "MinDamage": 250.0,
+    "MaxDamage": 320.0,
+    "AttackSpeed": 2.7,
+    "IsTwoHanded": false,
+    "IsMainHand": true,
+    "IsOffHand": false,
+    "IsStackable": false,
+    "StackSize": 1,
+    "IsBound": true,
+    "BoundType": "BindOnPickup",
+    "IsConjured": false,
+    "IsUnique": true,
+    "Durability": 120,
+    "IsQuestItem": false,
+    "StartsQuest": false,
+    "RequiredRace": [ "Human", "Orc" ],
+    "RequiredClasses": [ "Warrior", "Paladin" ],
+    "RequiredLevel": 60,
+    "RequiredSkill": [ "Sword" ],
+    "IsLocked": false,
+    "IsLootable": true,
+    "PrimaryStats": {
+      "Strength": 20,
+      "Agility": 15,
+      "Stamina": 5
+    },
+    "SecondaryStats": {
+      "CriticalStrike": 9,
+      "AttackPower": 15
+    },
+    "SpecialEffects": [
+      {
+        "Id": 1,
+        "Name": "Lightning Strike",
+        "Description": "Strikes the enemy with a bolt of lightning, dealing extra electric damage.",
+        "Charges": 5,
+        "Duration": "00:03:00",
+        "IsPassive": false
+      }
+    ]
+  }
+]
