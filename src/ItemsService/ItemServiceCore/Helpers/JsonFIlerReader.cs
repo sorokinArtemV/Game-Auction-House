@@ -6,19 +6,19 @@ namespace ItemsService.ItemServiceCore.Helpers;
 
 public class JsonFileReader
 {
-    public void ReadAndSave(string filePath, ItemsDbContext context)
+    public void ReadAndSave<T>(string filePath, ItemsDbContext context) where T : class
     {
         string jsonContent = File.ReadAllText(filePath);
 
-        List<Weapon> weapons = JsonConvert.DeserializeObject<List<Weapon>>(jsonContent)!;
+        List<T> items = JsonConvert.DeserializeObject<List<T>>(jsonContent)!;
 
-        if (weapons == null || weapons.Count == 0) return;
-        
-        foreach (var weapon in weapons)
+        if (items == null || items.Count == 0) return;
+
+        foreach (var item in items)
         {
-            context.Weapons.Add(weapon);
+            context.Set<T>().Add(item);
         }
-        
+
         context.SaveChanges();
     }
 }

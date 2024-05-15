@@ -13,8 +13,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ItemsService.Migrations
 {
     [DbContext(typeof(ItemsDbContext))]
-    [Migration("20240515004520_Init")]
-    partial class Init
+    [Migration("20240515015739_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

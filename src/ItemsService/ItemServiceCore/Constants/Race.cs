@@ -2,6 +2,7 @@
 
 public enum Race
 {
+    Any,
     Human,
     Orc,
     Gnome,
@@ -9,5 +10,5 @@ public enum Race
     Undead,
     NightElf,
     Dwarf,
-    Tauren,
+    Tauren
 }
