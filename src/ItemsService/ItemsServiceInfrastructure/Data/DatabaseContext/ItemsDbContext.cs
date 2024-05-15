@@ -6,10 +6,13 @@ namespace ItemsService.ItemsServiceInfrastructure.Data.DatabaseContext;
 
 public class ItemsDbContext : DbContext
 {
+    public ItemsDbContext(DbContextOptions<ItemsDbContext> options) : base(options)
+    {
+    }
+
     public DbSet<Weapon> Weapons { get; set; }
+    public DbSet<Armor> Armor { get; set; }
     public DbSet<Effect> Effects { get; set; }
-    
-    public ItemsDbContext(DbContextOptions<ItemsDbContext> options) : base(options) { }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -20,10 +23,17 @@ public class ItemsDbContext : DbContext
             .WithOne()
             .HasForeignKey("WeaponId");
 
+        modelBuilder.Entity<Armor>().OwnsOne(w => w.PrimaryStats);
+        modelBuilder.Entity<Armor>().OwnsOne(w => w.SecondaryStats);
+        modelBuilder.Entity<Armor>()
+            .HasMany(w => w.SpecialEffects)
+            .WithOne()
+            .HasForeignKey("ArmorId");
     }
 }
 
 #region OnModelCreatingMethod
+
 /*
 public class ItemsDbContext : DbContext
 {

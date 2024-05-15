@@ -31,6 +31,9 @@ namespace ItemsService.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<int?>("ArmorId")
+                        .HasColumnType("integer");
+
                     b.Property<int>("Charges")
                         .HasColumnType("integer");
 
@@ -46,14 +49,98 @@ namespace ItemsService.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("text");
 
-                    b.Property<int>("WeaponId")
+                    b.Property<int?>("WeaponId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ArmorId");
+
                     b.HasIndex("WeaponId");
 
                     b.ToTable("Effects");
+                });
+
+            modelBuilder.Entity("ItemsService.ItemServiceCore.Entities.ItemTypes.Armor", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ArmorType")
+                        .HasColumnType("text");
+
+                    b.Property<int>("ArmorValue")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("BoundType")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
+                    b.Property<int>("Durability")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Icon")
+                        .HasColumnType("text");
+
+                    b.Property<bool>("IsBound")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsConjured")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsLocked")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsLootable")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsQuestItem")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsShield")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsStackable")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsUnique")
+                        .HasColumnType("boolean");
+
+                    b.Property<int>("ItemLevel")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Quality")
+                        .HasColumnType("text");
+
+                    b.Property<List<string>>("RequiredClasses")
+                        .HasColumnType("text[]");
+
+                    b.Property<int>("RequiredLevel")
+                        .HasColumnType("integer");
+
+                    b.Property<List<string>>("RequiredRace")
+                        .HasColumnType("text[]");
+
+                    b.Property<List<string>>("RequiredSkill")
+                        .HasColumnType("text[]");
+
+                    b.Property<int>("StackSize")
+                        .HasColumnType("integer");
+
+                    b.Property<bool>("StartsQuest")
+                        .HasColumnType("boolean");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Armor");
                 });
 
             modelBuilder.Entity("ItemsService.ItemServiceCore.Entities.ItemTypes.Weapon", b =>
@@ -155,10 +242,83 @@ namespace ItemsService.Migrations
 
             modelBuilder.Entity("ItemsService.ItemServiceCore.Entities.ItemParameters.Effect", b =>
                 {
+                    b.HasOne("ItemsService.ItemServiceCore.Entities.ItemTypes.Armor", null)
+                        .WithMany("SpecialEffects")
+                        .HasForeignKey("ArmorId");
+
                     b.HasOne("ItemsService.ItemServiceCore.Entities.ItemTypes.Weapon", null)
                         .WithMany("SpecialEffects")
-                        .HasForeignKey("WeaponId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasForeignKey("WeaponId");
+                });
+
+            modelBuilder.Entity("ItemsService.ItemServiceCore.Entities.ItemTypes.Armor", b =>
+                {
+                    b.OwnsOne("ItemsService.ItemServiceCore.Entities.ItemParameters.PrimaryStats", "PrimaryStats", b1 =>
+                        {
+                            b1.Property<int>("ArmorId")
+                                .HasColumnType("integer");
+
+                            b1.Property<int?>("Agility")
+                                .HasColumnType("integer");
+
+                            b1.Property<int?>("Intellect")
+                                .HasColumnType("integer");
+
+                            b1.Property<int?>("Spirit")
+                                .HasColumnType("integer");
+
+                            b1.Property<int?>("Stamina")
+                                .HasColumnType("integer");
+
+                            b1.Property<int?>("Strength")
+                                .HasColumnType("integer");
+
+                            b1.Property<int>("WeaponId")
+                                .HasColumnType("integer");
+
+                            b1.HasKey("ArmorId");
+
+                            b1.ToTable("Armor");
+
+                            b1.WithOwner()
+                                .HasForeignKey("ArmorId");
+                        });
+
+                    b.OwnsOne("ItemsService.ItemServiceCore.Entities.ItemParameters.SecondaryStats", "SecondaryStats", b1 =>
+                        {
+                            b1.Property<int>("ArmorId")
+                                .HasColumnType("integer");
+
+                            b1.Property<int?>("AttackPower")
+                                .HasColumnType("integer");
+
+                            b1.Property<int?>("CriticalStrike")
+                                .HasColumnType("integer");
+
+                            b1.Property<int?>("HealingPower")
+                                .HasColumnType("integer");
+
+                            b1.Property<int?>("ManaRegenPerSecond")
+                                .HasColumnType("integer");
+
+                            b1.Property<int?>("SpellPower")
+                                .HasColumnType("integer");
+
+                            b1.Property<int>("WeaponId")
+                                .HasColumnType("integer");
+
+                            b1.HasKey("ArmorId");
+
+                            b1.ToTable("Armor");
+
+                            b1.WithOwner()
+                                .HasForeignKey("ArmorId");
+                        });
+
+                    b.Navigation("PrimaryStats")
+                        .IsRequired();
+
+                    b.Navigation("SecondaryStats")
                         .IsRequired();
                 });
 
@@ -225,6 +385,11 @@ namespace ItemsService.Migrations
 
                     b.Navigation("SecondaryStats")
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("ItemsService.ItemServiceCore.Entities.ItemTypes.Armor", b =>
+                {
+                    b.Navigation("SpecialEffects");
                 });
 
             modelBuilder.Entity("ItemsService.ItemServiceCore.Entities.ItemTypes.Weapon", b =>

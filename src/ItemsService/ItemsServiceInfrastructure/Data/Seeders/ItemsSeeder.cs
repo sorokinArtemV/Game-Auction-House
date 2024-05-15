@@ -14,10 +14,10 @@ public class ItemsSeeder : IItemsSeeder
         _jsonFileReader = jsonFileReader;
     }
 
-    public async Task Seed<T>() where T : class
+    public async Task Seed<T>(string filePath) where T : class
     {
         if (await _dbContext.Database.CanConnectAsync())
             if (!_dbContext.Set<T>().Any())
-                _jsonFileReader.ReadAndSave<T>("ItemsSeeder.json", _dbContext);
+                _jsonFileReader.ReadAndSave<T>(filePath, _dbContext);
     }
 }

@@ -1,0 +1,238 @@
+﻿[
+  {
+    "Id": 1,
+    "Name": "Aegis of the Coliseum",
+    "Quality": "Epic",
+    "Description": "A shield imbued with the power of the titans, capable of turning aside even the most fearsome blows.",
+    "ItemLevel": 232,
+    "Icon": "aegis_of_the_coliseum_icon.png",
+    "ArmorType": "Shield",
+    "ArmorValue": 8500,
+    "IsShield": true,
+    "IsStackable": false,
+    "StackSize": 1,
+    "IsBound": true,
+    "BoundType": "BindOnEquip",
+    "IsConjured": false,
+    "IsUnique": false,
+    "Durability": 100,
+    "IsQuestItem": false,
+    "StartsQuest": false,
+    "RequiredRace": [
+      "Dwarf",
+      "Tauren"
+    ],
+    "RequiredClasses": [
+      "Paladin",
+      "Warrior"
+    ],
+    "RequiredLevel": 80,
+    "RequiredSkill": [
+      "Shield"
+    ],
+    "IsLocked": false,
+    "IsLootable": true,
+    "PrimaryStats": {
+      "Strength": 30,
+      "Stamina": 25
+    },
+    "SecondaryStats": {
+      "Defense": 20,
+      "Block": 15
+    },
+    "SpecialEffects": [
+      {
+        "Id": 8,
+        "Name": "Titanic Bulwark",
+        "Description": "Grants a chance to reflect spells and reduce incoming damage.",
+        "Charges": 3,
+        "Duration": "00:02:00",
+        "IsPassive": false
+      }
+    ]
+  },
+  {
+    "Id": 2,
+    "Name": "Robes of Insight",
+    "Quality": "Rare",
+    "Description": "Enchanted robes that heighten the wearer's awareness and connection to the arcane.",
+    "ItemLevel": 58,
+    "Icon": "robes_of_insight_icon.png",
+    "ArmorType": "Cloth",
+    "ArmorValue": 150,
+    "IsShield": false,
+    "IsStackable": false,
+    "StackSize": 1,
+    "IsBound": true,
+    "BoundType": "BindOnEquip",
+    "IsConjured": false,
+    "IsUnique": true,
+    "Durability": 80,
+    "IsQuestItem": false,
+    "StartsQuest": false,
+    "RequiredRace": ["Gnome", "Human"],
+    "RequiredClasses": ["Mage", "Warlock", "Priest"],
+    "RequiredLevel": 40,
+    "RequiredSkill": [],
+    "IsLocked": false,
+    "IsLootable": true,
+    "PrimaryStats": {
+      "Intellect": 15,
+      "Spirit": 10
+    },
+    "SecondaryStats": {
+      "SpellPower": 25,
+      "ManaRegenPerSecond": 5
+    },
+    "SpecialEffects": [
+      {
+        "Id": 9,
+        "Name": "Arcane Empowerment",
+        "Description": "Temporarily increases spell power.",
+        "Charges": 2,
+        "Duration": "00:01:00",
+        "IsPassive": false
+      }
+    ]
+  },
+  {
+    "Id": 3,
+    "Name": "Vest of the Wild",
+    "Quality": "Uncommon",
+    "Description": "A durable leather vest that grants the wearer increased agility and stamina.",
+    "ItemLevel": 76,
+    "Icon": "vest_of_the_wild_icon.png",
+    "ArmorType": "Leather",
+    "ArmorValue": 250,
+    "IsShield": false,
+    "IsStackable": false,
+    "StackSize": 1,
+    "IsBound": true,
+    "BoundType": "BindOnPickup",
+    "IsConjured": false,
+    "IsUnique": false,
+    "Durability": 85,
+    "IsQuestItem": false,
+    "StartsQuest": false,
+    "RequiredRace": ["NightElf", "Troll"],
+    "RequiredClasses": ["Druid", "Rogue"],
+    "RequiredLevel": 50,
+    "RequiredSkill": [],
+    "IsLocked": false,
+    "IsLootable": true,
+    "PrimaryStats": {
+      "Agility": 20,
+      "Stamina": 15
+    },
+    "SecondaryStats": {
+      "CriticalStrike": 10,
+      "AttackPower": 30
+    },
+    "SpecialEffects": [
+      {
+        "Id": 10,
+        "Name": "Nature's Swiftness",
+        "Description": "Increases movement speed for a short duration.",
+        "Charges": 1,
+        "Duration": "00:00:30",
+        "IsPassive": false
+      }
+    ]
+  },
+  {
+    "Id": 4,
+    "Name": "Breastplate of Valor",
+    "Quality": "Epic",
+    "Description": "A plate chestpiece that radiates a sense of unyielding courage and strength.",
+    "ItemLevel": 60,
+    "Icon": "breastplate_of_valor_icon.png",
+    "ArmorType": "Plate",
+    "ArmorValue": 700,
+    "IsShield": false,
+    "IsStackable": false,
+    "StackSize": 1,
+    "IsBound": true,
+    "BoundType": "BindOnEquip",
+    "IsConjured": false,
+    "IsUnique": true,
+    "Durability": 165,
+    "IsQuestItem": false,
+    "StartsQuest": false,
+    "RequiredRace": ["Dwarf", "Human", "Tauren"],
+    "RequiredClasses": ["Warrior", "Paladin"],
+    "RequiredLevel": 55,
+    "RequiredSkill": [],
+    "IsLocked": false,
+    "IsLootable": true,
+    "PrimaryStats": {
+      "Strength": 25,
+      "Stamina": 20
+    },
+    "SecondaryStats": {
+      "Defense": 15,
+      "Block": 5
+    },
+    "SpecialEffects": [
+      {
+        "Id": 11,
+        "Name": "Valor's Might",
+        "Description": "Temporarily increases defense and block chance.",
+        "Charges": 3,
+        "Duration": "00:02:00",
+        "IsPassive": false
+      },
+      {
+        "Id": 12,
+        "Name": "Inspiring Presence",
+        "Description": "Boosts the morale of nearby allies, increasing their stamina.",
+        "Charges": 1,
+        "Duration": "00:05:00",
+        "IsPassive": true
+      }
+    ]
+  },
+  {
+    "Id": 5,
+    "Name": "Chainmail of the Sentinel",
+    "Quality": "Uncommon",
+    "Description": "A set of mail armor favored by sentinels for its balance of protection and mobility.",
+    "ItemLevel": 68,
+    "Icon": "chainmail_of_the_sentinel_icon.png",
+    "ArmorType": "Mail",
+    "ArmorValue": 400,
+    "IsShield": false,
+    "IsStackable": false,
+    "StackSize": 1,
+    "IsBound": true,
+    "BoundType": "BindOnPickup",
+    "IsConjured": false,
+    "IsUnique": false,
+    "Durability": 120,
+    "IsQuestItem": false,
+    "StartsQuest": false,
+    "RequiredRace": ["Orc", "Troll", "Tauren"],
+    "RequiredClasses": ["Hunter", "Shaman"],
+    "RequiredLevel": 60,
+    "RequiredSkill": [],
+    "IsLocked": false,
+    "IsLootable": true,
+    "PrimaryStats": {
+      "Agility": 18,
+      "Stamina": 12
+    },
+    "SecondaryStats": {
+      "AttackPower": 20,
+      "CriticalStrike": 8
+    },
+    "SpecialEffects": [
+      {
+        "Id": 13,
+        "Name": "Sentinel's Vigilance",
+        "Description": "Increases the wearer's awareness, improving chance to dodge attacks.",
+        "Charges": 2,
+        "Duration": "00:01:30",
+        "IsPassive": false
+      }
+    ]
+  }
+]

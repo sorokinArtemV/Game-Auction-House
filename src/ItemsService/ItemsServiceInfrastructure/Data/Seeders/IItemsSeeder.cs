@@ -2,5 +2,5 @@
 
 public interface IItemsSeeder
 {
-    Task Seed<T>() where T : class;
+    Task Seed<T>(string filePath) where T : class;
 }

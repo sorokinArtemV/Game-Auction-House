@@ -15,5 +15,8 @@ public class Effect
     public bool IsPassive { get; set; }
 
     [JsonIgnore]
-    public int WeaponId { get; set; }
+    public int? WeaponId { get; set; }
+
+    [JsonIgnore]
+    public int? ArmorId { get; set; }
 }

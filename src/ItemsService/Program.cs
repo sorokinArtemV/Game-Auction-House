@@ -27,10 +27,20 @@ if (app.Environment.IsDevelopment())
 
 app.MapControllers();
 
-using var scope = app.Services.CreateScope();
-var services = scope.ServiceProvider;
-var context = services.GetRequiredService<ItemsDbContext>();
-var itemsSeeder = new ItemsSeeder(context, new JsonFileReader());
-await itemsSeeder.Seed<Weapon>();
+try
+{
+    using var scope = app.Services.CreateScope();
+    var services = scope.ServiceProvider;
+    var context = services.GetRequiredService<ItemsDbContext>();
+    var itemsSeeder = new ItemsSeeder(context, new JsonFileReader());
+    await itemsSeeder.Seed<Weapon>("WeaponsSeeder.json");
+    await itemsSeeder.Seed<Armor>("ArmorSeeder.json");
+}
+catch (Exception e)
+{
+    Console.WriteLine("Insertion of data failed. Error: " +  e);
+    throw;
+}
+
 
 app.Run();

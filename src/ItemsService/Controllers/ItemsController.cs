@@ -16,10 +16,18 @@ public class ItemsController : ControllerBase
         _context = context;
     }
 
-    [HttpGet]
-    public async Task<ActionResult<IEnumerable<Weapon>>> GetItems()
+    [HttpGet("weapons")]
+    public async Task<ActionResult<IEnumerable<Weapon>>> GetWeapons()
     {
         return await _context.Weapons
+            .Include(w => w.SpecialEffects)
+            .ToListAsync();
+    }
+    
+    [HttpGet("armor")]
+    public async Task<ActionResult<IEnumerable<Armor>>> GetArmor()
+    {
+        return await _context.Armor
             .Include(w => w.SpecialEffects)
             .ToListAsync();
     }
