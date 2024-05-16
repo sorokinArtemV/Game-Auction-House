@@ -6,9 +6,9 @@ namespace ItemsService.ItemServiceCore.Entities.ItemParameters;
 
 public class SecondaryStats
 {
-    [ForeignKey("Weapon")]
-    [JsonIgnore]
-    public int WeaponId { get; set; }
+    // [ForeignKey("Weapon")]
+    // [JsonIgnore]
+    // public int WeaponId { get; set; }
     public int? CriticalStrike { get; set; }
     public int? AttackPower { get; set; }
     public int? SpellPower { get; set; }

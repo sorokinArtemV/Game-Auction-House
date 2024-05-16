@@ -1,5 +1,5 @@
+using ItemsService.Helpers;
 using ItemsService.ItemServiceCore.Entities.ItemTypes;
-using ItemsService.ItemServiceCore.Helpers;
 using ItemsService.ItemsServiceInfrastructure.Data.DatabaseContext;
 using ItemsService.ItemsServiceInfrastructure.Data.Seeders;
 using Microsoft.EntityFrameworkCore;

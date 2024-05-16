@@ -1,9 +1,9 @@
 ﻿using ItemsService.ItemsServiceInfrastructure.Data.DatabaseContext;
 using Newtonsoft.Json;
 
-namespace ItemsService.ItemServiceCore.Helpers;
+namespace ItemsService.Helpers;
 
-public class JsonFileReader
+public class JsonFileReader : IJsonFileReader
 {
     public void ReadAndSave<T>(string filePath, ItemsDbContext context) where T : class
     {

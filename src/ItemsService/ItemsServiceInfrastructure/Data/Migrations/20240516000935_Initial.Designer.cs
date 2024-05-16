@@ -10,10 +10,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace ItemsService.Migrations
+namespace ItemsService.ItemsServiceInfrastructure.Data.Migrations
 {
     [DbContext(typeof(ItemsDbContext))]
-    [Migration("20240515030221_Initial")]
+    [Migration("20240516000935_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -41,6 +41,7 @@ namespace ItemsService.Migrations
                         .HasColumnType("integer");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<TimeSpan>("Duration")
@@ -50,6 +51,7 @@ namespace ItemsService.Migrations
                         .HasColumnType("boolean");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int?>("WeaponId")
@@ -79,15 +81,18 @@ namespace ItemsService.Migrations
                         .HasColumnType("integer");
 
                     b.Property<string>("BoundType")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("Durability")
                         .HasColumnType("integer");
 
                     b.Property<string>("Icon")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<bool>("IsBound")
@@ -118,9 +123,11 @@ namespace ItemsService.Migrations
                         .HasColumnType("integer");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Quality")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<List<string>>("RequiredClasses")
@@ -158,18 +165,22 @@ namespace ItemsService.Migrations
                         .HasColumnType("double precision");
 
                     b.Property<string>("BoundType")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("DamageType")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("Durability")
                         .HasColumnType("integer");
 
                     b.Property<string>("Icon")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<bool>("IsBound")
@@ -212,9 +223,11 @@ namespace ItemsService.Migrations
                         .HasColumnType("double precision");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Quality")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<List<string>>("RequiredClasses")
@@ -236,6 +249,7 @@ namespace ItemsService.Migrations
                         .HasColumnType("boolean");
 
                     b.Property<string>("WeaponType")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
@@ -276,9 +290,6 @@ namespace ItemsService.Migrations
                             b1.Property<int?>("Strength")
                                 .HasColumnType("integer");
 
-                            b1.Property<int>("WeaponId")
-                                .HasColumnType("integer");
-
                             b1.HasKey("ArmorId");
 
                             b1.ToTable("Armor");
@@ -305,9 +316,6 @@ namespace ItemsService.Migrations
                                 .HasColumnType("integer");
 
                             b1.Property<int?>("SpellPower")
-                                .HasColumnType("integer");
-
-                            b1.Property<int>("WeaponId")
                                 .HasColumnType("integer");
 
                             b1.HasKey("ArmorId");

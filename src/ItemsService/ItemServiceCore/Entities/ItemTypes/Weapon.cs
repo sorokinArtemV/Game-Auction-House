@@ -7,8 +7,8 @@ namespace ItemsService.ItemServiceCore.Entities.ItemTypes;
 public class Weapon : BaseItem
 {
     public int Id { get; set; }
-    public string? WeaponType { get; set; }
-    public string? DamageType { get; set; }
+    public string WeaponType { get; set; } = default!;
+    public string DamageType { get; set; } = default!;
     public double MinDamage { get; set; }
     public double MaxDamage { get; set; }
     public double AttackSpeed { get; set; }

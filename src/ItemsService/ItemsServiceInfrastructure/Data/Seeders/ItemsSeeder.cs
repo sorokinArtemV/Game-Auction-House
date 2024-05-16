@@ -1,4 +1,4 @@
-﻿using ItemsService.ItemServiceCore.Helpers;
+﻿using ItemsService.Helpers;
 using ItemsService.ItemsServiceInfrastructure.Data.DatabaseContext;
 
 namespace ItemsService.ItemsServiceInfrastructure.Data.Seeders;

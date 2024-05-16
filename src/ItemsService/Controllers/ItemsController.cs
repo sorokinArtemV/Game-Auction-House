@@ -9,26 +9,15 @@ namespace ItemsService.Controllers;
 [ApiController]
 public class ItemsController : ControllerBase
 {
-    private readonly ItemsDbContext _context;
-
-    public ItemsController(ItemsDbContext context)
-    {
-        _context = context;
-    }
-
     [HttpGet("weapons")]
-    public async Task<ActionResult<IEnumerable<Weapon>>> GetWeapons()
+    public async Task<ActionResult<IEnumerable<Weapon>>> GetAllWeapons()
     {
-        return await _context.Weapons
-            .Include(w => w.SpecialEffects)
-            .ToListAsync();
+
     }
     
     [HttpGet("armor")]
-    public async Task<ActionResult<IEnumerable<Armor>>> GetArmor()
+    public async Task<ActionResult<IEnumerable<Armor>>> GetALlArmor()
     {
-        return await _context.Armor
-            .Include(w => w.SpecialEffects)
-            .ToListAsync();
+
     }
 }

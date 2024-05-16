@@ -5,7 +5,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace ItemsService.Migrations
+namespace ItemsService.ItemsServiceInfrastructure.Data.Migrations
 {
     /// <inheritdoc />
     public partial class Initial : Migration
@@ -22,15 +22,15 @@ namespace ItemsService.Migrations
                     ArmorType = table.Column<string>(type: "text", nullable: true),
                     ArmorValue = table.Column<int>(type: "integer", nullable: false),
                     IsShield = table.Column<bool>(type: "boolean", nullable: false),
-                    Name = table.Column<string>(type: "text", nullable: true),
-                    Quality = table.Column<string>(type: "text", nullable: true),
-                    Description = table.Column<string>(type: "text", nullable: true),
+                    Name = table.Column<string>(type: "text", nullable: false),
+                    Quality = table.Column<string>(type: "text", nullable: false),
+                    Description = table.Column<string>(type: "text", nullable: false),
                     ItemLevel = table.Column<int>(type: "integer", nullable: false),
-                    Icon = table.Column<string>(type: "text", nullable: true),
+                    Icon = table.Column<string>(type: "text", nullable: false),
                     IsStackable = table.Column<bool>(type: "boolean", nullable: false),
                     StackSize = table.Column<int>(type: "integer", nullable: false),
                     IsBound = table.Column<bool>(type: "boolean", nullable: false),
-                    BoundType = table.Column<string>(type: "text", nullable: true),
+                    BoundType = table.Column<string>(type: "text", nullable: false),
                     IsConjured = table.Column<bool>(type: "boolean", nullable: false),
                     IsUnique = table.Column<bool>(type: "boolean", nullable: false),
                     Durability = table.Column<int>(type: "integer", nullable: false),
@@ -42,13 +42,11 @@ namespace ItemsService.Migrations
                     RequiredSkill = table.Column<List<string>>(type: "text[]", nullable: true),
                     IsLocked = table.Column<bool>(type: "boolean", nullable: false),
                     IsLootable = table.Column<bool>(type: "boolean", nullable: false),
-                    PrimaryStats_WeaponId = table.Column<int>(type: "integer", nullable: false),
                     PrimaryStats_Strength = table.Column<int>(type: "integer", nullable: true),
                     PrimaryStats_Agility = table.Column<int>(type: "integer", nullable: true),
                     PrimaryStats_Stamina = table.Column<int>(type: "integer", nullable: true),
                     PrimaryStats_Intellect = table.Column<int>(type: "integer", nullable: true),
                     PrimaryStats_Spirit = table.Column<int>(type: "integer", nullable: true),
-                    SecondaryStats_WeaponId = table.Column<int>(type: "integer", nullable: false),
                     SecondaryStats_CriticalStrike = table.Column<int>(type: "integer", nullable: true),
                     SecondaryStats_AttackPower = table.Column<int>(type: "integer", nullable: true),
                     SecondaryStats_SpellPower = table.Column<int>(type: "integer", nullable: true),
@@ -66,23 +64,23 @@ namespace ItemsService.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    WeaponType = table.Column<string>(type: "text", nullable: true),
-                    DamageType = table.Column<string>(type: "text", nullable: true),
+                    WeaponType = table.Column<string>(type: "text", nullable: false),
+                    DamageType = table.Column<string>(type: "text", nullable: false),
                     MinDamage = table.Column<double>(type: "double precision", nullable: false),
                     MaxDamage = table.Column<double>(type: "double precision", nullable: false),
                     AttackSpeed = table.Column<double>(type: "double precision", nullable: false),
                     IsTwoHanded = table.Column<bool>(type: "boolean", nullable: false),
                     IsMainHand = table.Column<bool>(type: "boolean", nullable: false),
                     IsOffHand = table.Column<bool>(type: "boolean", nullable: false),
-                    Name = table.Column<string>(type: "text", nullable: true),
-                    Quality = table.Column<string>(type: "text", nullable: true),
-                    Description = table.Column<string>(type: "text", nullable: true),
+                    Name = table.Column<string>(type: "text", nullable: false),
+                    Quality = table.Column<string>(type: "text", nullable: false),
+                    Description = table.Column<string>(type: "text", nullable: false),
                     ItemLevel = table.Column<int>(type: "integer", nullable: false),
-                    Icon = table.Column<string>(type: "text", nullable: true),
+                    Icon = table.Column<string>(type: "text", nullable: false),
                     IsStackable = table.Column<bool>(type: "boolean", nullable: false),
                     StackSize = table.Column<int>(type: "integer", nullable: false),
                     IsBound = table.Column<bool>(type: "boolean", nullable: false),
-                    BoundType = table.Column<string>(type: "text", nullable: true),
+                    BoundType = table.Column<string>(type: "text", nullable: false),
                     IsConjured = table.Column<bool>(type: "boolean", nullable: false),
                     IsUnique = table.Column<bool>(type: "boolean", nullable: false),
                     Durability = table.Column<int>(type: "integer", nullable: false),
@@ -116,8 +114,8 @@ namespace ItemsService.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Name = table.Column<string>(type: "text", nullable: true),
-                    Description = table.Column<string>(type: "text", nullable: true),
+                    Name = table.Column<string>(type: "text", nullable: false),
+                    Description = table.Column<string>(type: "text", nullable: false),
                     Charges = table.Column<int>(type: "integer", nullable: false),
                     Duration = table.Column<TimeSpan>(type: "interval", nullable: false),
                     IsPassive = table.Column<bool>(type: "boolean", nullable: false),

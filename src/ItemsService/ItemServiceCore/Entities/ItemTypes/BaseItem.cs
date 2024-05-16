@@ -1,18 +1,19 @@
-﻿using ItemsService.ItemServiceCore.Entities.ItemParameters;
+﻿using System.ComponentModel.DataAnnotations;
+using ItemsService.ItemServiceCore.Entities.ItemParameters;
 
 namespace ItemsService.ItemServiceCore.Entities.ItemTypes;
 
 public abstract class BaseItem
 {
-    public string? Name { get; set; }
-    public string? Quality { get; set; }
-    public string? Description { get; set; }
+    public string Name { get; set; } = default!;
+    public string Quality { get; set; } = default!;
+    public string Description { get; set; } = default!;
     public int ItemLevel { get; set; }
-    public string? Icon { get; set; }
+    public string Icon { get; set; } = default!;
     public bool IsStackable { get; set; }
     public int StackSize { get; set; }
     public bool IsBound { get; set; }
-    public string? BoundType { get; set; }
+    public string BoundType { get; set; } = default!;
     public bool IsConjured { get; set; }
     public bool IsUnique { get; set; }
     public int Durability { get; set; }
@@ -24,7 +25,11 @@ public abstract class BaseItem
     public List<string>? RequiredSkill { get; set; }
     public bool IsLocked { get; set; }
     public bool IsLootable { get; set; }
-    public PrimaryStats PrimaryStats { get; set; }
-    public SecondaryStats SecondaryStats { get; set; }
-    public List<Effect>? SpecialEffects { get; set; }
+    
+    [Required]
+    public PrimaryStats? PrimaryStats { get; set; }
+    
+    [Required]
+    public SecondaryStats? SecondaryStats { get; set; }
+    public List<Effect> SpecialEffects { get; set; } = [];
 }
