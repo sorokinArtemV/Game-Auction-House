@@ -9,16 +9,8 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddScoped<IItemsSeeder, ItemsSeeder>();
-builder.Services.AddScoped<IGenericRepository<Weapon>, WeaponsRepository>();
-builder.Services.AddTransient<JsonFileReader>();
 
 builder.Services.AddControllers();
-
-builder.Services.AddDbContext<ItemsDbContext>(options =>
-{
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
-});
 
 
 var app = builder.Build();
