@@ -12,4 +12,12 @@ public class WeaponsService(IGenericRepository<Weapon> repository, ILogger<Weapo
         
         return weapons;
     }
+    
+    public async Task<Weapon?> GetByIdAsync(int id)
+    {
+        logger.LogInformation("Getting weapon with id: {id}", id);
+        var weapon = await repository.GetByIdAsync(id);
+        
+        return weapon;
+    }
 }

@@ -15,4 +15,13 @@ public class WeaponsRepository(ItemsDbContext dbContext) : IGenericRepository<We
 
         return weapons;
     }
+
+    public async Task<Weapon?> GetByIdAsync(int id)
+    {
+        var weapon = await dbContext.Weapons
+            .Include(w => w.SpecialEffects)
+            .FirstOrDefaultAsync(w => w.Id == id);
+
+        return weapon;
+    }
 }

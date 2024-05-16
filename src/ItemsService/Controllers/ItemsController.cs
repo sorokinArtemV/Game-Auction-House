@@ -17,4 +17,15 @@ public class ItemsController(IWeaponsService weaponsService) : ControllerBase
 
         return Ok(weapons);
     }
+    
+    [HttpGet("weapons/{id}")]
+    public async Task<ActionResult<Weapon>> GetWeaponById(int id)
+    {
+        var weapon = await weaponsService.GetByIdAsync(id);
+        
+        if (weapon is null) return NotFound();
+        
+        return Ok(weapon);
+    }
+        
 }
