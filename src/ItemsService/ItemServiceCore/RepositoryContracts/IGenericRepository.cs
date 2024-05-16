@@ -2,8 +2,7 @@
 
 namespace ItemsService.ItemServiceCore.RepositoryContracts;
 
-public interface IWeaponsRepository
+public interface IGenericRepository<T> where T : BaseItem
 {
-    Task<IEnumerable<Weapon>> GetAllAsync();
-
+    public  Task<IEnumerable<T>> GetAllAsync();
 }

@@ -14,10 +14,4 @@ public class ItemsController : ControllerBase
     {
 
     }
-    
-    [HttpGet("armor")]
-    public async Task<ActionResult<IEnumerable<Armor>>> GetALlArmor()
-    {
-
-    }
 }

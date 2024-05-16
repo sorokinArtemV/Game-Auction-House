@@ -1,13 +1,16 @@
 using ItemsService.Helpers;
 using ItemsService.ItemServiceCore.Entities.ItemTypes;
+using ItemsService.ItemServiceCore.RepositoryContracts;
 using ItemsService.ItemsServiceInfrastructure.Data.DatabaseContext;
 using ItemsService.ItemsServiceInfrastructure.Data.Seeders;
+using ItemsService.ItemsServiceInfrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddScoped<IItemsSeeder, ItemsSeeder>();
+builder.Services.AddScoped<IGenericRepository<Weapon>, WeaponsRepository>();
 builder.Services.AddTransient<JsonFileReader>();
 
 builder.Services.AddControllers();
