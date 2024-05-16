@@ -1,17 +1,19 @@
 using ItemsService.Helpers;
 using ItemsService.ItemServiceCore.Entities.ItemTypes;
 using ItemsService.ItemServiceCore.RepositoryContracts;
+using ItemsService.ItemsServiceApplication.Extensions;
 using ItemsService.ItemsServiceInfrastructure.Data.DatabaseContext;
 using ItemsService.ItemsServiceInfrastructure.Data.Seeders;
+using ItemsService.ItemsServiceInfrastructure.Extensions;
 using ItemsService.ItemsServiceInfrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers();
 
+builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddApplication();
 
 var app = builder.Build();
 

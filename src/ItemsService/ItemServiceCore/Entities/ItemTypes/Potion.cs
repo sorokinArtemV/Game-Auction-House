@@ -15,5 +15,5 @@ public class Potion : BaseItem
     
     public string? Effect { get; set; }
     
-    public Requirement Requirements { get; set; } // Assuming Requirement is an owned type
+    public Requirement? Requirements { get; set; } // Assuming Requirement is an owned type
 }

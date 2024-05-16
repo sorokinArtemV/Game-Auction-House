@@ -10,18 +10,15 @@ namespace ItemsService.ItemsServiceInfrastructure.Extensions;
 
 public static class ServiceCollectionExtensions
 {
-    public static void AddInfrastructure(this IServiceCollection services, WebApplicationBuilder builder)
+    public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddScoped<IItemsSeeder, ItemsSeeder>();
-        services.AddScoped<JsonFileReader>();
-        
         services.AddScoped<IItemsSeeder, ItemsSeeder>();
         services.AddScoped<IGenericRepository<Weapon>, WeaponsRepository>();
         services.AddTransient<JsonFileReader>();
         
         services.AddDbContext<ItemsDbContext>(options =>
         {
-            options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
+            options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"));
         });
     }
 }

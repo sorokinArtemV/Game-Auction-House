@@ -9,7 +9,9 @@ public class WeaponsRepository(ItemsDbContext dbContext) : IGenericRepository<We
 {
     public async Task<IEnumerable<Weapon>> GetAllAsync()
     {
-        var weapons = await dbContext.Weapons.ToListAsync();
+        var weapons = await dbContext.Weapons
+            .Include(w => w.SpecialEffects)
+            .ToListAsync();
 
         return weapons;
     }
