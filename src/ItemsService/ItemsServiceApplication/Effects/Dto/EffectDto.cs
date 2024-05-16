@@ -1,11 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
+﻿namespace ItemsService.ItemsServiceApplication.Effects.Dto;
 
-namespace ItemsService.ItemServiceCore.Entities.ItemParameters;
-
-public class Effect
+public class EffectDto
 {
-    // [JsonIgnore]
     public int Id { get; set; }
     public string Name { get; set; } = default!;
     public string Description { get; set; } = default!;

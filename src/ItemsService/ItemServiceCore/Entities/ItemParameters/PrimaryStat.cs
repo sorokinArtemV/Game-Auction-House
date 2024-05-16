@@ -5,9 +5,6 @@ namespace ItemsService.ItemServiceCore.Entities.ItemParameters;
 
 public class PrimaryStats
 {
-    // [ForeignKey("Weapon")]
-    // [JsonIgnore]
-    // public int WeaponId { get; set; }
     public int? Strength { get; set; }
     public int? Agility { get; set; }
     public int? Stamina { get; set; }
