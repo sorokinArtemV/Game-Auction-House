@@ -36,5 +36,5 @@ public class CreateWeaponDto
     public bool IsOffHand { get; set; }
     public PrimaryStats? PrimaryStats { get; set; }
     public SecondaryStats? SecondaryStats { get; set; }
-    public List<EffectDto> SpecialEffects { get; set; } = [];
+    public List<CreateEffectDto> SpecialEffects { get; set; } = [];
 }

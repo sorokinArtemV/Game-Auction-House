@@ -15,6 +15,5 @@ public class Effect
     public bool IsPassive { get; set; }
     
     public int? WeaponId { get; set; }
-    
     public int? ArmorId { get; set; }
 }

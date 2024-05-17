@@ -7,6 +7,10 @@ public class EffectProfile : Profile
 {
     public EffectProfile()
     {
-        CreateMap<Effect, EffectDto>().ReverseMap();
+        // TODO: Handle error when provide additional unneeded ids
+        
+        CreateMap<Effect, EffectDto>();
+
+        CreateMap<CreateEffectDto, Effect>();
     }
 }
