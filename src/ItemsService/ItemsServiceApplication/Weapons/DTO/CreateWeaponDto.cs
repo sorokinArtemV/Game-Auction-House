@@ -1,4 +1,5 @@
 ﻿using ItemsService.ItemServiceCore.Entities.ItemParameters;
+using ItemsService.ItemsServiceApplication.Effects.Dto;
 
 namespace ItemsService.ItemsServiceApplication.Weapons.DTO;
 
@@ -35,5 +36,5 @@ public class CreateWeaponDto
     public bool IsOffHand { get; set; }
     public PrimaryStats? PrimaryStats { get; set; }
     public SecondaryStats? SecondaryStats { get; set; }
-    public List<Effect> SpecialEffects { get; set; } = [];
+    public List<EffectDto> SpecialEffects { get; set; } = [];
 }

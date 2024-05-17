@@ -7,6 +7,6 @@ public class EffectProfile : Profile
 {
     public EffectProfile()
     {
-        CreateMap<Effect, EffectDto>();
+        CreateMap<Effect, EffectDto>().ReverseMap();
     }
 }

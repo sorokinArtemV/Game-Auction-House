@@ -9,7 +9,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace ItemsService.ItemsServiceInfrastructure.Data.Migrations
+namespace ItemsService.ItemsServiceInfrastructure.Data
 {
     [DbContext(typeof(ItemsDbContext))]
     partial class ItemsDbContextModelSnapshot : ModelSnapshot
