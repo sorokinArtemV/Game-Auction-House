@@ -24,4 +24,12 @@ public class WeaponsRepository(ItemsDbContext dbContext) : IGenericRepository<We
 
         return weapon;
     }
+
+    public async Task<int> CreateAsync(Weapon entity)
+    {
+        dbContext.Weapons.Add(entity);
+        await dbContext.SaveChangesAsync();
+        
+        return entity.Id;
+    }
 }

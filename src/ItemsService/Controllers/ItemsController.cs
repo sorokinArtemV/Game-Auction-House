@@ -1,8 +1,7 @@
 using ItemsService.ItemServiceCore.Entities.ItemTypes;
 using ItemsService.ItemsServiceApplication.Weapons;
-using ItemsService.ItemsServiceInfrastructure.Data.DatabaseContext;
+using ItemsService.ItemsServiceApplication.Weapons.DTO;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace ItemsService.Controllers;
 
@@ -17,15 +16,22 @@ public class ItemsController(IWeaponsService weaponsService) : ControllerBase
 
         return Ok(weapons);
     }
-    
+
     [HttpGet("weapons/{id}")]
     public async Task<ActionResult<Weapon>> GetWeaponById(int id)
     {
         var weapon = await weaponsService.GetByIdAsync(id);
-        
+
         if (weapon is null) return NotFound();
-        
+
         return Ok(weapon);
     }
-        
+
+    [HttpPost]
+    public async Task<IActionResult> CreateWeapon(CreateWeaponDto createWeaponDto)
+    {
+        var id = await weaponsService.CreateAsync(createWeaponDto);
+
+        return CreatedAtAction(nameof(GetWeaponById), new { id }, null);
+    }
 }
