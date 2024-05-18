@@ -32,4 +32,16 @@ public class WeaponsRepository(ItemsDbContext dbContext) : IGenericRepository<We
         
         return entity.Id;
     }
+
+    public Task UpdateAsync(Weapon entity)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task DeleteAsync(Weapon entity)
+    {
+        dbContext.Remove(entity);
+        
+        return dbContext.SaveChangesAsync();
+    }
 }

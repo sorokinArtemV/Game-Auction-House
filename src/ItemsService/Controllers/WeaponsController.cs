@@ -1,7 +1,6 @@
 using ItemsService.ItemServiceCore.Entities.ItemTypes;
-using ItemsService.ItemsServiceApplication.Weapons;
 using ItemsService.ItemsServiceApplication.Weapons.Commands.CreateWeapon;
-using ItemsService.ItemsServiceApplication.Weapons.DTO;
+using ItemsService.ItemsServiceApplication.Weapons.Commands.DeleteWeapon;
 using ItemsService.ItemsServiceApplication.Weapons.Queries.GetAllWeapons;
 using ItemsService.ItemsServiceApplication.Weapons.Queries.GetWeaponById;
 using MediatR;
@@ -9,11 +8,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ItemsService.Controllers;
 
-[Route("api/[controller]")]
+[Route("api/items/[controller]")]
 [ApiController]
-public class ItemsController(IMediator mediator) : ControllerBase
+public class WeaponsController(IMediator mediator) : ControllerBase
 {
-    [HttpGet("weapons")]
+    [HttpGet]
     public async Task<ActionResult<IEnumerable<Weapon>>> GetAllWeapons()
     {
         var weapons = await mediator.Send(new GetAllWeaponsQuery());
@@ -21,7 +20,7 @@ public class ItemsController(IMediator mediator) : ControllerBase
         return Ok(weapons);
     }
 
-    [HttpGet("weapons/{id}")]
+    [HttpGet("{id}")]
     public async Task<ActionResult<Weapon>> GetWeaponById(int id)
     {
         var weapon = await mediator.Send(new GetWeaponByIdQuery(id));
@@ -37,5 +36,15 @@ public class ItemsController(IMediator mediator) : ControllerBase
         var id = await mediator.Send(command);
 
         return CreatedAtAction(nameof(GetWeaponById), new { id }, null);
+    }
+    
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteWeapon(int id)
+    {
+        var isDeleted = await mediator.Send(new DeleteWeaponCommand(id));
+        
+        if (!isDeleted) return NotFound();
+        
+        return NoContent();
     }
 }
