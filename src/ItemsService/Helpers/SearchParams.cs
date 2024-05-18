@@ -5,7 +5,7 @@ namespace ItemsService.Helpers;
 public class SearchParams
 {
     public string? SearchPhrase { get; set; }
-    public WeaponType WeaponType { get; set; }
+    public string? WeaponType { get; set; }
     public int ItemLevel { get; set; } 
     public int RequiredLevel { get; set; }
     public int PageNumber { get; set; } = 1;
