@@ -1,4 +1,5 @@
-﻿using ItemsService.ItemsServiceInfrastructure.Data.DatabaseContext;
+﻿using ItemsService.Helpers.Interfaces;
+using ItemsService.ItemsServiceInfrastructure.Data.DatabaseContext;
 using Newtonsoft.Json;
 
 namespace ItemsService.Helpers;

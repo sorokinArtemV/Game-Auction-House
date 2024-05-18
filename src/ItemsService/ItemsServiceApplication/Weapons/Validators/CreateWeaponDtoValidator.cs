@@ -92,39 +92,23 @@ public class CreateWeaponDtoValidator : AbstractValidator<CreateWeaponDto>
             .WithMessage("Description must be between 3 and 100 characters");
 
         RuleFor(dto => dto.Quality)
-            .Custom((value, context) =>
-            {
-                var isValid = _qualityTypes.Contains(value);
-                if (!isValid)
-                    context.AddFailure("Quality",
-                        "Quality must be one of the following: " + string.Join(", ", _qualityTypes));
-            });
-
+            .Must(_qualityTypes.Contains)
+            .WithMessage("Quality must be one of the following: " + string.Join(", ", _qualityTypes));
+            
         RuleFor(dto => dto.Icon)
             .Length(3, 100)
             .WithMessage("Icon must be between 3 and 100 characters");
 
         RuleFor(dto => dto.BoundType)
-            .Custom((value, context) =>
-            {
-                var isValid = _boundTypes.Contains(value);
-                if (!isValid)
-                    context.AddFailure("BoundType",
-                        "BoundType must be one of the following: " + string.Join(", ", _boundTypes));
-            });
+            .Must(_boundTypes.Contains)
+            .WithMessage("BoundType must be one of the following: " + string.Join(", ", _boundTypes));
 
         RuleFor(dto => dto.Durability)
             .NotEmpty()
             .WithMessage("Durability is required")
             .InclusiveBetween(1, 150)
             .WithMessage("Durability must be between 1 and 60");
-
-        RuleFor(dto => dto.StartsQuest)
-            .NotNull()
-            .WithMessage("StartsQuest must not be null")
-            .Must(x => x || x == false)
-            .WithMessage("StartsQuest must be either true or false");
-
+        
         RuleFor(dto => dto.ItemLevel)
             .NotEmpty()
             .WithMessage("ItemLevel is required")
@@ -164,22 +148,16 @@ public class CreateWeaponDtoValidator : AbstractValidator<CreateWeaponDto>
             .WithMessage("Skill must be one of the following: " + string.Join(", ", _weaponTypes));
 
         RuleFor(dto => dto.WeaponType)
-            .Custom((value, context) =>
-            {
-                var isValid = _weaponTypes.Contains(value);
-                if (!isValid)
-                    context.AddFailure("WeaponType",
-                        "WeaponType must be one of the following: " + string.Join(", ", _weaponTypes));
-            });
+            .Must(_weaponTypes.Contains)
+            .WithMessage("WeaponType must be one of the following: " + string.Join(", ", _weaponTypes));
 
         RuleFor(dto => dto.DamageType)
-            .Custom((value, context) =>
-            {
-                var isValid = _damageTypes.Contains(value);
-                if (!isValid)
-                    context.AddFailure("DamageType",
-                        "DamageType must be one of the following: " + string.Join(", ", _damageTypes));
-            });
+            .Must(_damageTypes.Contains)
+            .WithMessage("DamageType must be one of the following: " + string.Join(", ", _damageTypes));
+
+        RuleFor(dto => dto.StartsQuest)
+            .NotNull();
+        
         RuleFor(dto => dto.IsConjured)
             .NotNull();
 
@@ -203,12 +181,5 @@ public class CreateWeaponDtoValidator : AbstractValidator<CreateWeaponDto>
 
         RuleFor(dto => dto.IsOffHand)
             .NotNull();
-    }
-
-    public override ValidationResult Validate(ValidationContext<CreateWeaponDto> context)
-    {
-        return (context.InstanceToValidate == null) 
-            ? new ValidationResult(new[] { new ValidationFailure("Property", "Error Message") })
-            : base.Validate(context);       
     }
 }

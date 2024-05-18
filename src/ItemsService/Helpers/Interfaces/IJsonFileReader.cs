@@ -1,6 +1,6 @@
 ﻿using ItemsService.ItemsServiceInfrastructure.Data.DatabaseContext;
 
-namespace ItemsService.Helpers;
+namespace ItemsService.Helpers.Interfaces;
 
 public interface IJsonFileReader
 {
