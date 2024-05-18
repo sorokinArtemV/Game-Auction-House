@@ -1,9 +1,8 @@
 ﻿using FluentValidation;
-using ItemsService.ItemsServiceApplication.Weapons.DTO;
 
-namespace ItemsService.ItemsServiceApplication.Weapons.Validators;
+namespace ItemsService.ItemsServiceApplication.Weapons.Commands.CreateWeapon;
 
-public class CreateWeaponDtoValidator : AbstractValidator<CreateWeaponDto>
+public class CreateWeaponCommandValidator : AbstractValidator<CreateWeaponCommand>
 {
     private readonly IEnumerable<string> _boundTypes =
     [
@@ -79,7 +78,7 @@ public class CreateWeaponDtoValidator : AbstractValidator<CreateWeaponDto>
     ];
 
 
-    public CreateWeaponDtoValidator()
+    public CreateWeaponCommandValidator()
     {
         RuleFor(dto => dto.Name)
             .NotEmpty()

@@ -1,9 +1,10 @@
 ﻿using ItemsService.ItemServiceCore.Entities.ItemParameters;
 using ItemsService.ItemsServiceApplication.Effects.Dto;
+using MediatR;
 
-namespace ItemsService.ItemsServiceApplication.Weapons.DTO;
+namespace ItemsService.ItemsServiceApplication.Weapons.Commands.CreateWeapon;
 
-public class CreateWeaponDto
+public class CreateWeaponCommand : IRequest<int>
 {
     public string Name { get; set; } = default!;
     public string Description { get; set; } = default!;

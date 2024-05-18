@@ -28,15 +28,4 @@ public class WeaponsService(
 
         return weaponDto;
     }
-
-    public async Task<int> CreateAsync(CreateWeaponDto dto)
-    {
-        logger.LogInformation("Creating weapon");
-        
-        var weapon = mapper.Map<Weapon>(dto);
-
-        var id = await weaponsRepository.CreateAsync(weapon);
-        
-        return id;
-    }
 }
