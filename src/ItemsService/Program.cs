@@ -1,18 +1,24 @@
 using ItemsService.Helpers;
 using ItemsService.ItemServiceCore.Entities.ItemTypes;
-using ItemsService.ItemServiceCore.RepositoryContracts;
 using ItemsService.ItemsServiceApplication.Extensions;
 using ItemsService.ItemsServiceInfrastructure.Data.DatabaseContext;
 using ItemsService.ItemsServiceInfrastructure.Data.Seeders;
 using ItemsService.ItemsServiceInfrastructure.Extensions;
-using ItemsService.ItemsServiceInfrastructure.Repositories;
-using Microsoft.EntityFrameworkCore;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Host.UseSerilog((context, services, loggerConfig) =>
+{
+    loggerConfig
+        .ReadFrom.Configuration(context.Configuration) // IConfig - appsettings.json
+        .ReadFrom.Services(services); // services collection
+});
 
 builder.Services.AddControllers();
 
 builder.Services.AddInfrastructure(builder.Configuration);
+
 builder.Services.AddApplication();
 
 var app = builder.Build();

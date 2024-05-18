@@ -8,6 +8,7 @@ public class EffectProfile : Profile
     public EffectProfile()
     {
         // TODO: Handle error when provide additional unneeded ids
+        // TODO: Add CreateCommand and UpdateCommand
         
         CreateMap<Effect, EffectDto>();
 
