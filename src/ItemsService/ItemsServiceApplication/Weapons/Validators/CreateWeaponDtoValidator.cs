@@ -1,5 +1,4 @@
 ﻿using FluentValidation;
-using FluentValidation.Results;
 using ItemsService.ItemsServiceApplication.Weapons.DTO;
 
 namespace ItemsService.ItemsServiceApplication.Weapons.Validators;
