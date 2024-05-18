@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using FluentValidation.Results;
 using ItemsService.ItemsServiceApplication.Weapons.DTO;
 
 namespace ItemsService.ItemsServiceApplication.Weapons.Validators;
@@ -36,7 +37,7 @@ public class CreateWeaponDtoValidator : AbstractValidator<CreateWeaponDto>
         "Arcane",
         "Fire"
     ];
-
+    
     private readonly IEnumerable<string> _qualityTypes =
     [
         "Poor",
@@ -78,14 +79,6 @@ public class CreateWeaponDtoValidator : AbstractValidator<CreateWeaponDto>
         "Wand"
     ];
 
-    private readonly IEnumerable<string> _primaryStats =
-    [
-        "Strength",
-        "Agility",
-        "Stamina",
-        "Intellect",
-        "Spirit"
-    ];
 
     public CreateWeaponDtoValidator()
     {
@@ -144,16 +137,18 @@ public class CreateWeaponDtoValidator : AbstractValidator<CreateWeaponDto>
             .InclusiveBetween(1, 100)
             .WithMessage("StackSize must be between 1 and 100");
 
+        
         RuleFor(dto => dto.RequiredClasses)
             .NotNull() // Validates that the list is not null
             .WithMessage("RequiredClasses list must not be null")
-            .Must(classes => classes!.All(@class => _classes.Contains(@class)))
+            .Must(races => races != null && races.All(race => _classes.Contains(race)))
             .WithMessage("Class must be one of the following: " + string.Join(", ", _classes));
-
+        
+        
         RuleFor(dto => dto.RequiredRace)
             .NotNull() // Validates that the list is not null
             .WithMessage("RequiredRace list must not be null")
-            .Must(races => races!.All(race => _races.Contains(race)))
+            .Must(races => races != null && races.All(race => _races.Contains(race)))
             .WithMessage("Race must be one of the following: " + string.Join(", ", _races));
 
         RuleFor(dto => dto.RequiredLevel)
@@ -165,7 +160,7 @@ public class CreateWeaponDtoValidator : AbstractValidator<CreateWeaponDto>
         RuleFor(dto => dto.RequiredSkill)
             .NotNull() // Validates that the list is not null
             .WithMessage("RequiredSkill list must not be null")
-            .Must(skills => skills!.All(skill => _weaponTypes.Contains(skill)))
+            .Must(skills => skills != null && skills.All(skill => _weaponTypes.Contains(skill)))
             .WithMessage("Skill must be one of the following: " + string.Join(", ", _weaponTypes));
 
         RuleFor(dto => dto.WeaponType)
@@ -209,4 +204,11 @@ public class CreateWeaponDtoValidator : AbstractValidator<CreateWeaponDto>
         RuleFor(dto => dto.IsOffHand)
             .NotNull();
     }
-}   
+
+    public override ValidationResult Validate(ValidationContext<CreateWeaponDto> context)
+    {
+        return (context.InstanceToValidate == null) 
+            ? new ValidationResult(new[] { new ValidationFailure("Property", "Error Message") })
+            : base.Validate(context);       
+    }
+}
