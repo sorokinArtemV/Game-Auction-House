@@ -16,4 +16,6 @@ public class Weapon : BaseItem
     public bool IsTwoHanded { get; set; }
     public bool IsMainHand { get; set; }
     public bool IsOffHand { get; set; }
+
+    public override string ToString() => $"{Id}: {Name}";
 }

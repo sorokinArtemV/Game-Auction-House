@@ -31,4 +31,6 @@ public class WeaponDto
     public Dictionary<string, int?> SecondaryStats { get; set; } = new();
 
     public List<EffectDto> SpecialEffects { get; set; } = [];
+
+    public override string ToString() => $"{Id}: {Name}";
 }

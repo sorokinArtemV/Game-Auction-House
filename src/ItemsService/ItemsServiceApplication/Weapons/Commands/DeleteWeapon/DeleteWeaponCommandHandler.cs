@@ -2,13 +2,14 @@
 using ItemsService.ItemServiceCore.Entities.ItemTypes;
 using ItemsService.ItemServiceCore.RepositoryContracts;
 using MediatR;
+using Serilog;
 
 namespace ItemsService.ItemsServiceApplication.Weapons.Commands.DeleteWeapon;
 
 public class DeleteWeaponCommandHandler(
     ILogger<DeleteWeaponCommand> logger,
     IGenericRepository<Weapon> repository,
-    IMapper mapper
+    IDiagnosticContext  diagnosticContext
 ) : IRequestHandler<DeleteWeaponCommand, bool>
 {
     public async Task<bool> Handle(DeleteWeaponCommand request, CancellationToken cancellationToken)
@@ -19,9 +20,9 @@ public class DeleteWeaponCommandHandler(
 
         if (weapon is null) return false;
 
-        mapper.Map(request, weapon);
-
         await repository.SaveChangesAsync();
+        
+        diagnosticContext.Set("Weapon deleted", weapon);
 
         return true;
     }
