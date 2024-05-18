@@ -29,19 +29,19 @@ public class WeaponsRepository(ItemsDbContext dbContext) : IGenericRepository<We
     {
         dbContext.Weapons.Add(entity);
         await dbContext.SaveChangesAsync();
-        
+
         return entity.Id;
     }
 
     public Task UpdateAsync(Weapon entity)
     {
-        throw new NotImplementedException();
+        dbContext.Weapons.Update(entity);
+
+        return dbContext.SaveChangesAsync();
     }
 
-    public Task DeleteAsync(Weapon entity)
+    public Task SaveChangesAsync()
     {
-        dbContext.Remove(entity);
-        
         return dbContext.SaveChangesAsync();
     }
 }

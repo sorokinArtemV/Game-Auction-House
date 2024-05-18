@@ -1,6 +1,7 @@
 using ItemsService.ItemServiceCore.Entities.ItemTypes;
 using ItemsService.ItemsServiceApplication.Weapons.Commands.CreateWeapon;
 using ItemsService.ItemsServiceApplication.Weapons.Commands.DeleteWeapon;
+using ItemsService.ItemsServiceApplication.Weapons.Commands.UpdateWeaponCommand;
 using ItemsService.ItemsServiceApplication.Weapons.Queries.GetAllWeapons;
 using ItemsService.ItemsServiceApplication.Weapons.Queries.GetWeaponById;
 using MediatR;
@@ -37,14 +38,25 @@ public class WeaponsController(IMediator mediator) : ControllerBase
 
         return CreatedAtAction(nameof(GetWeaponById), new { id }, null);
     }
-    
+
+    [HttpPatch("{id}")]
+    public async Task<IActionResult> UpdateWeapon(int id, UpdateWeaponCommand command)
+    {
+        command.Id = id;
+        var isUpdated = await mediator.Send(command);
+
+        if (!isUpdated) return NotFound();
+
+        return NoContent();
+    }
+
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteWeapon(int id)
     {
         var isDeleted = await mediator.Send(new DeleteWeaponCommand(id));
-        
+
         if (!isDeleted) return NotFound();
-        
+
         return NoContent();
     }
 }

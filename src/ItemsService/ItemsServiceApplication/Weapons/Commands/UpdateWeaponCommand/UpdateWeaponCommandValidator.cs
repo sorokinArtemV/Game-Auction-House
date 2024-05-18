@@ -1,8 +1,8 @@
 ﻿using FluentValidation;
 
-namespace ItemsService.ItemsServiceApplication.Weapons.Commands.CreateWeapon;
+namespace ItemsService.ItemsServiceApplication.Weapons.Commands.UpdateWeaponCommand;
 
-public class CreateWeaponCommandValidator : AbstractValidator<CreateWeaponCommand>
+public class UpdateWeaponCommandValidator : AbstractValidator<UpdateWeaponCommand>
 {
     private readonly IEnumerable<string> _boundTypes =
     [
@@ -35,7 +35,7 @@ public class CreateWeaponCommandValidator : AbstractValidator<CreateWeaponComman
         "Arcane",
         "Fire"
     ];
-    
+
     private readonly IEnumerable<string> _qualityTypes =
     [
         "Poor",
@@ -78,7 +78,7 @@ public class CreateWeaponCommandValidator : AbstractValidator<CreateWeaponComman
     ];
 
 
-    public CreateWeaponCommandValidator()
+    public UpdateWeaponCommandValidator()
     {
         RuleFor(dto => dto.Name)
             .NotEmpty()
@@ -92,7 +92,7 @@ public class CreateWeaponCommandValidator : AbstractValidator<CreateWeaponComman
         RuleFor(dto => dto.Quality)
             .Must(_qualityTypes.Contains)
             .WithMessage("Quality must be one of the following: " + string.Join(", ", _qualityTypes));
-            
+
         RuleFor(dto => dto.Icon)
             .Length(3, 100)
             .WithMessage("Icon must be between 3 and 100 characters");
@@ -106,7 +106,7 @@ public class CreateWeaponCommandValidator : AbstractValidator<CreateWeaponComman
             .WithMessage("Durability is required")
             .InclusiveBetween(1, 150)
             .WithMessage("Durability must be between 1 and 60");
-        
+
         RuleFor(dto => dto.ItemLevel)
             .NotEmpty()
             .WithMessage("ItemLevel is required")
@@ -119,14 +119,14 @@ public class CreateWeaponCommandValidator : AbstractValidator<CreateWeaponComman
             .InclusiveBetween(1, 100)
             .WithMessage("StackSize must be between 1 and 100");
 
-        
+
         RuleFor(dto => dto.RequiredClasses)
             .NotNull() // Validates that the list is not null
             .WithMessage("RequiredClasses list must not be null")
             .Must(races => races != null && races.All(race => _classes.Contains(race)))
             .WithMessage("Class must be one of the following: " + string.Join(", ", _classes));
-        
-        
+
+
         RuleFor(dto => dto.RequiredRace)
             .NotNull() // Validates that the list is not null
             .WithMessage("RequiredRace list must not be null")
@@ -155,7 +155,7 @@ public class CreateWeaponCommandValidator : AbstractValidator<CreateWeaponComman
 
         RuleFor(dto => dto.StartsQuest)
             .NotNull();
-        
+
         RuleFor(dto => dto.IsConjured)
             .NotNull();
 
