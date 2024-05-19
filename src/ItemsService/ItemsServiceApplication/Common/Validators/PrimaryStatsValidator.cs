@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using ItemsService.ItemServiceCore.Entities.ItemParameters;
 
-namespace ItemsService.ItemsServiceApplication.Weapons.Validators;
+namespace ItemsService.ItemsServiceApplication.Common.Validators;
 
 public class PrimaryStatsValidator : AbstractValidator<PrimaryStats>
 {

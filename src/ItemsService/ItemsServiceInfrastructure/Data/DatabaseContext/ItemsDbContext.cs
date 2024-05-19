@@ -12,7 +12,7 @@ public class ItemsDbContext : DbContext
 
     public DbSet<Weapon> Weapons { get; set; }
     public DbSet<Armor> Armors { get; set; }
-    public DbSet<Effect> Effects { get; set; }
+    public DbSet<WeaponEffect> WeaponEffects { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

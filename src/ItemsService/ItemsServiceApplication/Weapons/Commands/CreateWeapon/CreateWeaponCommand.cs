@@ -1,5 +1,5 @@
 ﻿using ItemsService.ItemServiceCore.Entities.ItemParameters;
-using ItemsService.ItemsServiceApplication.Effects.Dto;
+using ItemsService.ItemsServiceApplication.WeaponEffects.Dto;
 using MediatR;
 
 namespace ItemsService.ItemsServiceApplication.Weapons.Commands.CreateWeapon;

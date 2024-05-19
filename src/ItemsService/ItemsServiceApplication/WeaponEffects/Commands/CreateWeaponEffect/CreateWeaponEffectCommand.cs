@@ -1,11 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Text.Json.Serialization;
+﻿using MediatR;
 using Swashbuckle.AspNetCore.Annotations;
 
-namespace ItemsService.ItemServiceCore.Entities.ItemParameters;
+namespace ItemsService.ItemsServiceApplication.WeaponEffects.Commands.CreateWeaponEffect;
 
-public abstract class BaseEffect : BaseEntity
+public class CreateWeaponEffectCommand : IRequest
 {
     public string Name { get; set; } = default!;
     public string Description { get; set; } = default!;
@@ -13,4 +11,6 @@ public abstract class BaseEffect : BaseEntity
 
     [SwaggerSchema(ReadOnly = true)] public TimeSpan Duration { get; set; }
     public bool IsPassive { get; set; }
+
+    public int WeaponId { get; set; }
 }

@@ -1,4 +1,5 @@
 ﻿using ItemsService.Helpers;
+using ItemsService.ItemServiceCore.Entities.ItemParameters;
 using ItemsService.ItemServiceCore.Entities.ItemTypes;
 using ItemsService.ItemServiceCore.RepositoryContracts;
 using ItemsService.ItemsServiceInfrastructure.Data.DatabaseContext;
@@ -15,6 +16,7 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IItemsSeeder, ItemsSeeder>();
         services.AddScoped<IGenericRepository<Weapon>, WeaponsRepository>();
         services.AddScoped<IGenericRepository<Armor>, ArmorsRepository>();
+        services.AddScoped<IGenericRepository<WeaponEffect>, WeaponEffectsRepository>();
         services.AddTransient<JsonFileReader>();
         
         services.AddDbContext<ItemsDbContext>(options =>

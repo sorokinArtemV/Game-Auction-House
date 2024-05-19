@@ -3,7 +3,7 @@ using ItemsService.ItemServiceCore.Entities.ItemParameters;
 
 namespace ItemsService.ItemServiceCore.Entities.ItemTypes;
 
-public abstract class BaseItem
+public abstract class BaseItem : BaseEntity
 {
     public string Name { get; set; } = default!;
     public string Quality { get; set; } = default!;
@@ -25,11 +25,8 @@ public abstract class BaseItem
     public List<string>? RequiredSkill { get; set; }
     public bool IsLocked { get; set; }
     public bool IsLootable { get; set; }
-    
-    [Required]
-    public PrimaryStats? PrimaryStats { get; set; }
-    
-    [Required]
-    public SecondaryStats? SecondaryStats { get; set; }
-    public List<Effect> SpecialEffects { get; set; } = [];
+
+    [Required] public PrimaryStats? PrimaryStats { get; set; }
+
+    [Required] public SecondaryStats? SecondaryStats { get; set; }
 }

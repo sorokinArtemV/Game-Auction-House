@@ -1,12 +1,14 @@
-﻿using ItemsService.ItemServiceCore.Entities.ItemTypes;
+﻿using ItemsService.ItemServiceCore.Entities;
+using ItemsService.ItemServiceCore.Entities.ItemParameters;
+using ItemsService.ItemServiceCore.Entities.ItemTypes;
 
 namespace ItemsService.ItemServiceCore.RepositoryContracts;
 
-public interface IGenericRepository<T> where T : BaseItem
+public interface IGenericRepository<T> where T : BaseEntity
 {
-    public Task<IEnumerable<T>> GetAllAsync();
-    public Task<T?> GetByIdAsync(int id);
-    public Task<int> CreateAsync(T entity);
-    public Task DeleteAsync(T entity);
-    public Task SaveChangesAsync();
+    Task<IEnumerable<T>> GetAllAsync();
+    Task<T?> GetByIdAsync(int id);
+    Task<int> CreateAsync(T entity);
+    Task DeleteAsync(T entity);
+    Task SaveChangesAsync();
 }

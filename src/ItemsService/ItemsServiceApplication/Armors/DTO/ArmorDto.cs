@@ -1,4 +1,4 @@
-﻿using ItemsService.ItemsServiceApplication.Effects.Dto;
+﻿using ItemsService.ItemsServiceApplication.WeaponEffects.Dto;
 
 namespace ItemsService.ItemsServiceApplication.Armors.DTO;
 
@@ -23,7 +23,7 @@ public class ArmorDto
     public Dictionary<string, int?> PrimaryStats { get; set; } = new();
     public Dictionary<string, int?> SecondaryStats { get; set; } = new();
 
-    public List<EffectDto> SpecialEffects { get; set; } = [];
+    public List<WeaponEffectDto> SpecialEffects { get; set; } = [];
 
     public override string ToString() => $"{Id}: {Name}";
 }

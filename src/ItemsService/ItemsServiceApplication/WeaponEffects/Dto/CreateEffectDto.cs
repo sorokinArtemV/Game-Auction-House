@@ -1,4 +1,4 @@
-﻿namespace ItemsService.ItemsServiceApplication.Effects.Dto;
+﻿namespace ItemsService.ItemsServiceApplication.WeaponEffects.Dto;
 
 public class CreateEffectDto
 {
