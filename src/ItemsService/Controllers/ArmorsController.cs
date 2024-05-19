@@ -1,5 +1,7 @@
 using ItemsService.ItemServiceCore.Entities.ItemTypes;
+using ItemsService.ItemsServiceApplication.Armors.Commands.CreateArmorCommand;
 using ItemsService.ItemsServiceApplication.Armors.Queries.GetAllArmors;
+using ItemsService.ItemsServiceApplication.Armors.Queries.GetArmorById;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,5 +17,23 @@ public class ArmorsController(IMediator mediator) : ControllerBase
         var armors = await mediator.Send(new GetAllArmorsQuery());
 
         return Ok(armors);
+    }
+    
+    [HttpGet("{id}")]
+    public async Task<ActionResult<Armor>> GetArmorById(int id)
+    {
+        var armor = await mediator.Send(new GetArmorByIdQuery(id));
+        
+        if (armor is null) return NotFound();
+        
+        return Ok(armor);
+    }
+    
+    [HttpPost]
+    public async Task<ActionResult<int>> CreateArmor(CreateArmorCommand command)
+    {
+        var id = await mediator.Send(command);
+
+        return CreatedAtAction(nameof(GetArmorById), new { id }, null);
     }
 }

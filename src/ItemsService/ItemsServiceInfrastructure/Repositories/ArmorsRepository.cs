@@ -16,14 +16,21 @@ public class ArmorsRepository(ItemsDbContext dbContext) : IGenericRepository<Arm
         return armors;
     }
 
-    public Task<Armor?> GetByIdAsync(int id)
+    public async Task<Armor?> GetByIdAsync(int id)
     {
-        throw new NotImplementedException();
+        var armor = await dbContext.Armors
+            .Include(a => a.SpecialEffects)
+            .FirstOrDefaultAsync(a => a.Id == id);
+        
+        return armor;
     }
 
-    public Task<int> CreateAsync(Armor entity)
+    public async Task<int> CreateAsync(Armor entity)
     {
-        throw new NotImplementedException();
+        dbContext.Armors.Add(entity);
+        await dbContext.SaveChangesAsync();
+
+        return entity.Id;
     }
 
     public Task SaveChangesAsync()

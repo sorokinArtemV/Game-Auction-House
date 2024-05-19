@@ -1,8 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using ItemsService.ItemServiceCore.Constants;
-using ItemsService.ItemServiceCore.Entities.ItemParameters;
-
-namespace ItemsService.ItemServiceCore.Entities.ItemTypes;
+﻿namespace ItemsService.ItemServiceCore.Entities.ItemTypes;
 
 public class Weapon : BaseItem
 {

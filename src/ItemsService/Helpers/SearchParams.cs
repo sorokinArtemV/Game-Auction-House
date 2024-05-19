@@ -1,5 +1,4 @@
-﻿using ItemsService.ItemServiceCore.Constants;
-
+﻿
 namespace ItemsService.Helpers;
 
 public class SearchParams

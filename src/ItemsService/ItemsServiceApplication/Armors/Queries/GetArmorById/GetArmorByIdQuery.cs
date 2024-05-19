@@ -1,6 +1,9 @@
-﻿namespace ItemsService.ItemsServiceApplication.Armors.Queries.GetArmorById;
+﻿using ItemsService.ItemsServiceApplication.Armors.DTO;
+using MediatR;
 
-public class GetArmorByIdQuery : IRequest<Armor>
+namespace ItemsService.ItemsServiceApplication.Armors.Queries.GetArmorById;
+
+public class GetArmorByIdQuery(int id) : IRequest<ArmorDto?>
 {
-    
+    public int Id { get; set; } = id;
 }
