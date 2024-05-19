@@ -4,9 +4,10 @@ using ItemsService.ItemsServiceApplication.Weapons.DTO;
 
 namespace ItemsService.Helpers;
 
-public class StatsParamsValueResolver<TSource, TStats> 
-    : IValueResolver<TSource, WeaponDto, Dictionary<string, int?>>, IStatsParamsValueResolver<TSource, TStats> 
+public class StatsParamsValueResolver<TSource, TDto, TStats> 
+    : IValueResolver<TSource, TDto, Dictionary<string, int?>>
     where TSource : class
+    where TDto : class
     where TStats : class
 {
     private readonly Func<TSource, TStats> _statsSelector;
@@ -18,7 +19,7 @@ public class StatsParamsValueResolver<TSource, TStats>
 
     public Dictionary<string, int?> Resolve(
         TSource source, 
-        WeaponDto destination, 
+        TDto destination, 
         Dictionary<string, int?> destMember, 
         ResolutionContext context)
     {
@@ -32,9 +33,7 @@ public class StatsParamsValueResolver<TSource, TStats>
             if (property.PropertyType == typeof(int?))
             {
                 var value = property.GetValue(statsObject) as int?;
-                
                 if (value.HasValue) stats.Add(property.Name, value);
-                
             }
         }
 

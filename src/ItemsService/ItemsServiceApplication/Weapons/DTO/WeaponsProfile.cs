@@ -20,9 +20,9 @@ public class WeaponsProfile : Profile
         // Weapon to WeaponDto
         CreateMap<Weapon, WeaponDto>()
             .ForMember(dto => dto.PrimaryStats,
-                opt => opt.MapFrom(new StatsParamsValueResolver<Weapon, PrimaryStats>(w => w.PrimaryStats!)))
+                opt => opt.MapFrom(new StatsParamsValueResolver<Weapon, WeaponDto, PrimaryStats>(w => w.PrimaryStats!)))
             .ForMember(dto => dto.SecondaryStats,
-                opt => opt.MapFrom(new StatsParamsValueResolver<Weapon, SecondaryStats>(w => w.SecondaryStats!)));
+                opt => opt.MapFrom(new StatsParamsValueResolver<Weapon, WeaponDto, SecondaryStats>(w => w.SecondaryStats!)));
 
         // UpdateDto to Weapon
         CreateMap<UpdateWeaponCommand, Weapon>();

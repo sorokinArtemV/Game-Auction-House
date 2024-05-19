@@ -10,5 +10,6 @@ public class ArmorsController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Armor>>> GetAllArmors()
     {
+        throw new NotImplementedException();
     }
 }
