@@ -10,10 +10,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace ItemsService.ItemsServiceInfrastructure.Data
+namespace ItemsService.ItemsServiceInfrastructure.Data.Migrations
 {
     [DbContext(typeof(ItemsDbContext))]
-    [Migration("20240517023304_Initial")]
+    [Migration("20240519015813_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -150,7 +150,7 @@ namespace ItemsService.ItemsServiceInfrastructure.Data
 
                     b.HasKey("Id");
 
-                    b.ToTable("Armor");
+                    b.ToTable("Armors");
                 });
 
             modelBuilder.Entity("ItemsService.ItemServiceCore.Entities.ItemTypes.Weapon", b =>
@@ -292,7 +292,7 @@ namespace ItemsService.ItemsServiceInfrastructure.Data
 
                             b1.HasKey("ArmorId");
 
-                            b1.ToTable("Armor");
+                            b1.ToTable("Armors");
 
                             b1.WithOwner()
                                 .HasForeignKey("ArmorId");
@@ -320,7 +320,7 @@ namespace ItemsService.ItemsServiceInfrastructure.Data
 
                             b1.HasKey("ArmorId");
 
-                            b1.ToTable("Armor");
+                            b1.ToTable("Armors");
 
                             b1.WithOwner()
                                 .HasForeignKey("ArmorId");

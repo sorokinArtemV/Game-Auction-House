@@ -5,7 +5,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace ItemsService.ItemsServiceInfrastructure.Data
+namespace ItemsService.ItemsServiceInfrastructure.Data.Migrations
 {
     /// <inheritdoc />
     public partial class Initial : Migration
@@ -14,7 +14,7 @@ namespace ItemsService.ItemsServiceInfrastructure.Data
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Armor",
+                name: "Armors",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -55,7 +55,7 @@ namespace ItemsService.ItemsServiceInfrastructure.Data
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Armor", x => x.Id);
+                    table.PrimaryKey("PK_Armors", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -126,9 +126,9 @@ namespace ItemsService.ItemsServiceInfrastructure.Data
                 {
                     table.PrimaryKey("PK_Effects", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Effects_Armor_ArmorId",
+                        name: "FK_Effects_Armors_ArmorId",
                         column: x => x.ArmorId,
-                        principalTable: "Armor",
+                        principalTable: "Armors",
                         principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Effects_Weapons_WeaponId",
@@ -155,7 +155,7 @@ namespace ItemsService.ItemsServiceInfrastructure.Data
                 name: "Effects");
 
             migrationBuilder.DropTable(
-                name: "Armor");
+                name: "Armors");
 
             migrationBuilder.DropTable(
                 name: "Weapons");

@@ -39,11 +39,11 @@ try
     var context = services.GetRequiredService<ItemsDbContext>();
     var itemsSeeder = new ItemsSeeder(context, new JsonFileReader());
     await itemsSeeder.Seed<Weapon>("WeaponsSeeder.json");
-    await itemsSeeder.Seed<Armor>("ArmorSeeder.json");
+    await itemsSeeder.Seed<Armor>("ArmorsSeeder.json");
 }
 catch (Exception e)
 {
-    Console.WriteLine("Insertion of data failed. Error: " +  e);
+    Console.WriteLine("Insertion of data failed. Error: " + e);
     throw;
 }
 
