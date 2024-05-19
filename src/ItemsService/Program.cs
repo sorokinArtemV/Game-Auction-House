@@ -4,6 +4,7 @@ using ItemsService.ItemsServiceApplication.Extensions;
 using ItemsService.ItemsServiceInfrastructure.Data.DatabaseContext;
 using ItemsService.ItemsServiceInfrastructure.Data.Seeders;
 using ItemsService.ItemsServiceInfrastructure.Extensions;
+using ItemsService.Middleware;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,17 +18,25 @@ builder.Host.UseSerilog((context, services, loggerConfig) =>
 
 builder.Services.AddControllers();
 
+builder.Services.AddSwaggerGen();
+
+builder.Services.AddScoped<ErrorHandlingMiddleware>();
+
 builder.Services.AddInfrastructure(builder.Configuration);
 
 builder.Services.AddApplication();
 
 var app = builder.Build();
 
+app.UseMiddleware<ErrorHandlingMiddleware>();
+
 app.UseSerilogRequestLogging();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 app.MapControllers();

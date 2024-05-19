@@ -5,7 +5,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace ItemsService.ItemsServiceInfrastructure.Data.Migrations
+namespace ItemsService.Migrations
 {
     /// <inheritdoc />
     public partial class Initial : Migration
@@ -21,7 +21,6 @@ namespace ItemsService.ItemsServiceInfrastructure.Data.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     ArmorType = table.Column<string>(type: "text", nullable: true),
                     ArmorValue = table.Column<int>(type: "integer", nullable: false),
-                    IsShield = table.Column<bool>(type: "boolean", nullable: false),
                     Name = table.Column<string>(type: "text", nullable: false),
                     Quality = table.Column<string>(type: "text", nullable: false),
                     Description = table.Column<string>(type: "text", nullable: false),

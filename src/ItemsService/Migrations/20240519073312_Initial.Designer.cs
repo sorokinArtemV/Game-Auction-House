@@ -10,10 +10,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace ItemsService.ItemsServiceInfrastructure.Data.Migrations
+namespace ItemsService.Migrations
 {
     [DbContext(typeof(ItemsDbContext))]
-    [Migration("20240519015813_Initial")]
+    [Migration("20240519073312_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -108,9 +108,6 @@ namespace ItemsService.ItemsServiceInfrastructure.Data.Migrations
                         .HasColumnType("boolean");
 
                     b.Property<bool>("IsQuestItem")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("IsShield")
                         .HasColumnType("boolean");
 
                     b.Property<bool>("IsStackable")
