@@ -26,9 +26,10 @@
 
     <ItemGroup>
         <Folder Include="Controllers\"/>
-        <Folder Include="ItemServiceCore\Constants\" />
-        <Folder Include="ItemsServiceApplication\Common\" />
+        <Folder Include="ItemServiceCore\Constants\"/>
+        <Folder Include="ItemsServiceApplication\Common\"/>
         <Folder Include="ItemsServiceInfrastructure\Data\Migrations\"/>
+        <Folder Include="Logs\"/>
     </ItemGroup>
 
 </Project>

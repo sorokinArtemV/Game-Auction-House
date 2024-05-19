@@ -3,6 +3,7 @@ using ItemsService.Helpers;
 using ItemsService.ItemServiceCore.Entities.ItemParameters;
 using ItemsService.ItemServiceCore.Entities.ItemTypes;
 using ItemsService.ItemsServiceApplication.Armors.Commands.CreateArmorCommand;
+using ItemsService.ItemsServiceApplication.Armors.Commands.UpdateArmor;
 
 namespace ItemsService.ItemsServiceApplication.Armors.DTO;
 
@@ -22,5 +23,8 @@ public class ArmorsProfile : Profile
                 opt => opt.MapFrom(new StatsParamsValueResolver<Armor, ArmorDto, PrimaryStats>(w => w.PrimaryStats!)))
             .ForMember(dto => dto.SecondaryStats,
                 opt => opt.MapFrom(new StatsParamsValueResolver<Armor, ArmorDto, SecondaryStats>(w => w.SecondaryStats!)));
+        
+        // UpdateArmor to Armor
+        CreateMap<UpdateArmorCommand, Armor>();
     }
 }

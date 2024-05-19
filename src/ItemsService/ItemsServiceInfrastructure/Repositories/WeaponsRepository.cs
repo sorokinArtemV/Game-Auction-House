@@ -33,13 +33,7 @@ public class WeaponsRepository(ItemsDbContext dbContext) : IGenericRepository<We
         return entity.Id;
     }
 
-    public Task UpdateAsync(Weapon entity)
-    {
-        dbContext.Weapons.Update(entity);
-
-        return dbContext.SaveChangesAsync();
-    }
-
+    
     public Task SaveChangesAsync()
     {
         return dbContext.SaveChangesAsync();

@@ -32,9 +32,9 @@ public class ArmorsRepository(ItemsDbContext dbContext) : IGenericRepository<Arm
 
         return entity.Id;
     }
-
-    public Task SaveChangesAsync()
+    
+    public async Task SaveChangesAsync()
     {
-        throw new NotImplementedException();
+        await dbContext.SaveChangesAsync();
     }
 }

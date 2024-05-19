@@ -1,5 +1,6 @@
 using ItemsService.ItemServiceCore.Entities.ItemTypes;
 using ItemsService.ItemsServiceApplication.Armors.Commands.CreateArmorCommand;
+using ItemsService.ItemsServiceApplication.Armors.Commands.UpdateArmor;
 using ItemsService.ItemsServiceApplication.Armors.Queries.GetAllArmors;
 using ItemsService.ItemsServiceApplication.Armors.Queries.GetArmorById;
 using MediatR;
@@ -35,5 +36,16 @@ public class ArmorsController(IMediator mediator) : ControllerBase
         var id = await mediator.Send(command);
 
         return CreatedAtAction(nameof(GetArmorById), new { id }, null);
+    }
+    
+    [HttpPatch("{id}")]
+    public async Task<ActionResult> UpdateArmor(int id, UpdateArmorCommand command)
+    {
+        command.Id = id;
+        var isUpdated = await mediator.Send(command);
+        
+        if(!isUpdated) return NotFound();
+        
+        return NoContent();
     }
 }
