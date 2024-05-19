@@ -1,5 +1,6 @@
 using ItemsService.ItemServiceCore.Entities.ItemTypes;
 using ItemsService.ItemsServiceApplication.Armors.Commands.CreateArmorCommand;
+using ItemsService.ItemsServiceApplication.Armors.Commands.DeleteArmor;
 using ItemsService.ItemsServiceApplication.Armors.Commands.UpdateArmor;
 using ItemsService.ItemsServiceApplication.Armors.Queries.GetAllArmors;
 using ItemsService.ItemsServiceApplication.Armors.Queries.GetArmorById;
@@ -45,6 +46,16 @@ public class ArmorsController(IMediator mediator) : ControllerBase
         var isUpdated = await mediator.Send(command);
         
         if(!isUpdated) return NotFound();
+        
+        return NoContent();
+    }
+    
+    [HttpDelete("{id}")]
+    public async Task<ActionResult> DeleteArmor(int id)
+    {
+        var isDeleted = await mediator.Send(new DeleteArmorCommand(id));
+        
+        if(!isDeleted) return NotFound();
         
         return NoContent();
     }

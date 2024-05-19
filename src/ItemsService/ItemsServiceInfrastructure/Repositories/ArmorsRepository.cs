@@ -32,7 +32,14 @@ public class ArmorsRepository(ItemsDbContext dbContext) : IGenericRepository<Arm
 
         return entity.Id;
     }
-    
+
+    public Task DeleteAsync(Armor entity)
+    {
+        dbContext.Armors.Remove(entity);
+        
+        return dbContext.SaveChangesAsync();
+    }
+
     public async Task SaveChangesAsync()
     {
         await dbContext.SaveChangesAsync();

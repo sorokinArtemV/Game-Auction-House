@@ -7,20 +7,24 @@ using Serilog;
 namespace ItemsService.ItemsServiceApplication.Weapons.Commands.DeleteWeapon;
 
 public class DeleteWeaponCommandHandler(
-    ILogger<DeleteWeaponCommand> logger,
+    ILogger<DeleteWeaponCommandHandler> logger,
     IGenericRepository<Weapon> repository,
     IDiagnosticContext  diagnosticContext
 ) : IRequestHandler<DeleteWeaponCommand, bool>
 {
     public async Task<bool> Handle(DeleteWeaponCommand request, CancellationToken cancellationToken)
     {
-        logger.LogInformation($"Deleting weapon {request.Id}");
+        logger.LogInformation("Deleting weapon with id {Id}", request.Id);
 
         var weapon = await repository.GetByIdAsync(request.Id);
 
-        if (weapon is null) return false;
+        if (weapon is null)
+        {
+            logger.LogInformation("Weapon with id {Id} not found", request.Id); ;
+            return false;
+        }
 
-        await repository.SaveChangesAsync();
+        await repository.DeleteAsync(weapon);
         
         diagnosticContext.Set("Weapon deleted", weapon);
 

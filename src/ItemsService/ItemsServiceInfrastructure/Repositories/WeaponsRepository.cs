@@ -33,7 +33,13 @@ public class WeaponsRepository(ItemsDbContext dbContext) : IGenericRepository<We
         return entity.Id;
     }
 
-    
+    public Task DeleteAsync(Weapon entity)
+    {
+        dbContext.Remove(entity);
+        return dbContext.SaveChangesAsync();
+    }
+
+
     public Task SaveChangesAsync()
     {
         return dbContext.SaveChangesAsync();
