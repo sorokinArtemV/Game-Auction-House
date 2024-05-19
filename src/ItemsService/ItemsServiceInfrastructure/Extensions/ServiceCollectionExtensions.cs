@@ -14,6 +14,7 @@ public static class ServiceCollectionExtensions
     {
         services.AddScoped<IItemsSeeder, ItemsSeeder>();
         services.AddScoped<IGenericRepository<Weapon>, WeaponsRepository>();
+        services.AddScoped<IGenericRepository<Armor>, ArmorsRepository>();
         services.AddTransient<JsonFileReader>();
         
         services.AddDbContext<ItemsDbContext>(options =>

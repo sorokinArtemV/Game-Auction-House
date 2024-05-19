@@ -1,10 +1,8 @@
 ﻿using AutoMapper;
-using ItemsService.Helpers.Interfaces;
-using ItemsService.ItemsServiceApplication.Weapons.DTO;
 
 namespace ItemsService.Helpers;
 
-public class StatsParamsValueResolver<TSource, TDto, TStats> 
+public class StatsParamsValueResolver<TSource, TDto, TStats>
     : IValueResolver<TSource, TDto, Dictionary<string, int?>>
     where TSource : class
     where TDto : class
@@ -18,9 +16,9 @@ public class StatsParamsValueResolver<TSource, TDto, TStats>
     }
 
     public Dictionary<string, int?> Resolve(
-        TSource source, 
-        TDto destination, 
-        Dictionary<string, int?> destMember, 
+        TSource source,
+        TDto destination,
+        Dictionary<string, int?> destMember,
         ResolutionContext context)
     {
         var statsObject = _statsSelector(source);
@@ -28,14 +26,12 @@ public class StatsParamsValueResolver<TSource, TDto, TStats>
         var properties = typeof(TStats).GetProperties();
 
         foreach (var property in properties)
-        {
             // Ensure the property is of type int?
             if (property.PropertyType == typeof(int?))
             {
                 var value = property.GetValue(statsObject) as int?;
                 if (value.HasValue) stats.Add(property.Name, value);
             }
-        }
 
         return stats;
     }

@@ -1,9 +1,8 @@
-﻿using ItemsService.ItemServiceCore.Entities.ItemTypes;
+﻿using ItemsService.ItemsServiceApplication.Armors.DTO;
 using MediatR;
 
 namespace ItemsService.ItemsServiceApplication.Armors.Queries.GetAllArmors;
 
-public class GetAllArmorsQuery : IRequest<IEnumerable<Armor>>
+public class GetAllArmorsQuery : IRequest<IEnumerable<ArmorDto>>
 {
-    
 }

@@ -12,7 +12,7 @@ public class ArmorsRepository(ItemsDbContext dbContext) : IGenericRepository<Arm
         var armors = await dbContext.Armors
             .Include(a => a.SpecialEffects)
             .ToListAsync();
-        
+
         return armors;
     }
 
@@ -22,11 +22,6 @@ public class ArmorsRepository(ItemsDbContext dbContext) : IGenericRepository<Arm
     }
 
     public Task<int> CreateAsync(Armor entity)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task UpdateAsync(Armor entity)
     {
         throw new NotImplementedException();
     }
