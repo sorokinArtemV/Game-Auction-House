@@ -4,7 +4,7 @@ using MediatR;
 
 namespace ItemsService.ItemsServiceApplication.Weapons.Commands.UpdateWeaponCommand;
 
-public class UpdateWeaponCommand : IRequest<bool>
+public class UpdateWeaponCommand : IRequest
 {
     public int Id { get; set; }
     public string Name { get; set; } = default!;

@@ -3,7 +3,7 @@ using MediatR;
 
 namespace ItemsService.ItemsServiceApplication.Armors.Queries.GetArmorById;
 
-public class GetArmorByIdQuery(int id) : IRequest<ArmorDto?>
+public class GetArmorByIdQuery(int id) : IRequest<ArmorDto>
 {
     public int Id { get; set; } = id;
 }

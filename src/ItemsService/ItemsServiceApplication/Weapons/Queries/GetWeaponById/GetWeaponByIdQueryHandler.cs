@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using ItemsService.ItemServiceCore.Entities.ItemTypes;
+using ItemsService.ItemServiceCore.Exceptions;
 using ItemsService.ItemServiceCore.RepositoryContracts;
 using ItemsService.ItemsServiceApplication.Weapons.DTO;
 using MediatR;
@@ -11,17 +12,18 @@ public class GetWeaponByIdQueryHandler(
     ILogger<GetWeaponByIdQueryHandler> logger,
     IGenericRepository<Weapon> weaponsRepository,
     IMapper mapper,
-    IDiagnosticContext  diagnosticContext
-    ) : IRequestHandler<GetWeaponByIdQuery, WeaponDto?>
+    IDiagnosticContext diagnosticContext
+) : IRequestHandler<GetWeaponByIdQuery, WeaponDto>
 {
-    public async Task<WeaponDto?> Handle(GetWeaponByIdQuery request, CancellationToken cancellationToken)
+    public async Task<WeaponDto> Handle(GetWeaponByIdQuery request, CancellationToken cancellationToken)
     {
         logger.LogInformation("Getting weapon with id: {id}", request.Id);
-        var weapon = await weaponsRepository.GetByIdAsync(request.Id);
+        var weapon = await weaponsRepository.GetByIdAsync(request.Id)
+                     ?? throw new NotFoundException(nameof(Weapon), request.Id.ToString());
 
         var weaponDto = mapper.Map<WeaponDto>(weapon);
         diagnosticContext.Set("Weapon", weaponDto);
-        
+
         return weaponDto;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using ItemsService.ItemServiceCore.Entities.ItemTypes;
+using ItemsService.ItemServiceCore.Exceptions;
 using ItemsService.ItemServiceCore.RepositoryContracts;
 using MediatR;
 using Serilog;
@@ -11,22 +12,20 @@ public class UpdateArmorCommandCommandHandler(
     IGenericRepository<Armor> repository,
     IMapper mapper,
     IDiagnosticContext diagnosticContext
-        ) : IRequestHandler<UpdateArmorCommand, bool>
+) : IRequestHandler<UpdateArmorCommand>
 {
-    public async Task<bool> Handle(UpdateArmorCommand request, CancellationToken cancellationToken)
+    public async Task Handle(UpdateArmorCommand request, CancellationToken cancellationToken)
     {
         logger.LogInformation("Updating armor");
-        
+
         var armor = await repository.GetByIdAsync(request.Id);
-        
-        if (armor == null) return false;
-        
+
+        if (armor == null) throw new NotFoundException(nameof(Armor), request.Id.ToString());
+
         mapper.Map(request, armor);
 
         await repository.SaveChangesAsync();
-        
+
         diagnosticContext.Set("Armor updated", armor);
-        
-       return true;
     }
 }

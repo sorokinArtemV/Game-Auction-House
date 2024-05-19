@@ -26,8 +26,6 @@ public class WeaponsController(IMediator mediator) : ControllerBase
     {
         var weapon = await mediator.Send(new GetWeaponByIdQuery(id));
 
-        if (weapon is null) return NotFound();
-
         return Ok(weapon);
     }
 
@@ -43,9 +41,7 @@ public class WeaponsController(IMediator mediator) : ControllerBase
     public async Task<IActionResult> UpdateWeapon(int id, UpdateWeaponCommand command)
     {
         command.Id = id;
-        var isUpdated = await mediator.Send(command);
-
-        if (!isUpdated) return NotFound();
+        await mediator.Send(command);
 
         return NoContent();
     }
@@ -53,9 +49,7 @@ public class WeaponsController(IMediator mediator) : ControllerBase
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteWeapon(int id)
     {
-        var isDeleted = await mediator.Send(new DeleteWeaponCommand(id));
-
-        if (!isDeleted) return NotFound();
+        await mediator.Send(new DeleteWeaponCommand(id));
 
         return NoContent();
     }

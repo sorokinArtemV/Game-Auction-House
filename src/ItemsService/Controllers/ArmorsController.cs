@@ -20,17 +20,15 @@ public class ArmorsController(IMediator mediator) : ControllerBase
 
         return Ok(armors);
     }
-    
+
     [HttpGet("{id}")]
     public async Task<ActionResult<Armor>> GetArmorById(int id)
     {
         var armor = await mediator.Send(new GetArmorByIdQuery(id));
-        
-        if (armor is null) return NotFound();
-        
+
         return Ok(armor);
     }
-    
+
     [HttpPost]
     public async Task<ActionResult<int>> CreateArmor(CreateArmorCommand command)
     {
@@ -38,25 +36,20 @@ public class ArmorsController(IMediator mediator) : ControllerBase
 
         return CreatedAtAction(nameof(GetArmorById), new { id }, null);
     }
-    
+
     [HttpPatch("{id}")]
     public async Task<ActionResult> UpdateArmor(int id, UpdateArmorCommand command)
     {
         command.Id = id;
-        var isUpdated = await mediator.Send(command);
-        
-        if(!isUpdated) return NotFound();
-        
+        await mediator.Send(command);
         return NoContent();
     }
-    
+
     [HttpDelete("{id}")]
     public async Task<ActionResult> DeleteArmor(int id)
     {
-        var isDeleted = await mediator.Send(new DeleteArmorCommand(id));
-        
-        if(!isDeleted) return NotFound();
-        
+        await mediator.Send(new DeleteArmorCommand(id));
+
         return NoContent();
     }
 }

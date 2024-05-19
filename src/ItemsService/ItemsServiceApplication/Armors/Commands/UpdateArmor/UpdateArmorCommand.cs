@@ -4,7 +4,7 @@ using MediatR;
 
 namespace ItemsService.ItemsServiceApplication.Armors.Commands.UpdateArmor;
 
-public class UpdateArmorCommand : IRequest<bool>
+public class UpdateArmorCommand : IRequest
 {
     public int Id { get; set; }
     public string Name { get; set; } = default!;
