@@ -1,6 +1,5 @@
 ﻿[
   {
-    "Id": 1,
     "Name": "Aegis of the Coliseum",
     "Quality": "Epic",
     "Description": "A shield imbued with the power of the titans, capable of turning aside even the most fearsome blows.",
@@ -42,7 +41,6 @@
     },
     "SpecialEffects": [
       {
-        "Id": 8,
         "Name": "Titanic Bulwark",
         "Description": "Grants a chance to reflect spells and reduce incoming damage.",
         "Charges": 3,
@@ -52,7 +50,6 @@
     ]
   },
   {
-    "Id": 2,
     "Name": "Robes of Insight",
     "Quality": "Rare",
     "Description": "Enchanted robes that heighten the wearer's awareness and connection to the arcane.",
@@ -70,8 +67,15 @@
     "Durability": 80,
     "IsQuestItem": false,
     "StartsQuest": false,
-    "RequiredRace": ["Gnome", "Human"],
-    "RequiredClasses": ["Mage", "Warlock", "Priest"],
+    "RequiredRace": [
+      "Gnome",
+      "Human"
+    ],
+    "RequiredClasses": [
+      "Mage",
+      "Warlock",
+      "Priest"
+    ],
     "RequiredLevel": 40,
     "RequiredSkill": [],
     "IsLocked": false,
@@ -86,7 +90,6 @@
     },
     "SpecialEffects": [
       {
-        "Id": 9,
         "Name": "Arcane Empowerment",
         "Description": "Temporarily increases spell power.",
         "Charges": 2,
@@ -96,7 +99,6 @@
     ]
   },
   {
-    "Id": 3,
     "Name": "Vest of the Wild",
     "Quality": "Uncommon",
     "Description": "A durable leather vest that grants the wearer increased agility and stamina.",
@@ -114,8 +116,14 @@
     "Durability": 85,
     "IsQuestItem": false,
     "StartsQuest": false,
-    "RequiredRace": ["NightElf", "Troll"],
-    "RequiredClasses": ["Druid", "Rogue"],
+    "RequiredRace": [
+      "NightElf",
+      "Troll"
+    ],
+    "RequiredClasses": [
+      "Druid",
+      "Rogue"
+    ],
     "RequiredLevel": 50,
     "RequiredSkill": [],
     "IsLocked": false,
@@ -130,7 +138,6 @@
     },
     "SpecialEffects": [
       {
-        "Id": 10,
         "Name": "Nature's Swiftness",
         "Description": "Increases movement speed for a short duration.",
         "Charges": 1,
@@ -140,7 +147,6 @@
     ]
   },
   {
-    "Id": 4,
     "Name": "Breastplate of Valor",
     "Quality": "Epic",
     "Description": "A plate chestpiece that radiates a sense of unyielding courage and strength.",
@@ -158,8 +164,15 @@
     "Durability": 165,
     "IsQuestItem": false,
     "StartsQuest": false,
-    "RequiredRace": ["Dwarf", "Human", "Tauren"],
-    "RequiredClasses": ["Warrior", "Paladin"],
+    "RequiredRace": [
+      "Dwarf",
+      "Human",
+      "Tauren"
+    ],
+    "RequiredClasses": [
+      "Warrior",
+      "Paladin"
+    ],
     "RequiredLevel": 55,
     "RequiredSkill": [],
     "IsLocked": false,
@@ -174,7 +187,6 @@
     },
     "SpecialEffects": [
       {
-        "Id": 11,
         "Name": "Valor's Might",
         "Description": "Temporarily increases defense and block chance.",
         "Charges": 3,
@@ -182,7 +194,6 @@
         "IsPassive": false
       },
       {
-        "Id": 12,
         "Name": "Inspiring Presence",
         "Description": "Boosts the morale of nearby allies, increasing their stamina.",
         "Charges": 1,
@@ -192,7 +203,6 @@
     ]
   },
   {
-    "Id": 5,
     "Name": "Chainmail of the Sentinel",
     "Quality": "Uncommon",
     "Description": "A set of mail armor favored by sentinels for its balance of protection and mobility.",
@@ -210,8 +220,15 @@
     "Durability": 120,
     "IsQuestItem": false,
     "StartsQuest": false,
-    "RequiredRace": ["Orc", "Troll", "Tauren"],
-    "RequiredClasses": ["Hunter", "Shaman"],
+    "RequiredRace": [
+      "Orc",
+      "Troll",
+      "Tauren"
+    ],
+    "RequiredClasses": [
+      "Hunter",
+      "Shaman"
+    ],
     "RequiredLevel": 60,
     "RequiredSkill": [],
     "IsLocked": false,
@@ -226,7 +243,6 @@
     },
     "SpecialEffects": [
       {
-        "Id": 13,
         "Name": "Sentinel's Vigilance",
         "Description": "Increases the wearer's awareness, improving chance to dodge attacks.",
         "Charges": 2,

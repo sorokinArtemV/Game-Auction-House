@@ -17,8 +17,9 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IGenericItemsRepository<Weapon>, WeaponsItemsRepository>();
         services.AddScoped<IGenericItemsRepository<Armor>, ArmorsItemsRepository>();
         services.AddScoped<IGenericEffectsRepository<WeaponEffect>, WeaponEffectsItemsRepository>();
+        services.AddScoped<IGenericEffectsRepository<ArmorEffect>, ArmorsEffectsItemsRepository>();
         services.AddTransient<JsonFileReader>();
-        
+
         services.AddDbContext<ItemsDbContext>(options =>
         {
             options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"));

@@ -1,3 +1,4 @@
+using ItemsService.ItemsServiceApplication.Effects.ArmorEffects.Commands.CreateArmorEffect;
 using ItemsService.ItemsServiceApplication.Effects.ArmorEffects.Dto;
 using ItemsService.ItemsServiceApplication.Effects.ArmorEffects.Queries.GetAllArmorEffects;
 using ItemsService.ItemsServiceApplication.Effects.ArmorEffects.Queries.GetArmorEffectById;
@@ -17,22 +18,21 @@ public class ArmorEffectsController(IMediator mediator) : ControllerBase
 
         return Ok(effects);
     }
-    
+
     [HttpGet("{effectId}")]
     public async Task<ActionResult<ArmorEffectDto>> GetArmorEffectById(int armorId, int effectId)
     {
         var effect = await mediator.Send(new GetArmorEffectByIdQuery(armorId, effectId));
-        
+
         return Ok(effect);
     }
-    
-    // [HttpPost]
-    // public async Task<IActionResult> CreateArmorEffect(int armorId, CreateArmorEffectCommand command)
-    // {
-    //     command.ArmorId = armorId;
-    //    var effect = await mediator.Send(command);
-    //
-    //    return CreatedAtAction(nameof(GetArmorEffectById), new {armorId, effect.Id}, null);
-    // }
-    
+
+    [HttpPost]
+    public async Task<IActionResult> CreateArmorEffect(int armorId, CreateArmorEffectCommand command)
+    {
+        command.ArmorId = armorId;
+        var effectId = await mediator.Send(command);
+
+        return CreatedAtAction(nameof(GetArmorEffectById), new { armorId, effectId }, null);
+    }
 }
