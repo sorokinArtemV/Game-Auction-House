@@ -5,26 +5,29 @@ using ItemsService.ItemServiceCore.Exceptions;
 using ItemsService.ItemServiceCore.RepositoryContracts;
 using ItemsService.ItemsServiceApplication.WeaponEffects.Dto;
 using MediatR;
+using Serilog;
 
 namespace ItemsService.ItemsServiceApplication.WeaponEffects.Queries.GetAllWeaponEffects;
 
 public class GetAllWeaponEffectsQueryHandler(
     ILogger<GetAllWeaponEffectsQueryHandler> logger,
-    IGenericRepository<WeaponEffect> weaponEffectRepository,
     IGenericRepository<Weapon> weaponsRepository,
-    IMapper mapper
-    ) : IRequestHandler<GetAllWeaponEffectsQuery, IEnumerable<WeaponEffectDto>>
+    IMapper mapper,
+    IDiagnosticContext diagnosticContext
+) : IRequestHandler<GetAllWeaponEffectsQuery, IEnumerable<WeaponEffectDto>>
 {
-    public async Task<IEnumerable<WeaponEffectDto>> Handle(GetAllWeaponEffectsQuery request, CancellationToken cancellationToken)
+    public async Task<IEnumerable<WeaponEffectDto>> Handle(GetAllWeaponEffectsQuery request,
+        CancellationToken cancellationToken)
     {
         logger.LogInformation("Getting all weapon effects for weapon {WeaponId}", request.WeaponId);
 
         var weapon = await weaponsRepository.GetByIdAsync(request.WeaponId);
-        
+
         if (weapon is null) throw new NotFoundException(nameof(Weapon), request.WeaponId.ToString());
-        
+
         var results = mapper.Map<IEnumerable<WeaponEffectDto>>(weapon.SpecialEffects);
-        
+        diagnosticContext.Set("WeaponEffects", results);
+
         return results;
     }
 }

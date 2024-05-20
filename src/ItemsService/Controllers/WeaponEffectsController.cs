@@ -2,6 +2,7 @@ using ItemsService.ItemServiceCore.Entities.ItemParameters;
 using ItemsService.ItemsServiceApplication.WeaponEffects.Commands.CreateWeaponEffect;
 using ItemsService.ItemsServiceApplication.WeaponEffects.Dto;
 using ItemsService.ItemsServiceApplication.WeaponEffects.Queries.GetAllWeaponEffects;
+using ItemsService.ItemsServiceApplication.WeaponEffects.Queries.GetWeaponEffectById;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,24 +15,27 @@ public class WeaponEffectsController(IMediator mediator) : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<WeaponEffectDto>>> GetAllWeaponEffects([FromRoute] int weaponId)
     {
-      var effects = await mediator.Send(new GetAllWeaponEffectsQuery(weaponId));
-      
-      return Ok(effects);
+        var effects = await mediator.Send(new GetAllWeaponEffectsQuery(weaponId));
+
+        return Ok(effects);
     }
-    
-    [HttpGet("{id}")]
-    public async Task<ActionResult<WeaponEffectDto>> GetWeaponEffectById([FromRoute] int weaponId, [FromRoute] int id)
+
+    [HttpGet("{effectId}")]
+    public async Task<ActionResult<WeaponEffectDto>> GetWeaponEffectById([FromRoute] int weaponId,
+        [FromRoute] int effectId)
     {
-        throw new NotImplementedException();
+        var effect = await mediator.Send(new GetWeaponEffectByIdQuery(weaponId, effectId));
+
+        return Ok(effect);
     }
-    
+
     [HttpPost]
     public async Task<IActionResult> CreateWeaponEffect([FromRoute] int weaponId, CreateWeaponEffectCommand command)
     {
-       command.WeaponId = weaponId;
-       
-       await mediator.Send(command);
-       
-       return Created();
+        command.WeaponId = weaponId;
+
+        await mediator.Send(command);
+
+        return Created();
     }
 }

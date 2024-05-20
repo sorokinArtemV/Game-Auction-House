@@ -4,6 +4,7 @@ using ItemsService.ItemServiceCore.Entities.ItemTypes;
 using ItemsService.ItemServiceCore.Exceptions;
 using ItemsService.ItemServiceCore.RepositoryContracts;
 using MediatR;
+using Serilog;
 
 namespace ItemsService.ItemsServiceApplication.WeaponEffects.Commands.CreateWeaponEffect;
 
@@ -11,7 +12,8 @@ public class CreateWeaponEffectCommandHandler(
     ILogger<CreateWeaponEffectCommandHandler> logger,
     IGenericRepository<Weapon> weaponRepository,
     IGenericRepository<WeaponEffect> weaponEffectRepository,
-    IMapper mapper
+    IMapper mapper,
+    IDiagnosticContext diagnosticContext
 ) : IRequestHandler<CreateWeaponEffectCommand>
 {
     public async Task Handle(CreateWeaponEffectCommand request, CancellationToken cancellationToken)
@@ -23,6 +25,7 @@ public class CreateWeaponEffectCommandHandler(
         if (weapon is null) throw new NotFoundException(nameof(Weapon), request.WeaponId.ToString());
 
         var weaponEffect = mapper.Map<WeaponEffect>(request);
+        diagnosticContext.Set("WeaponEffect created", weaponEffect);
 
         await weaponEffectRepository.CreateAsync(weaponEffect);
     }
