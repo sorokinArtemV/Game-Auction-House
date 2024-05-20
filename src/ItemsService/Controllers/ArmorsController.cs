@@ -38,7 +38,7 @@ public class ArmorsController(IMediator mediator) : ControllerBase
     }
 
     [HttpPatch("{id}")]
-    public async Task<ActionResult> UpdateArmor(int id, UpdateArmorCommand command)
+    public async Task<IActionResult> UpdateArmor(int id, UpdateArmorCommand command)
     {
         command.Id = id;
         await mediator.Send(command);

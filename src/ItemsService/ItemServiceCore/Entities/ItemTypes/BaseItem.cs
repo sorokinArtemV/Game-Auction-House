@@ -1,9 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using ItemsService.ItemServiceCore.Entities.ItemParameters;
+using ItemsService.ItemServiceCore.RepositoryContracts;
 
 namespace ItemsService.ItemServiceCore.Entities.ItemTypes;
 
-public abstract class BaseItem : BaseEntity
+public abstract class BaseItem : IGenericRepositoryUsable
 {
     public string Name { get; set; } = default!;
     public string Quality { get; set; } = default!;

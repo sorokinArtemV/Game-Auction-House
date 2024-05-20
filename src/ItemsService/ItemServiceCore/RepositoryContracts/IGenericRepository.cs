@@ -4,7 +4,7 @@ using ItemsService.ItemServiceCore.Entities.ItemTypes;
 
 namespace ItemsService.ItemServiceCore.RepositoryContracts;
 
-public interface IGenericRepository<T> where T : BaseEntity
+public interface IGenericRepository<T> where T : IGenericRepositoryUsable
 {
     Task<IEnumerable<T>> GetAllAsync();
     Task<T?> GetByIdAsync(int id);

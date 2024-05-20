@@ -2,6 +2,7 @@ using ItemsService.ItemServiceCore.Entities.ItemTypes;
 using ItemsService.ItemsServiceApplication.Weapons.Commands.CreateWeapon;
 using ItemsService.ItemsServiceApplication.Weapons.Commands.DeleteWeapon;
 using ItemsService.ItemsServiceApplication.Weapons.Commands.UpdateWeaponCommand;
+using ItemsService.ItemsServiceApplication.Weapons.DTO;
 using ItemsService.ItemsServiceApplication.Weapons.Queries.GetAllWeapons;
 using ItemsService.ItemsServiceApplication.Weapons.Queries.GetWeaponById;
 using MediatR;
@@ -14,7 +15,7 @@ namespace ItemsService.Controllers;
 public class WeaponsController(IMediator mediator) : ControllerBase
 {
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Weapon>>> GetAllWeapons()
+    public async Task<ActionResult<IEnumerable<WeaponDto>>> GetAllWeapons()
     {
         var weapons = await mediator.Send(new GetAllWeaponsQuery());
 
@@ -22,7 +23,7 @@ public class WeaponsController(IMediator mediator) : ControllerBase
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<Weapon>> GetWeaponById(int id)
+    public async Task<ActionResult<WeaponDto>> GetWeaponById(int id)
     {
         var weapon = await mediator.Send(new GetWeaponByIdQuery(id));
 

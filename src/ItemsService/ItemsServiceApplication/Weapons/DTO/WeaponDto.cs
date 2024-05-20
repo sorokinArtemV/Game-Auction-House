@@ -1,8 +1,9 @@
-﻿using ItemsService.ItemsServiceApplication.WeaponEffects.Dto;
+﻿using ItemsService.ItemServiceCore.Entities;
+using ItemsService.ItemsServiceApplication.WeaponEffects.Dto;
 
 namespace ItemsService.ItemsServiceApplication.Weapons.DTO;
 
-public class WeaponDto
+public class WeaponDto 
 {
     public int Id { get; set; }
     public string Name { get; set; } = default!;

@@ -28,7 +28,6 @@
     <ItemGroup>
         <Folder Include="Controllers\"/>
         <Folder Include="ItemsServiceApplication\Common\"/>
-        <Folder Include="ItemsServiceApplication\WeaponEffects\Queries\" />
         <Folder Include="ItemsServiceInfrastructure\Data\Migrations\"/>
         <Folder Include="Logs\"/>
     </ItemGroup>
