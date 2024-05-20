@@ -1,5 +1,6 @@
 using ItemsService.ItemsServiceApplication.Effects.ArmorEffects.Dto;
 using ItemsService.ItemsServiceApplication.Effects.ArmorEffects.Queries.GetAllArmorEffects;
+using ItemsService.ItemsServiceApplication.Effects.ArmorEffects.Queries.GetArmorEffectById;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,11 +18,13 @@ public class ArmorEffectsController(IMediator mediator) : ControllerBase
         return Ok(effects);
     }
     
-    // [HttpGet("{effectId}")]
-    // public async Task<ActionResult<ArmorEffectDto>> GetArmorEffectById(int armorId, int effectId)
-    // {
-    //     var effect = await mediator.Send(new GetArmorEffectByIdQuery(armorId, effectId));
-    // }
+    [HttpGet("{effectId}")]
+    public async Task<ActionResult<ArmorEffectDto>> GetArmorEffectById(int armorId, int effectId)
+    {
+        var effect = await mediator.Send(new GetArmorEffectByIdQuery(armorId, effectId));
+        
+        return Ok(effect);
+    }
     
     // [HttpPost]
     // public async Task<IActionResult> CreateArmorEffect(int armorId, CreateArmorEffectCommand command)
