@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using ItemsService.ItemsServiceApplication.Weapons.DTO;
+using ItemsService.ItemsServiceApplication.Items.Weapons.DTO;
 
 namespace ItemsService.Helpers.Interfaces;
 

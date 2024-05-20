@@ -1,10 +1,9 @@
-using ItemsService.ItemServiceCore.Entities.ItemParameters;
-using ItemsService.ItemsServiceApplication.WeaponEffects.Commands.CreateWeaponEffect;
-using ItemsService.ItemsServiceApplication.WeaponEffects.Commands.DeleteAllWeaponEffects;
-using ItemsService.ItemsServiceApplication.WeaponEffects.Commands.DeleteWeaponEffect;
-using ItemsService.ItemsServiceApplication.WeaponEffects.Dto;
-using ItemsService.ItemsServiceApplication.WeaponEffects.Queries.GetAllWeaponEffects;
-using ItemsService.ItemsServiceApplication.WeaponEffects.Queries.GetWeaponEffectById;
+using ItemsService.ItemsServiceApplication.Effects.WeaponEffects.Commands.CreateWeaponEffect;
+using ItemsService.ItemsServiceApplication.Effects.WeaponEffects.Commands.DeleteAllWeaponEffects;
+using ItemsService.ItemsServiceApplication.Effects.WeaponEffects.Commands.DeleteWeaponEffect;
+using ItemsService.ItemsServiceApplication.Effects.WeaponEffects.Dto;
+using ItemsService.ItemsServiceApplication.Effects.WeaponEffects.Queries.GetAllWeaponEffects;
+using ItemsService.ItemsServiceApplication.Effects.WeaponEffects.Queries.GetWeaponEffectById;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 

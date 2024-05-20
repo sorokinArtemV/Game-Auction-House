@@ -1,9 +1,9 @@
 using ItemsService.ItemServiceCore.Entities.ItemTypes;
-using ItemsService.ItemsServiceApplication.Armors.Commands.CreateArmorCommand;
-using ItemsService.ItemsServiceApplication.Armors.Commands.DeleteArmor;
-using ItemsService.ItemsServiceApplication.Armors.Commands.UpdateArmor;
-using ItemsService.ItemsServiceApplication.Armors.Queries.GetAllArmors;
-using ItemsService.ItemsServiceApplication.Armors.Queries.GetArmorById;
+using ItemsService.ItemsServiceApplication.Items.Armors.Commands.CreateArmorCommand;
+using ItemsService.ItemsServiceApplication.Items.Armors.Commands.DeleteArmor;
+using ItemsService.ItemsServiceApplication.Items.Armors.Commands.UpdateArmor;
+using ItemsService.ItemsServiceApplication.Items.Armors.Queries.GetAllArmors;
+using ItemsService.ItemsServiceApplication.Items.Armors.Queries.GetArmorById;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 

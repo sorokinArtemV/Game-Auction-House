@@ -27,7 +27,7 @@
 
     <ItemGroup>
         <Folder Include="Controllers\"/>
-        <Folder Include="ItemsServiceApplication\Common\"/>
+        <Folder Include="ItemsServiceApplication\Items\" />
         <Folder Include="ItemsServiceInfrastructure\Data\Migrations\"/>
         <Folder Include="Logs\"/>
     </ItemGroup>

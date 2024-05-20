@@ -1,10 +1,10 @@
 using ItemsService.ItemServiceCore.Entities.ItemTypes;
-using ItemsService.ItemsServiceApplication.Weapons.Commands.CreateWeapon;
-using ItemsService.ItemsServiceApplication.Weapons.Commands.DeleteWeapon;
-using ItemsService.ItemsServiceApplication.Weapons.Commands.UpdateWeaponCommand;
-using ItemsService.ItemsServiceApplication.Weapons.DTO;
-using ItemsService.ItemsServiceApplication.Weapons.Queries.GetAllWeapons;
-using ItemsService.ItemsServiceApplication.Weapons.Queries.GetWeaponById;
+using ItemsService.ItemsServiceApplication.Items.Weapons.Commands.CreateWeapon;
+using ItemsService.ItemsServiceApplication.Items.Weapons.Commands.DeleteWeapon;
+using ItemsService.ItemsServiceApplication.Items.Weapons.Commands.UpdateWeaponCommand;
+using ItemsService.ItemsServiceApplication.Items.Weapons.DTO;
+using ItemsService.ItemsServiceApplication.Items.Weapons.Queries.GetAllWeapons;
+using ItemsService.ItemsServiceApplication.Items.Weapons.Queries.GetWeaponById;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 

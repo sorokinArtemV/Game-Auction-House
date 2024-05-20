@@ -1,6 +1,5 @@
 ﻿using FluentValidation;
 using FluentValidation.AspNetCore;
-using ItemsService.ItemsServiceApplication.Weapons;
 
 namespace ItemsService.ItemsServiceApplication.Extensions;
 
