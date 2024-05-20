@@ -11,7 +11,7 @@ namespace ItemsService.ItemsServiceApplication.WeaponEffects.Queries.GetAllWeapo
 
 public class GetAllWeaponEffectsQueryHandler(
     ILogger<GetAllWeaponEffectsQueryHandler> logger,
-    IGenericRepository<Weapon> weaponsRepository,
+    IGenericItemsRepository<Weapon> weaponsItemsRepository,
     IMapper mapper,
     IDiagnosticContext diagnosticContext
 ) : IRequestHandler<GetAllWeaponEffectsQuery, IEnumerable<WeaponEffectDto>>
@@ -21,7 +21,7 @@ public class GetAllWeaponEffectsQueryHandler(
     {
         logger.LogInformation("Getting all weapon effects for weapon {WeaponId}", request.WeaponId);
 
-        var weapon = await weaponsRepository.GetByIdAsync(request.WeaponId);
+        var weapon = await weaponsItemsRepository.GetByIdAsync(request.WeaponId);
 
         if (weapon is null) throw new NotFoundException(nameof(Weapon), request.WeaponId.ToString());
 

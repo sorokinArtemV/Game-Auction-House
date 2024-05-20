@@ -4,7 +4,7 @@ using ItemsService.ItemServiceCore.RepositoryContracts;
 
 namespace ItemsService.ItemServiceCore.Entities.ItemTypes;
 
-public abstract class BaseItem : IGenericRepositoryUsable
+public abstract class BaseItem 
 {
     public string Name { get; set; } = default!;
     public string Quality { get; set; } = default!;

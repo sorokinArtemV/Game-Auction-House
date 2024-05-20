@@ -9,7 +9,7 @@ namespace ItemsService.ItemsServiceApplication.Weapons.Commands.UpdateWeaponComm
 
 public class UpdateWeaponCommandHandler(
     ILogger<UpdateWeaponCommandHandler> logger,
-    IGenericRepository<Weapon> repository,
+    IGenericItemsRepository<Weapon> itemsRepository,
     IMapper mapper,
     IDiagnosticContext diagnosticContext
 ) : IRequestHandler<UpdateWeaponCommand>
@@ -18,13 +18,13 @@ public class UpdateWeaponCommandHandler(
     {
         logger.LogInformation("Updating weapon");
 
-        var weapon = await repository.GetByIdAsync(request.Id);
+        var weapon = await itemsRepository.GetByIdAsync(request.Id);
 
         if (weapon is null) throw new NotFoundException(nameof(Weapon), request.Id.ToString());
 
         mapper.Map(request, weapon);
 
-        await repository.SaveChangesAsync();
+        await itemsRepository.SaveChangesAsync();
 
         diagnosticContext.Set("Weapon updated", weapon);
     }

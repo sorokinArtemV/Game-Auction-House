@@ -8,7 +8,7 @@ namespace ItemsService.ItemsServiceApplication.Armors.Commands.DeleteArmor;
 
 public class DeleteArmorCommandHandler(
     ILogger<DeleteArmorCommandHandler> logger,
-    IGenericRepository<Armor> repository,
+    IGenericItemsRepository<Armor> itemsRepository,
     IDiagnosticContext diagnosticContext
 ) : IRequestHandler<DeleteArmorCommand>
 {
@@ -16,10 +16,10 @@ public class DeleteArmorCommandHandler(
     {
         logger.LogInformation("Deleting armor with id {Id}", request.Id);
 
-        var armor = await repository.GetByIdAsync(request.Id);
+        var armor = await itemsRepository.GetByIdAsync(request.Id);
         if (armor == null) throw new NotFoundException(nameof(Armor), request.Id.ToString());
 
-        await repository.DeleteAsync(armor);
+        await itemsRepository.DeleteAsync(armor);
 
         diagnosticContext.Set("Armor deleted", armor);
     }

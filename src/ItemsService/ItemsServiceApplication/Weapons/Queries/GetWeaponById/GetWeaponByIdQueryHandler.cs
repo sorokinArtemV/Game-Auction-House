@@ -10,7 +10,7 @@ namespace ItemsService.ItemsServiceApplication.Weapons.Queries.GetWeaponById;
 
 public class GetWeaponByIdQueryHandler(
     ILogger<GetWeaponByIdQueryHandler> logger,
-    IGenericRepository<Weapon> weaponsRepository,
+    IGenericItemsRepository<Weapon> weaponsItemsRepository,
     IMapper mapper,
     IDiagnosticContext diagnosticContext
 ) : IRequestHandler<GetWeaponByIdQuery, WeaponDto>
@@ -18,7 +18,7 @@ public class GetWeaponByIdQueryHandler(
     public async Task<WeaponDto> Handle(GetWeaponByIdQuery request, CancellationToken cancellationToken)
     {
         logger.LogInformation("Getting weapon with id: {id}", request.Id);
-        var weapon = await weaponsRepository.GetByIdAsync(request.Id)
+        var weapon = await weaponsItemsRepository.GetByIdAsync(request.Id)
                      ?? throw new NotFoundException(nameof(Weapon), request.Id.ToString());
 
         var weaponDto = mapper.Map<WeaponDto>(weapon);

@@ -8,7 +8,7 @@ namespace ItemsService.ItemsServiceApplication.Weapons.Commands.CreateWeapon;
 
 public class CreateWeaponCommandHandler(
     ILogger<CreateWeaponCommandHandler> logger, 
-    IGenericRepository<Weapon> weaponsRepository, 
+    IGenericItemsRepository<Weapon> weaponsItemsRepository, 
     IMapper mapper,
     IDiagnosticContext  diagnosticContext
     ) : IRequestHandler<CreateWeaponCommand, int>
@@ -19,7 +19,7 @@ public class CreateWeaponCommandHandler(
         
         var weapon = mapper.Map<Weapon>(request);
 
-        var id = await weaponsRepository.CreateAsync(weapon);
+        var id = await weaponsItemsRepository.CreateAsync(weapon);
         
         diagnosticContext.Set("Weapon created", weapon);
         

@@ -10,7 +10,7 @@ namespace ItemsService.ItemsServiceApplication.Armors.Queries.GetArmorById;
 
 public class GetArmorByIdQueryHandler(
     ILogger<GetArmorByIdQuery> logger,
-    IGenericRepository<Armor> repository,
+    IGenericItemsRepository<Armor> itemsRepository,
     IMapper mapper,
     IDiagnosticContext diagnosticContext
 ) : IRequestHandler<GetArmorByIdQuery, ArmorDto>
@@ -19,7 +19,7 @@ public class GetArmorByIdQueryHandler(
     {
         logger.LogInformation("Getting armor with id: {id}", request.Id);
 
-        var armor = await repository.GetByIdAsync(request.Id)
+        var armor = await itemsRepository.GetByIdAsync(request.Id)
                     ?? throw new NotFoundException(nameof(Armor), request.Id.ToString());
 
         var armorDto = mapper.Map<ArmorDto>(armor);

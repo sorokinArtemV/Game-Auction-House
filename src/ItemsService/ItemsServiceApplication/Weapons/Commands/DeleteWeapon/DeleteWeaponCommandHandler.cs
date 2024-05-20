@@ -8,7 +8,7 @@ namespace ItemsService.ItemsServiceApplication.Weapons.Commands.DeleteWeapon;
 
 public class DeleteWeaponCommandHandler(
     ILogger<DeleteWeaponCommandHandler> logger,
-    IGenericRepository<Weapon> repository,
+    IGenericItemsRepository<Weapon> itemsRepository,
     IDiagnosticContext diagnosticContext
 ) : IRequestHandler<DeleteWeaponCommand>
 {
@@ -16,11 +16,11 @@ public class DeleteWeaponCommandHandler(
     {
         logger.LogInformation("Deleting weapon with id {Id}", request.Id);
 
-        var weapon = await repository.GetByIdAsync(request.Id);
+        var weapon = await itemsRepository.GetByIdAsync(request.Id);
 
         if (weapon is null) throw new NotFoundException(nameof(Weapon), request.Id.ToString());
 
-        await repository.DeleteAsync(weapon);
+        await itemsRepository.DeleteAsync(weapon);
 
         diagnosticContext.Set("Weapon deleted", weapon);
     }

@@ -14,9 +14,9 @@ public static class ServiceCollectionExtensions
     public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddScoped<IItemsSeeder, ItemsSeeder>();
-        services.AddScoped<IGenericRepository<Weapon>, WeaponsRepository>();
-        services.AddScoped<IGenericRepository<Armor>, ArmorsRepository>();
-        services.AddScoped<IGenericRepository<WeaponEffect>, WeaponEffectsRepository>();
+        services.AddScoped<IGenericItemsRepository<Weapon>, WeaponsItemsRepository>();
+        services.AddScoped<IGenericItemsRepository<Armor>, ArmorsItemsRepository>();
+        services.AddScoped<IGenericEffectsRepository<WeaponEffect>, WeaponEffectsItemsRepository>();
         services.AddTransient<JsonFileReader>();
         
         services.AddDbContext<ItemsDbContext>(options =>

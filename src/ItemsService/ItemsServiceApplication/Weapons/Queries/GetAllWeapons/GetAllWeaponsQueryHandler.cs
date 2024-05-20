@@ -9,7 +9,7 @@ namespace ItemsService.ItemsServiceApplication.Weapons.Queries.GetAllWeapons;
 
 public class GetAllWeaponsQueryHandler(
     ILogger<GetAllWeaponsQueryHandler> logger,
-    IGenericRepository<Weapon> weaponsRepository,
+    IGenericItemsRepository<Weapon> weaponsItemsRepository,
     IMapper mapper,
     IDiagnosticContext diagnosticContext
 ) : IRequestHandler<GetAllWeaponsQuery, IEnumerable<WeaponDto>>
@@ -18,7 +18,7 @@ public class GetAllWeaponsQueryHandler(
     {
         logger.LogInformation("Getting all weapons");
 
-        var weapons = await weaponsRepository.GetAllAsync();
+        var weapons = await weaponsItemsRepository.GetAllAsync();
 
         var weaponsDto = mapper.Map<IEnumerable<WeaponDto>>(weapons);
         diagnosticContext.Set("Weapons", weaponsDto);

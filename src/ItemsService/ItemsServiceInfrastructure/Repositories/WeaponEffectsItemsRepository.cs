@@ -4,18 +4,8 @@ using ItemsService.ItemsServiceInfrastructure.Data.DatabaseContext;
 
 namespace ItemsService.ItemsServiceInfrastructure.Repositories;
 
-public class WeaponEffectsRepository(ItemsDbContext dbContext) : IGenericRepository<WeaponEffect>
+public class WeaponEffectsItemsRepository(ItemsDbContext dbContext) : IGenericEffectsRepository<WeaponEffect>
 {
-    public async Task<IEnumerable<WeaponEffect>> GetAllAsync()
-    {
-        throw new NotImplementedException();
-    }
-
-    public async Task<WeaponEffect?> GetByIdAsync(int id)
-    {
-        throw new NotImplementedException();
-    }
-
     public async Task<int> CreateAsync(WeaponEffect entity)
     {
         dbContext.Add(entity);
@@ -29,9 +19,5 @@ public class WeaponEffectsRepository(ItemsDbContext dbContext) : IGenericReposit
     {
         throw new NotImplementedException();
     }
-
-    public async Task SaveChangesAsync()
-    {
-        throw new NotImplementedException();
-    }
+    
 }

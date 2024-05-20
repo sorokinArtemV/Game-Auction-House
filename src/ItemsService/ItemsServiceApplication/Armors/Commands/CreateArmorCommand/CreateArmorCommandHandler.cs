@@ -8,7 +8,7 @@ namespace ItemsService.ItemsServiceApplication.Armors.Commands.CreateArmorComman
 
 public class CreateArmorCommandHandler(
     ILogger<CreateArmorCommandHandler> logger,
-    IGenericRepository<Armor> repository,
+    IGenericItemsRepository<Armor> itemsRepository,
     IMapper mapper,
     IDiagnosticContext diagnosticContext
     ) : IRequestHandler<CreateArmorCommand, int>
@@ -19,7 +19,7 @@ public class CreateArmorCommandHandler(
         
         var armor = mapper.Map<Armor>(request);
         
-        var id = repository.CreateAsync(armor);
+        var id = itemsRepository.CreateAsync(armor);
         
         diagnosticContext.Set("Armor created", armor);
         

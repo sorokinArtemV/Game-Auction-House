@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ItemsService.ItemsServiceInfrastructure.Repositories;
 
-public class WeaponsRepository(ItemsDbContext dbContext) : IGenericRepository<Weapon>
+public class WeaponsItemsRepository(ItemsDbContext dbContext) : IGenericItemsRepository<Weapon>
 {
     public async Task<IEnumerable<Weapon>> GetAllAsync()
     {

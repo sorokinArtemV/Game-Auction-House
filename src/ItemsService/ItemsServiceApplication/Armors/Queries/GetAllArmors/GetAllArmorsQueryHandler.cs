@@ -9,7 +9,7 @@ namespace ItemsService.ItemsServiceApplication.Armors.Queries.GetAllArmors;
 
 public class GetAllArmorsQueryHandler(
     ILogger<GetAllArmorsQueryHandler> logger,
-    IGenericRepository<Armor> repository,
+    IGenericItemsRepository<Armor> itemsRepository,
     IMapper mapper,
     IDiagnosticContext diagnosticContext
 ) : IRequestHandler<GetAllArmorsQuery, IEnumerable<ArmorDto>>
@@ -18,7 +18,7 @@ public class GetAllArmorsQueryHandler(
     {
         logger.LogInformation("Getting all armors");
 
-        var armors = await repository.GetAllAsync();
+        var armors = await itemsRepository.GetAllAsync();
 
         var armorsDto = mapper.Map<IEnumerable<ArmorDto>>(armors);
         diagnosticContext.Set("Armors", armorsDto);

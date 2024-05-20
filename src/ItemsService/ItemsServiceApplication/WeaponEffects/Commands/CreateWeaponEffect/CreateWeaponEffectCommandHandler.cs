@@ -10,8 +10,8 @@ namespace ItemsService.ItemsServiceApplication.WeaponEffects.Commands.CreateWeap
 
 public class CreateWeaponEffectCommandHandler(
     ILogger<CreateWeaponEffectCommandHandler> logger,
-    IGenericRepository<Weapon> weaponRepository,
-    IGenericRepository<WeaponEffect> weaponEffectRepository,
+    IGenericItemsRepository<Weapon> weaponItemsRepository,
+    IGenericEffectsRepository<WeaponEffect> weaponEffectItemsRepository,
     IMapper mapper,
     IDiagnosticContext diagnosticContext
 ) : IRequestHandler<CreateWeaponEffectCommand>
@@ -20,13 +20,13 @@ public class CreateWeaponEffectCommandHandler(
     {
         logger.LogInformation("Creating weapon effect: {@WeaponEffectRequest}", request);
 
-        var weapon = await weaponRepository.GetByIdAsync(request.WeaponId);
+        var weapon = await weaponItemsRepository.GetByIdAsync(request.WeaponId);
 
         if (weapon is null) throw new NotFoundException(nameof(Weapon), request.WeaponId.ToString());
 
         var weaponEffect = mapper.Map<WeaponEffect>(request);
         diagnosticContext.Set("WeaponEffect created", weaponEffect);
 
-        await weaponEffectRepository.CreateAsync(weaponEffect);
+        await weaponEffectItemsRepository.CreateAsync(weaponEffect);
     }
 }

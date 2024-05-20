@@ -6,7 +6,7 @@ using Swashbuckle.AspNetCore.Annotations;
 
 namespace ItemsService.ItemServiceCore.Entities.ItemParameters;
 
-public abstract class BaseEffect : IGenericRepositoryUsable
+public abstract class BaseEffect 
 {
     public string Name { get; set; } = default!;
     public string Description { get; set; } = default!;

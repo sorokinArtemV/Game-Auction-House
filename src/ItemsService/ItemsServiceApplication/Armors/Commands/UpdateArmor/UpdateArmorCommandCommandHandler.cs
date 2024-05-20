@@ -9,7 +9,7 @@ namespace ItemsService.ItemsServiceApplication.Armors.Commands.UpdateArmor;
 
 public class UpdateArmorCommandCommandHandler(
     ILogger<UpdateArmorCommandCommandHandler> logger,
-    IGenericRepository<Armor> repository,
+    IGenericItemsRepository<Armor> itemsRepository,
     IMapper mapper,
     IDiagnosticContext diagnosticContext
 ) : IRequestHandler<UpdateArmorCommand>
@@ -18,13 +18,13 @@ public class UpdateArmorCommandCommandHandler(
     {
         logger.LogInformation("Updating armor");
 
-        var armor = await repository.GetByIdAsync(request.Id);
+        var armor = await itemsRepository.GetByIdAsync(request.Id);
 
         if (armor == null) throw new NotFoundException(nameof(Armor), request.Id.ToString());
 
         mapper.Map(request, armor);
 
-        await repository.SaveChangesAsync();
+        await itemsRepository.SaveChangesAsync();
 
         diagnosticContext.Set("Armor updated", armor);
     }
