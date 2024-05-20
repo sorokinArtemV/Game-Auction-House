@@ -12,7 +12,7 @@ namespace ItemsService.ItemsServiceApplication.WeaponEffects.Queries.GetWeaponEf
 
 public class GetWeaponEffectByIdQueryHandler(
     ILogger<GetAllWeaponEffectsQueryHandler> logger,
-    IGenericItemsRepository<Weapon> weaponsItemsRepository,
+    IGenericItemsRepository<Weapon> weaponsRepository,
     IMapper mapper,
     IDiagnosticContext diagnosticContext
 ) : IRequestHandler<GetWeaponEffectByIdQuery, WeaponEffectDto>
@@ -22,7 +22,7 @@ public class GetWeaponEffectByIdQueryHandler(
         logger.LogInformation("Getting {WeaponEffect} weapon effects for weapon {WeaponId}", request.Id,
             request.WeaponId);
 
-        var weapon = await weaponsItemsRepository.GetByIdAsync(request.WeaponId);
+        var weapon = await weaponsRepository.GetByIdAsync(request.WeaponId);
 
         if (weapon is null) throw new NotFoundException(nameof(Weapon), request.WeaponId.ToString());
 

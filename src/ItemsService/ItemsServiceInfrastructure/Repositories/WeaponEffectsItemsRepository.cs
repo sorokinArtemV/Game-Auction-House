@@ -17,7 +17,15 @@ public class WeaponEffectsItemsRepository(ItemsDbContext dbContext) : IGenericEf
 
     public async Task DeleteAsync(WeaponEffect entity)
     {
-        throw new NotImplementedException();
+        dbContext.Remove(entity);
+
+        await dbContext.SaveChangesAsync();
     }
-    
+
+    public async Task DeleteAllAsync(IEnumerable<WeaponEffect> entities)
+    {
+        dbContext.RemoveRange(entities);
+
+        await dbContext.SaveChangesAsync();
+    }
 }

@@ -1,5 +1,6 @@
 using ItemsService.ItemServiceCore.Entities.ItemParameters;
 using ItemsService.ItemsServiceApplication.WeaponEffects.Commands.CreateWeaponEffect;
+using ItemsService.ItemsServiceApplication.WeaponEffects.Commands.DeleteWeaponEffect;
 using ItemsService.ItemsServiceApplication.WeaponEffects.Dto;
 using ItemsService.ItemsServiceApplication.WeaponEffects.Queries.GetAllWeaponEffects;
 using ItemsService.ItemsServiceApplication.WeaponEffects.Queries.GetWeaponEffectById;
@@ -37,5 +38,13 @@ public class WeaponEffectsController(IMediator mediator) : ControllerBase
         await mediator.Send(command);
 
         return Created();
+    }
+    
+    [HttpDelete("{effectId}")]
+    public async Task<IActionResult> DeleteWeaponEffect([FromRoute] int weaponId, [FromRoute] int effectId)
+    {
+        await mediator.Send(new DeleteWeaponEffectCommand(weaponId, effectId));
+        
+        return NoContent();
     }
 }
