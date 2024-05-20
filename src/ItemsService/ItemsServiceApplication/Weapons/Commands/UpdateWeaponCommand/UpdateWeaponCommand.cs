@@ -1,4 +1,5 @@
 ﻿using ItemsService.ItemServiceCore.Entities.ItemParameters;
+using ItemsService.ItemsServiceApplication.WeaponEffects.Commands.CreateWeaponEffect;
 using ItemsService.ItemsServiceApplication.WeaponEffects.Dto;
 using MediatR;
 
@@ -37,5 +38,5 @@ public class UpdateWeaponCommand : IRequest
     public bool IsOffHand { get; set; }
     public PrimaryStats? PrimaryStats { get; set; }
     public SecondaryStats? SecondaryStats { get; set; }
-    public List<CreateEffectDto> SpecialEffects { get; set; } = [];
+    public List<CreateWeaponEffectCommand> SpecialEffects { get; set; } = [];
 }

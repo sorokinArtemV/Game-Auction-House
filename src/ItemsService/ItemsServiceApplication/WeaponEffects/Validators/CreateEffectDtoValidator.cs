@@ -1,9 +1,10 @@
 ﻿using FluentValidation;
+using ItemsService.ItemsServiceApplication.WeaponEffects.Commands.CreateWeaponEffect;
 using ItemsService.ItemsServiceApplication.WeaponEffects.Dto;
 
 namespace ItemsService.ItemsServiceApplication.WeaponEffects.Validators;
 
-public class CreateEffectDtoValidator : AbstractValidator<CreateEffectDto>
+public class CreateEffectDtoValidator : AbstractValidator<CreateWeaponEffectCommand>
 {
     public CreateEffectDtoValidator()
     {

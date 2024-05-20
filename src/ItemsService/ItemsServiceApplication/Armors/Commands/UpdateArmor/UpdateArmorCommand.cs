@@ -1,5 +1,6 @@
 ﻿using ItemsService.ItemServiceCore.Entities.ItemParameters;
 using ItemsService.ItemsServiceApplication.WeaponEffects.Dto;
+using ItemsService.ItemsServiceApplication.Weapons.Commands.CreateWeapon;
 using MediatR;
 
 namespace ItemsService.ItemsServiceApplication.Armors.Commands.UpdateArmor;
@@ -31,5 +32,5 @@ public class UpdateArmorCommand : IRequest
     public bool IsLootable { get; set; }
     public PrimaryStats? PrimaryStats { get; set; }
     public SecondaryStats? SecondaryStats { get; set; }
-    public List<CreateEffectDto> SpecialEffects { get; set; } = [];
+    public List<CreateWeaponCommand> SpecialEffects { get; set; } = [];
 }

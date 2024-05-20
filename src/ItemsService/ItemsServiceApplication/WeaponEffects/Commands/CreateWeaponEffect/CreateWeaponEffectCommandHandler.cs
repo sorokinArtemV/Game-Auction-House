@@ -14,9 +14,9 @@ public class CreateWeaponEffectCommandHandler(
     IGenericEffectsRepository<WeaponEffect> weaponEffectItemsRepository,
     IMapper mapper,
     IDiagnosticContext diagnosticContext
-) : IRequestHandler<CreateWeaponEffectCommand>
+) : IRequestHandler<CreateWeaponEffectCommand, int>
 {
-    public async Task Handle(CreateWeaponEffectCommand request, CancellationToken cancellationToken)
+    public async Task<int> Handle(CreateWeaponEffectCommand request, CancellationToken cancellationToken)
     {
         logger.LogInformation("Creating weapon effect: {@WeaponEffectRequest}", request);
 
@@ -27,6 +27,6 @@ public class CreateWeaponEffectCommandHandler(
         var weaponEffect = mapper.Map<WeaponEffect>(request);
         diagnosticContext.Set("WeaponEffect created", weaponEffect);
 
-        await weaponEffectItemsRepository.CreateAsync(weaponEffect);
+       return await weaponEffectItemsRepository.CreateAsync(weaponEffect);
     }
 }

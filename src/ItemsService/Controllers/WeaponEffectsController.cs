@@ -36,9 +36,9 @@ public class WeaponEffectsController(IMediator mediator) : ControllerBase
     {
         command.WeaponId = weaponId;
 
-        await mediator.Send(command);
+       var effectId = await mediator.Send(command);
 
-        return Created();
+        return CreatedAtAction(nameof(GetWeaponEffectById), new { weaponId, effectId}, null);
     }
     
     [HttpDelete("{effectId}")]

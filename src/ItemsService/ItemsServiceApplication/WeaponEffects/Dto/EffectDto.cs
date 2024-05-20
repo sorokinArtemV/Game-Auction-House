@@ -4,7 +4,6 @@ namespace ItemsService.ItemsServiceApplication.WeaponEffects.Dto;
 
 public class WeaponEffectDto
 {
-    // [JsonIgnore]
     public int Id { get; set; }
     public string Name { get; set; } = default!;
     public string Description { get; set; } = default!;
@@ -12,6 +11,6 @@ public class WeaponEffectDto
     public TimeSpan Duration { get; set; }
     public bool IsPassive { get; set; }
 
-    // [JsonIgnore]
+    [JsonIgnore]
     public int? WeaponId { get; set; }
 }

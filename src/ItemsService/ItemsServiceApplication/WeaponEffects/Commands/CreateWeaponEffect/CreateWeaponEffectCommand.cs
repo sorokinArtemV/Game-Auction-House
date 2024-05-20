@@ -3,7 +3,7 @@ using Swashbuckle.AspNetCore.Annotations;
 
 namespace ItemsService.ItemsServiceApplication.WeaponEffects.Commands.CreateWeaponEffect;
 
-public class CreateWeaponEffectCommand : IRequest
+public class CreateWeaponEffectCommand : IRequest<int>
 {
     public string Name { get; set; } = default!;
     public string Description { get; set; } = default!;
