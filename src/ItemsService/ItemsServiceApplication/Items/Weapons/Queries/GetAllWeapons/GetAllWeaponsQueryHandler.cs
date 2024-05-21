@@ -18,7 +18,11 @@ public class GetAllWeaponsQueryHandler(
     {
         logger.LogInformation("Getting all weapons");
 
-        var weapons = await weaponsItemsRepository.GetAllMatchingAsync(request?.SearchPhrase);
+        var weapons = await weaponsItemsRepository.GetAllMatchingAsync(
+            request.SearchPhrase,
+            request.PageSize,
+            request.PageNumber
+            );
 
         var weaponsDto = mapper.Map<IEnumerable<WeaponDto>>(weapons);
         diagnosticContext.Set("Weapons", weaponsDto);

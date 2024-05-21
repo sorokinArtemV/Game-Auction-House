@@ -6,4 +6,6 @@ namespace ItemsService.ItemsServiceApplication.Items.Weapons.Queries.GetAllWeapo
 public class GetAllWeaponsQuery : IRequest<IEnumerable<WeaponDto>>
 {
     public string? SearchPhrase { get; set; }
+    public int PageNumber { get; set; } = 1;
+    public int PageSize { get; set; } = 4;
 }

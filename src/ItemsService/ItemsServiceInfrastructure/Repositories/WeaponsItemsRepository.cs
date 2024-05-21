@@ -16,7 +16,7 @@ public class WeaponsItemsRepository(ItemsDbContext dbContext) : IGenericItemsRep
         return weapons;
     }
 
-    public async Task<IEnumerable<Weapon>> GetAllMatchingAsync(string? searchPhrase)
+    public async Task<IEnumerable<Weapon>> GetAllMatchingAsync(string? searchPhrase, int pageSize, int pageNumber)
     {
         var lowerSearchPhrase = searchPhrase?.ToLower();
 
@@ -24,6 +24,8 @@ public class WeaponsItemsRepository(ItemsDbContext dbContext) : IGenericItemsRep
             .Include(w => w.SpecialEffects)
             .Where(w => lowerSearchPhrase == null || (w.Name.ToLower().Contains(lowerSearchPhrase) ||
                                                       w.WeaponType.ToLower().Contains(lowerSearchPhrase)))
+            .Skip((pageNumber - 1) * pageSize)
+            .Take(pageSize)
             .ToListAsync();
 
         return weapons;
