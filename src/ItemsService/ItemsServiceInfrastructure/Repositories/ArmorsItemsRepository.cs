@@ -16,12 +16,25 @@ public class ArmorsItemsRepository(ItemsDbContext dbContext) : IGenericItemsRepo
         return armors;
     }
 
+    public async Task<IEnumerable<Armor>> GetAllMatchingAsync(string searchPhrase)
+    {
+        var lowerSearchPhrase = searchPhrase?.ToLower();
+
+        var armors = await dbContext.Armors
+            .Include(w => w.SpecialEffects)
+            .Where(w => w.Name.ToLower().Contains(lowerSearchPhrase ?? string.Empty) ||
+                        w.Description.ToLower().Contains(lowerSearchPhrase ?? string.Empty))
+            .ToListAsync();
+
+        return armors;
+    }
+
     public async Task<Armor?> GetByIdAsync(int id)
     {
         var armor = await dbContext.Armors
             .Include(a => a.SpecialEffects)
             .FirstOrDefaultAsync(a => a.Id == id);
-        
+
         return armor;
     }
 
@@ -36,7 +49,7 @@ public class ArmorsItemsRepository(ItemsDbContext dbContext) : IGenericItemsRepo
     public Task DeleteAsync(Armor entity)
     {
         dbContext.Armors.Remove(entity);
-        
+
         return dbContext.SaveChangesAsync();
     }
 

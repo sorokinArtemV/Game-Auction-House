@@ -41,20 +41,20 @@ if (app.Environment.IsDevelopment())
 
 app.MapControllers();
 
-try
-{
-    using var scope = app.Services.CreateScope();
-    var services = scope.ServiceProvider;
-    var context = services.GetRequiredService<ItemsDbContext>();
-    var itemsSeeder = new ItemsSeeder(context, new JsonFileReader());
-    await itemsSeeder.Seed<Weapon>(Path.Combine(Environment.CurrentDirectory, "ItemsServiceInfrastructure/Data/Seeders/SeedingData/WeaponsSeeder.json"));
-    await itemsSeeder.Seed<Weapon>(Path.Combine(Environment.CurrentDirectory, "ItemsServiceInfrastructure/Data/Seeders/ArmorsSeeder.json"));
-}
-catch (Exception e)
-{
-    Console.WriteLine("Insertion of data failed. Error: " + e);
-    throw;
-}
+// try
+// {
+//     using var scope = app.Services.CreateScope();
+//     var services = scope.ServiceProvider;
+//     var context = services.GetRequiredService<ItemsDbContext>();
+//     var itemsSeeder = new ItemsSeeder(context, new JsonFileReader());
+//     await itemsSeeder.Seed<Weapon>(Path.Combine(Environment.CurrentDirectory, "ItemsServiceInfrastructure/Data/Seeders/SeedingData/WeaponsSeeder.json"));
+//     await itemsSeeder.Seed<Weapon>(Path.Combine(Environment.CurrentDirectory, "ItemsServiceInfrastructure/Data/Seeders/SeedingData/ArmorsSeeder.json"));
+// }
+// catch (Exception e)
+// {
+//     Console.WriteLine("Insertion of data failed. Error: " + e);
+//     throw;
+// }
 
 
 app.Run();

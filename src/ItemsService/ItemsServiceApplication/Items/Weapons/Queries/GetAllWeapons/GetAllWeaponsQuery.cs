@@ -5,5 +5,5 @@ namespace ItemsService.ItemsServiceApplication.Items.Weapons.Queries.GetAllWeapo
 
 public class GetAllWeaponsQuery : IRequest<IEnumerable<WeaponDto>>
 {
-    
+    public string? SearchPhrase { get; set; }
 }

@@ -16,6 +16,19 @@ public class WeaponsItemsRepository(ItemsDbContext dbContext) : IGenericItemsRep
         return weapons;
     }
 
+    public async Task<IEnumerable<Weapon>> GetAllMatchingAsync(string? searchPhrase)
+    {
+        var lowerSearchPhrase = searchPhrase?.ToLower();
+
+        var weapons = await dbContext.Weapons
+            .Include(w => w.SpecialEffects)
+            .Where(w => lowerSearchPhrase == null || (w.Name.ToLower().Contains(lowerSearchPhrase) ||
+                                                      w.WeaponType.ToLower().Contains(lowerSearchPhrase)))
+            .ToListAsync();
+
+        return weapons;
+    }
+
     public async Task<Weapon?> GetByIdAsync(int id)
     {
         var weapon = await dbContext.Weapons

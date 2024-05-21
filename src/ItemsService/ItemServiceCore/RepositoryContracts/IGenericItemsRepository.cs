@@ -6,9 +6,10 @@ namespace ItemsService.ItemServiceCore.RepositoryContracts;
 
 public interface IGenericItemsRepository<T> where T : BaseItem
 {
-    Task<IEnumerable<T>> GetAllAsync();
-    Task<T?> GetByIdAsync(int id);
-    Task<int> CreateAsync(T entity);
-    Task DeleteAsync(T entity);
-    Task SaveChangesAsync();
+    public Task<IEnumerable<T>> GetAllAsync();
+    public Task<IEnumerable<T>> GetAllMatchingAsync(string? searchPhrase);
+    public Task<T?> GetByIdAsync(int id);
+    public Task<int> CreateAsync(T entity);
+    public Task DeleteAsync(T entity);
+    public Task SaveChangesAsync();
 }

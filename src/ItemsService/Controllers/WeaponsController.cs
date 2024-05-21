@@ -15,9 +15,9 @@ namespace ItemsService.Controllers;
 public class WeaponsController(IMediator mediator) : ControllerBase
 {
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<WeaponDto>>> GetAllWeapons()
+    public async Task<ActionResult<IEnumerable<WeaponDto>>> GetAllWeapons([FromQuery] GetAllWeaponsQuery query)
     {
-        var weapons = await mediator.Send(new GetAllWeaponsQuery());
+        var weapons = await mediator.Send(query);
 
         return Ok(weapons);
     }
