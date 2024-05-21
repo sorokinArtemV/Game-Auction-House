@@ -17,7 +17,7 @@ public class DeleteAllWeaponEffectsCommandHandler(
 {
     public async Task Handle(DeleteAllWeaponEffectsCommand request, CancellationToken cancellationToken)
     {
-        logger.LogInformation(
+        logger.LogWarning(
             "Deleting all weapon effects from weapon {@WeaponEffectRequest}", request.WeaponId);
         
         var weapon = await weaponRepository.GetByIdAsync(request.WeaponId);
@@ -27,7 +27,5 @@ public class DeleteAllWeaponEffectsCommandHandler(
         diagnosticContext.Set("WeaponEffects deleted", weapon.SpecialEffects);
 
         await weaponEffectRepository.DeleteAllAsync(weapon.SpecialEffects);
-        
-        
     }
 }
