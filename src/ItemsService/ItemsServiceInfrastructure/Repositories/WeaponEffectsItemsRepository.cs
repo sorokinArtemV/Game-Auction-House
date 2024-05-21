@@ -28,4 +28,9 @@ public class WeaponEffectsItemsRepository(ItemsDbContext dbContext) : IGenericEf
 
         await dbContext.SaveChangesAsync();
     }
+
+    public Task SaveChangesAsync()
+    {
+        throw new NotImplementedException();
+    }
 }

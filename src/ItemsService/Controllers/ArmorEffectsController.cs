@@ -1,4 +1,5 @@
 using ItemsService.ItemsServiceApplication.Effects.ArmorEffects.Commands.CreateArmorEffect;
+using ItemsService.ItemsServiceApplication.Effects.ArmorEffects.Commands.DeleteArmorEffect;
 using ItemsService.ItemsServiceApplication.Effects.ArmorEffects.Dto;
 using ItemsService.ItemsServiceApplication.Effects.ArmorEffects.Queries.GetAllArmorEffects;
 using ItemsService.ItemsServiceApplication.Effects.ArmorEffects.Queries.GetArmorEffectById;
@@ -34,5 +35,13 @@ public class ArmorEffectsController(IMediator mediator) : ControllerBase
         var effectId = await mediator.Send(command);
 
         return CreatedAtAction(nameof(GetArmorEffectById), new { armorId, effectId }, null);
+    }
+
+    [HttpDelete("{effectId}")]
+    public async Task<IActionResult> DeleteArmorEffect(int armorId, int effectId)
+    {
+        await mediator.Send(new DeleteArmorEffectCommand( effectId, armorId));
+
+        return NoContent();
     }
 }

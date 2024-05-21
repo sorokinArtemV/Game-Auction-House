@@ -47,7 +47,6 @@
     },
     "SpecialEffects": [
       {
-        "Id": 1,
         "Name": "Lightning Strike",
         "Description": "Strikes the enemy with a bolt of lightning, dealing extra electric damage.",
         "Charges": 5,
@@ -57,7 +56,6 @@
     ]
   },
   {
-    "Id": 2,
     "Name": "Flame Wrath, Protector of the Phoenix",
     "Quality": "Epic",
     "Description": "Forged in the heart of the Firelands, this blade is imbued with the essence of the phoenix.",
@@ -104,7 +102,6 @@
     },
     "SpecialEffects": [
       {
-        "Id": 2,
         "Name": "Phoenix Rebirth",
         "Description": "Grants a chance to resurrect with full health upon defeat.",
         "Charges": 1,
@@ -114,7 +111,6 @@
     ]
   },
   {
-    "Id": 3,
     "Name": "Frostbite, Harbinger of Winter",
     "Quality": "Rare",
     "Description": "The chill of the Frostwolf clan's homeland is captured within the edge of this blade.",
@@ -161,7 +157,6 @@
     },
     "SpecialEffects": [
       {
-        "Id": 3,
         "Name": "Ice Shard",
         "Description": "Your attacks have a chance to release a shard of ice, dealing additional frost damage.",
         "Charges": 3,
@@ -169,7 +164,6 @@
         "IsPassive": false
       },
       {
-        "Id": 4,
         "Name": "Glacial Speed",
         "Description": "Increases movement speed on ice or snow.",
         "Charges": 0,
@@ -179,7 +173,6 @@
     ]
   },
   {
-    "Id": 4,
     "Name": "Starshatter, Gaze of the Cosmos",
     "Quality": "Legendary",
     "Description": "Crafted from a meteorite that fell from the Great Dark Beyond, this weapon holds the power of the stars.",
@@ -226,7 +219,6 @@
     },
     "SpecialEffects": [
       {
-        "Id": 5,
         "Name": "Celestial Alignment",
         "Description": "Aligns you with the stars, increasing your critical strike chance.",
         "Charges": 2,
@@ -236,7 +228,6 @@
     ]
   },
   {
-    "Id": 5,
     "Name": "Earthshaker, Might of the Mountain",
     "Quality": "Epic",
     "Description": "Rumored to be forged within the molten core of Blackrock Mountain, this hammer resonates with the strength of the earth.",
@@ -283,7 +274,6 @@
     },
     "SpecialEffects": [
       {
-        "Id": 6,
         "Name": "Seismic Wave",
         "Description": "Unleashes a wave of earth energy, damaging and stunning nearby enemies.",
         "Charges": 3,
@@ -291,7 +281,6 @@
         "IsPassive": false
       },
       {
-        "Id": 7,
         "Name": "Mountain's Fortitude",
         "Description": "Increases your resistance to stun and knockback effects.",
         "Charges": 0,

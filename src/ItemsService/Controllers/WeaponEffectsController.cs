@@ -41,7 +41,7 @@ public class WeaponEffectsController(IMediator mediator) : ControllerBase
     }
     
     [HttpDelete("{effectId}")]
-    public async Task<IActionResult> DeleteWeaponEffect([FromRoute] int weaponId, [FromRoute] int effectId)
+    public async Task<IActionResult> DeleteWeaponEffect(int weaponId, int effectId)
     {
         await mediator.Send(new DeleteWeaponEffectCommand(weaponId, effectId));
         
