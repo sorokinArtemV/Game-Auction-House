@@ -2,6 +2,7 @@ using ItemsService.ItemServiceCore.Entities.ItemTypes;
 using ItemsService.ItemsServiceApplication.Items.Armors.Commands.CreateArmorCommand;
 using ItemsService.ItemsServiceApplication.Items.Armors.Commands.DeleteArmor;
 using ItemsService.ItemsServiceApplication.Items.Armors.Commands.UpdateArmor;
+using ItemsService.ItemsServiceApplication.Items.Armors.DTO;
 using ItemsService.ItemsServiceApplication.Items.Armors.Queries.GetAllArmors;
 using ItemsService.ItemsServiceApplication.Items.Armors.Queries.GetArmorById;
 using MediatR;
@@ -14,11 +15,11 @@ namespace ItemsService.Controllers;
 public class ArmorsController(IMediator mediator) : ControllerBase
 {
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Armor>>> GetAllArmors()
+    public async Task<ActionResult<IEnumerable<ArmorDto>>> GetAllWeapons([FromQuery] GetAllArmorsQuery query)
     {
-        var armors = await mediator.Send(new GetAllArmorsQuery());
+        var weapons = await mediator.Send(query);
 
-        return Ok(armors);
+        return Ok(weapons);
     }
 
     [HttpGet("{id}")]

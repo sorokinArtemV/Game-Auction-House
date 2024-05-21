@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using ItemsService.ItemServiceCore.Entities.ItemTypes;
 using ItemsService.ItemServiceCore.RepositoryContracts;
+using ItemsService.ItemsServiceApplication.Common;
 using ItemsService.ItemsServiceApplication.Items.Weapons.DTO;
 using MediatR;
 using Serilog;
@@ -12,21 +13,23 @@ public class GetAllWeaponsQueryHandler(
     IGenericItemsRepository<Weapon> weaponsItemsRepository,
     IMapper mapper,
     IDiagnosticContext diagnosticContext
-) : IRequestHandler<GetAllWeaponsQuery, IEnumerable<WeaponDto>>
+) : IRequestHandler<GetAllWeaponsQuery, PagedResult<WeaponDto>>
 {
-    public async Task<IEnumerable<WeaponDto>> Handle(GetAllWeaponsQuery request, CancellationToken cancellationToken)
+    public async Task<PagedResult<WeaponDto>> Handle(GetAllWeaponsQuery request, CancellationToken cancellationToken)
     {
         logger.LogInformation("Getting all weapons");
 
-        var weapons = await weaponsItemsRepository.GetAllMatchingAsync(
+        var (weapons, totalCount) = await weaponsItemsRepository.GetAllMatchingAsync(
             request.SearchPhrase,
             request.PageSize,
             request.PageNumber
-            );
+        );
 
         var weaponsDto = mapper.Map<IEnumerable<WeaponDto>>(weapons);
         diagnosticContext.Set("Weapons", weaponsDto);
 
-        return weaponsDto;
+        var result = new PagedResult<WeaponDto>(weaponsDto, totalCount, request.PageSize, request.PageNumber);
+
+        return result;
     }
 }

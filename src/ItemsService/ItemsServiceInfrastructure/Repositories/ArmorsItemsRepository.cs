@@ -16,19 +16,23 @@ public class ArmorsItemsRepository(ItemsDbContext dbContext) : IGenericItemsRepo
         return armors;
     }
 
-    public async Task<IEnumerable<Armor>> GetAllMatchingAsync(string? searchPhrase, int pageSize, int pageNumber)
+    public async Task<(IEnumerable<Armor>, int)> GetAllMatchingAsync(string? searchPhrase, int pageSize, int pageNumber)
     {
         var lowerSearchPhrase = searchPhrase?.ToLower();
 
-        var armors = await dbContext.Armors
+        var baseQuery = dbContext.Armors
             .Include(w => w.SpecialEffects)
             .Where(w => lowerSearchPhrase == null || (w.Name.ToLower().Contains(lowerSearchPhrase) ||
-                                                      w.ArmorType.ToLower().Contains(lowerSearchPhrase)))
+                                                      w.ArmorType.ToLower().Contains(lowerSearchPhrase)));
+        
+        var totalCount = await baseQuery.CountAsync();
+        
+        var armors = await dbContext.Armors
             .Skip((pageNumber - 1) * pageSize)
             .Take(pageSize)
             .ToListAsync();
 
-        return armors;
+        return (armors, totalCount);
     }
 
     public async Task<Armor?> GetByIdAsync(int id)

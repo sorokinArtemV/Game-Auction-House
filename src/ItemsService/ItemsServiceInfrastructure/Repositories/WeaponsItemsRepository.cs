@@ -16,19 +16,23 @@ public class WeaponsItemsRepository(ItemsDbContext dbContext) : IGenericItemsRep
         return weapons;
     }
 
-    public async Task<IEnumerable<Weapon>> GetAllMatchingAsync(string? searchPhrase, int pageSize, int pageNumber)
+    public async Task<(IEnumerable<Weapon>, int)> GetAllMatchingAsync(string? searchPhrase, int pageSize, int pageNumber)
     {
         var lowerSearchPhrase = searchPhrase?.ToLower();
 
-        var weapons = await dbContext.Weapons
+        var baseQuery = dbContext.Weapons
             .Include(w => w.SpecialEffects)
             .Where(w => lowerSearchPhrase == null || (w.Name.ToLower().Contains(lowerSearchPhrase) ||
-                                                      w.WeaponType.ToLower().Contains(lowerSearchPhrase)))
+                                                      w.WeaponType.ToLower().Contains(lowerSearchPhrase)));
+
+        var totalCount = await baseQuery.CountAsync();
+
+        var weapons = await baseQuery
             .Skip((pageNumber - 1) * pageSize)
             .Take(pageSize)
             .ToListAsync();
 
-        return weapons;
+        return (weapons, totalCount);
     }
 
     public async Task<Weapon?> GetByIdAsync(int id)
