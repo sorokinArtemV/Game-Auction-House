@@ -10,10 +10,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace ItemsService.Migrations
+namespace ItemsService.ItemsServiceInfrastructure.Data.Migrations
 {
     [DbContext(typeof(ItemsDbContext))]
-    [Migration("20240519073312_Initial")]
+    [Migration("20240521004417_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -26,7 +26,7 @@ namespace ItemsService.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("ItemsService.ItemServiceCore.Entities.ItemParameters.Effect", b =>
+            modelBuilder.Entity("ItemsService.ItemServiceCore.Entities.ItemParameters.ArmorEffect", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -54,16 +54,46 @@ namespace ItemsService.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.HasKey("Id");
+
+                    b.HasIndex("ArmorId");
+
+                    b.ToTable("ArmorEffect");
+                });
+
+            modelBuilder.Entity("ItemsService.ItemServiceCore.Entities.ItemParameters.WeaponEffect", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Charges")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<TimeSpan>("Duration")
+                        .HasColumnType("interval");
+
+                    b.Property<bool>("IsPassive")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<int?>("WeaponId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ArmorId");
-
                     b.HasIndex("WeaponId");
 
-                    b.ToTable("Effects");
+                    b.ToTable("WeaponEffects");
                 });
 
             modelBuilder.Entity("ItemsService.ItemServiceCore.Entities.ItemTypes.Armor", b =>
@@ -254,12 +284,15 @@ namespace ItemsService.Migrations
                     b.ToTable("Weapons");
                 });
 
-            modelBuilder.Entity("ItemsService.ItemServiceCore.Entities.ItemParameters.Effect", b =>
+            modelBuilder.Entity("ItemsService.ItemServiceCore.Entities.ItemParameters.ArmorEffect", b =>
                 {
                     b.HasOne("ItemsService.ItemServiceCore.Entities.ItemTypes.Armor", null)
                         .WithMany("SpecialEffects")
                         .HasForeignKey("ArmorId");
+                });
 
+            modelBuilder.Entity("ItemsService.ItemServiceCore.Entities.ItemParameters.WeaponEffect", b =>
+                {
                     b.HasOne("ItemsService.ItemServiceCore.Entities.ItemTypes.Weapon", null)
                         .WithMany("SpecialEffects")
                         .HasForeignKey("WeaponId");

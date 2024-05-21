@@ -4,20 +4,17 @@ using System.Collections.Generic;
 using ItemsService.ItemsServiceInfrastructure.Data.DatabaseContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace ItemsService.Migrations
+namespace ItemsService.ItemsServiceInfrastructure.Data.Migrations
 {
     [DbContext(typeof(ItemsDbContext))]
-    [Migration("20240519112522_SplitEffectsTable")]
-    partial class SplitEffectsTable
+    partial class ItemsDbContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
