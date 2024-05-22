@@ -1,4 +1,6 @@
-﻿using ItemsService.ItemServiceCore.Entities.ItemTypes;
+﻿using System.Linq.Expressions;
+using ItemsService.ItemServiceCore.Constants;
+using ItemsService.ItemServiceCore.Entities.ItemTypes;
 using ItemsService.ItemServiceCore.RepositoryContracts;
 using ItemsService.ItemsServiceInfrastructure.Data.DatabaseContext;
 using Microsoft.EntityFrameworkCore;
@@ -16,7 +18,13 @@ public class ArmorsItemsRepository(ItemsDbContext dbContext) : IGenericItemsRepo
         return armors;
     }
 
-    public async Task<(IEnumerable<Armor>, int)> GetAllMatchingAsync(string? searchPhrase, int pageSize, int pageNumber)
+    public async Task<(IEnumerable<Armor>, int)> GetAllMatchingAsync(
+        string? searchPhrase, 
+        int pageSize, 
+        int pageNumber,
+        string? sortBy,
+        SortDirection sortDirection
+        )
     {
         var lowerSearchPhrase = searchPhrase?.ToLower();
 
@@ -24,10 +32,26 @@ public class ArmorsItemsRepository(ItemsDbContext dbContext) : IGenericItemsRepo
             .Include(w => w.SpecialEffects)
             .Where(w => lowerSearchPhrase == null || (w.Name.ToLower().Contains(lowerSearchPhrase) ||
                                                       w.ArmorType.ToLower().Contains(lowerSearchPhrase)));
-        
+
         var totalCount = await baseQuery.CountAsync();
         
-        var armors = await dbContext.Armors
+        if (sortBy != null)
+        {
+            var columnSelector = new Dictionary<string, Expression<Func<Armor, object>>>
+            {
+                [nameof(Armor.Name)] = a => a.Name,
+                [nameof(Armor.ArmorType)] = a => a.ArmorType,
+                [nameof(Armor.RequiredLevel)] = a => a.RequiredLevel
+            };
+            
+            var selectedColumn = columnSelector[sortBy];
+
+            baseQuery = sortDirection == SortDirection.Ascending 
+                ? baseQuery.OrderBy(selectedColumn) 
+                : baseQuery.OrderByDescending(selectedColumn);
+        }
+
+        var armors = await baseQuery
             .Skip((pageNumber - 1) * pageSize)
             .Take(pageSize)
             .ToListAsync();

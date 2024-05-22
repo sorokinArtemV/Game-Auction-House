@@ -23,7 +23,9 @@ public class GetAllArmorsQueryHandler(
         var (armors, totalCount) = await armorsItemsRepository.GetAllMatchingAsync(
             request.SearchPhrase,
             request.PageSize,
-            request.PageNumber
+            request.PageNumber,
+            request.SortBy,
+            request.SortDirection
         );
 
         var armorsDto = mapper.Map<IEnumerable<ArmorDto>>(armors);

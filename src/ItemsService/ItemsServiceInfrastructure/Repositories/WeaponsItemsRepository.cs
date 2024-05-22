@@ -1,4 +1,6 @@
-﻿using ItemsService.ItemServiceCore.Entities.ItemTypes;
+﻿using System.Linq.Expressions;
+using ItemsService.ItemServiceCore.Constants;
+using ItemsService.ItemServiceCore.Entities.ItemTypes;
 using ItemsService.ItemServiceCore.RepositoryContracts;
 using ItemsService.ItemsServiceInfrastructure.Data.DatabaseContext;
 using Microsoft.EntityFrameworkCore;
@@ -16,7 +18,13 @@ public class WeaponsItemsRepository(ItemsDbContext dbContext) : IGenericItemsRep
         return weapons;
     }
 
-    public async Task<(IEnumerable<Weapon>, int)> GetAllMatchingAsync(string? searchPhrase, int pageSize, int pageNumber)
+    public async Task<(IEnumerable<Weapon>, int)> GetAllMatchingAsync(
+        string? searchPhrase, 
+        int pageSize, 
+        int pageNumber,
+        string? sortBy,
+        SortDirection sortDirection
+        )
     {
         var lowerSearchPhrase = searchPhrase?.ToLower();
 
@@ -26,6 +34,22 @@ public class WeaponsItemsRepository(ItemsDbContext dbContext) : IGenericItemsRep
                                                       w.WeaponType.ToLower().Contains(lowerSearchPhrase)));
 
         var totalCount = await baseQuery.CountAsync();
+
+        if (sortBy != null)
+        {
+            var columnSelector = new Dictionary<string, Expression<Func<Weapon, object>>>
+            {
+                [nameof(Weapon.Name)] = w => w.Name,
+                [nameof(Weapon.WeaponType)] = w => w.WeaponType,
+                [nameof(Weapon.RequiredLevel)] = w => w.RequiredLevel
+            };
+            
+            var selectedColumn = columnSelector[sortBy];
+
+            baseQuery = sortDirection == SortDirection.Ascending 
+                ? baseQuery.OrderBy(selectedColumn) 
+                : baseQuery.OrderByDescending(selectedColumn);
+        }
 
         var weapons = await baseQuery
             .Skip((pageNumber - 1) * pageSize)

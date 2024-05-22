@@ -22,7 +22,9 @@ public class GetAllWeaponsQueryHandler(
         var (weapons, totalCount) = await weaponsItemsRepository.GetAllMatchingAsync(
             request.SearchPhrase,
             request.PageSize,
-            request.PageNumber
+            request.PageNumber,
+            request.SortBy,
+            request.SortDirection
         );
 
         var weaponsDto = mapper.Map<IEnumerable<WeaponDto>>(weapons);
