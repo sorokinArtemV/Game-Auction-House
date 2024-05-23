@@ -37,4 +37,9 @@
         <ProjectReference Include="..\GameItems.Infrastructure\GameItems.Infrastructure.csproj"/>
     </ItemGroup>
 
+    <ItemGroup>
+      <None Include="Seeders\SeedingData\ArmorsSeeder.json" />
+      <None Include="Seeders\SeedingData\WeaponsSeeder.json" />
+    </ItemGroup>
+
 </Project>

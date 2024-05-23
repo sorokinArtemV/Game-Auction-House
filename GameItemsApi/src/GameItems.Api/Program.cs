@@ -1,10 +1,8 @@
 using GameItems.Application.Extensions;
-using GameItems.Core.Entities.ItemTypes;
-using GameItems.Infrastructure.Data.DatabaseContext;
-using GameItems.Infrastructure.Data.Seeders;
 using GameItems.Infrastructure.Extensions;
 using GameItems.Infrastructure.Helpers;
 using ItemsService.Middleware;
+using ItemsService.Seeders;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +19,8 @@ builder.Services.AddControllers();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<ErrorHandlingMiddleware>();
+
+builder.Services.AddTransient<IDbInitializer, DbInitializer>();
 
 builder.Services.AddInfrastructure(builder.Configuration);
 
@@ -43,17 +43,7 @@ app.MapControllers();
 
 try
 {
-    using var scope = app.Services.CreateScope();
-    var services = scope.ServiceProvider;
-    var context = services.GetRequiredService<ItemsDbContext>();
-    var itemsSeeder = new ItemsSeeder(context, new JsonFileReader());
-    await itemsSeeder.Seed<Weapon>(Path.Combine(
-        @"C:\Users\artem\OneDrive\Desktop\Sharp\ASP-Projects\GameItemsApi\src\GameItems.Infrastructure\Data\Seeders\SeedingData",
-        "WeaponsSeeder.json"));
-
-    await itemsSeeder.Seed<Armor>(Path.Combine(
-        @"C:\Users\artem\OneDrive\Desktop\Sharp\ASP-Projects\GameItemsApi\src\GameItems.Infrastructure\Data\Seeders\SeedingData",
-        "ArmorsSeeder.json"));
+    app.Services.GetRequiredService<IDbInitializer>()?.InitDb(app);
 }
 catch (Exception e)
 {
