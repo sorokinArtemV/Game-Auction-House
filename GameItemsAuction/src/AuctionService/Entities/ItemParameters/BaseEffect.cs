@@ -1,6 +1,6 @@
 ﻿namespace AuctionService.Entities.ItemParameters;
 
-public abstract class BaseEffect
+public class BaseEffect
 {
     public string Name { get; set; } = default!;
     public string Description { get; set; } = default!;

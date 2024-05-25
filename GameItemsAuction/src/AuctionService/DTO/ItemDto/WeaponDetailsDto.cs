@@ -36,5 +36,5 @@ public class WeaponDetailsDto : IItemDetailsDto
     public bool IsLootable { get; set; }
     public PrimaryStats? PrimaryStats { get; set; }
     public SecondaryStats? SecondaryStats { get; set; }
-    public List<WeaponEffect> SpecialEffects { get; set; } = [];
+    public List<BaseEffect> SpecialEffects { get; set; } = [];
 }

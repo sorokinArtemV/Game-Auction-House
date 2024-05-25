@@ -3,8 +3,9 @@ using AuctionService.Entities.ItemParameters;
 
 namespace AuctionService.DTO.ItemDto;
 
-public class IItemDetailsDto
+public interface IItemDetailsDto
 {
+    public int Id { get; set; }
     public string Name { get; set; }
     public string Quality { get; set; }
     public string Description { get; set; }
@@ -27,4 +28,6 @@ public class IItemDetailsDto
     public bool IsLootable { get; set; }
     public PrimaryStats? PrimaryStats { get; set; }
     public SecondaryStats? SecondaryStats { get; set; }
+
+    public List<BaseEffect> SpecialEffects { get; set; }
 }
