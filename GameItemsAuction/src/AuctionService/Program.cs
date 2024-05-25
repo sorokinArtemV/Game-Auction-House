@@ -1,5 +1,6 @@
 using AuctionService.Data;
 using AuctionService.Interfaces;
+using AuctionService.Middleware;
 using AuctionService.Services;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,6 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+
+builder.Services.AddScoped<ErrorHandlingMiddleware>();
 
 builder.Services.AddDbContext<AuctionDbContext>(options =>
 {
@@ -21,6 +24,8 @@ builder.Services.AddHttpClient();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();
+
+app.UseMiddleware<ErrorHandlingMiddleware>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

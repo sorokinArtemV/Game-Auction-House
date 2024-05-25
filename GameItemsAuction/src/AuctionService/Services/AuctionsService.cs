@@ -1,6 +1,8 @@
 ﻿using AuctionService.Data;
 using AuctionService.DTO;
 using AuctionService.DTO.ItemDto;
+using AuctionService.Entities;
+using AuctionService.Exceptions;
 using AuctionService.Extensions;
 using AuctionService.Interfaces;
 using AutoMapper;
@@ -15,16 +17,14 @@ public class AuctionsService(HttpClient httpClient, AuctionDbContext context, IM
     {
         var auction = await context.Auctions
             .FirstOrDefaultAsync(x => x.Id == auctionId);
-
-        // TODO: add exception class
-        if (auction == null) throw new Exception("Auction not found"); 
+        
+        if (auction == null) throw new NotFoundException(nameof(Auction), auctionId.ToString()); 
 
         var auctionDto = mapper.Map<AuctionDto>(auction);
 
         var itemDetails = await GetItemAsync(auction.ItemId, auction.ItemType);
         
-        // TODO: add exception class
-        if (itemDetails == null) throw new Exception("Item details not found");
+        if (itemDetails == null) throw new NotFoundException(nameof(auction.ItemType), auction.ItemId.ToString());
 
         auctionDto.ItemDetails = itemDetails;
 
