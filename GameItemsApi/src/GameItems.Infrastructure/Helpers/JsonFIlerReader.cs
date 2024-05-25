@@ -9,7 +9,7 @@ public class JsonFileReader : IJsonFileReader
     {
         var jsonContent = File.ReadAllText(filePath);
 
-        var items = JsonConvert.DeserializeObject<List<T>>(jsonContent)!;
+        var items = JsonConvert.DeserializeObject<List<T>>(jsonContent);
 
         if (items == null || items.Count == 0) throw new Exception("Json file is empty");
 

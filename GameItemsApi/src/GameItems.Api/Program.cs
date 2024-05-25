@@ -1,6 +1,5 @@
 using GameItems.Application.Extensions;
 using GameItems.Infrastructure.Extensions;
-using GameItems.Infrastructure.Helpers;
 using ItemsService.Middleware;
 using ItemsService.Seeders;
 using Serilog;
@@ -50,6 +49,5 @@ catch (Exception e)
     Console.WriteLine("Insertion of data failed. Error: " + e);
     throw;
 }
-
 
 app.Run();

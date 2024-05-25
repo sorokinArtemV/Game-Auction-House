@@ -1,0 +1,23 @@
+﻿services:
+  itemsapi-db:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=itemsapi
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - itemsapi-pgdata:/var/lib/postgresql/data
+
+  auctions-db:
+    image: postgres
+    ports:
+      - "5433:5432"
+    environment:
+      - POSTGRES_DB=auctions
+      - POSTGRES_PASSWORD=postgres
+      - auctions-pgdata:/var/lib/postgresql/data
+
+volumes:
+  itemsapi-pgdata:
+  auctions-pgdata:
