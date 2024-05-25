@@ -22,21 +22,8 @@ public class AuctionsService(
     {
         var auctions = await context.Auctions.ToListAsync();
 
-        List<AuctionDto> auctionsWithItemDetails = [];
+        var auctionsWithItemDetails = await Task.WhenAll(auctions.Select(AddItemToAuction));
 
-        foreach (var auction in auctions)
-        {
-            var auctionDto = mapper.Map<AuctionDto>(auction);
-
-            var itemDetails = await GetItemAsync(auction.ItemId, auction.ItemType);
-
-            if (itemDetails == null) throw new NotFoundException("Item details", auction.ItemId.ToString());
-
-            auctionDto.ItemDetails = itemDetails;
-            
-            auctionsWithItemDetails.Add(auctionDto);
-        }
-        
         return auctionsWithItemDetails;
     }
 
@@ -47,6 +34,13 @@ public class AuctionsService(
 
         if (auction == null) throw new NotFoundException(nameof(Auction), auctionId.ToString());
 
+        var auctionDto = await AddItemToAuction(auction);
+
+        return auctionDto;
+    }
+
+    private async Task<AuctionDto> AddItemToAuction(Auction auction)
+    {
         var auctionDto = mapper.Map<AuctionDto>(auction);
 
         var itemDetails = await GetItemAsync(auction.ItemId, auction.ItemType);
@@ -54,7 +48,6 @@ public class AuctionsService(
         if (itemDetails == null) throw new NotFoundException(nameof(auction.ItemType), auction.ItemId.ToString());
 
         auctionDto.ItemDetails = itemDetails;
-
         return auctionDto;
     }
 
