@@ -9,6 +9,14 @@ namespace AuctionService.Controllers;
 public class AuctionsController(IAuctionsService auctionsService) : ControllerBase
 {
     
+    [HttpGet]
+    public async Task<ActionResult<List<AuctionDto>>> GetAllAuctions()
+    {
+        var auctions = await auctionsService.GetAllAuctions();
+        
+        return Ok(auctions);
+    }
+    
     [HttpGet("{auctionId}")]
     public async Task<ActionResult<AuctionDto>> GetAuctionById(Guid auctionId)
     {
@@ -19,17 +27,7 @@ public class AuctionsController(IAuctionsService auctionsService) : ControllerBa
 }
 
 
-// [HttpGet]
-// public async Task<ActionResult<List<AuctionDto>>> GetAllAuctions()
-// {
-//     // var auctions = await _context.Auctions
-//     //     .Include(x => x.Item)
-//     //     .OrderBy(x => x.Item.ItemDbId)
-//     //     .ToListAsync();
-//     //
-//     // return _mapper.Map<List<AuctionDto>>(auctions);
-//     return null;
-// }
+
 
 // [HttpGet("{auctionId}")]
 // public async Task<ActionResult<AuctionDto>> GetAuctionById(Guid auctionId)

@@ -4,5 +4,6 @@ namespace AuctionService.Interfaces;
 
 public interface IAuctionsService
 {
-    Task<AuctionDto?> GetAuctionById(Guid auctionId);
+    public Task<IEnumerable<AuctionDto>> GetAllAuctions();
+    public Task<AuctionDto?> GetAuctionById(Guid auctionId);
 }

@@ -44,122 +44,83 @@ public class DbInitializer
                 ItemType = "armor",
                 ItemId = 4
             },
-            // new Auction
-            // {
-            //     Id = Guid.Parse("bbab4d5a-8565-48b1-9450-5ac2a5c4a654"),
-            //     Status = Status.Live,
-            //     Seller = "Arthas",
-            //     AuctionEnd = DateTime.UtcNow.AddDays(4),
-            //     Item = new Item
-            //     {
-            //         Name = "FrostMourne",
-            //         ItemDbId = 3,
-            //         ItemApiUrl = "http://localhost:7000/api/items/3",
-            //
-            //     }
-            // },
-            // new Auction
-            // {
-            //     Id = Guid.Parse("155225c1-4448-4066-9886-6786536e05ea"),
-            //     Status = Status.ReserveNotMet,
-            //     ReservePrice = 50000,
-            //     Seller = "Mograine",
-            //     AuctionEnd = DateTime.UtcNow.AddDays(-10),
-            //     Item = new Item
-            //     {
-            //         Name = "AshBringer",
-            //         ItemDbId = 4,
-            //         ItemApiUrl = "http://localhost:7000/api/items/4",
-            //
-            //     }
-            // },
-            // new Auction
-            // {
-            //     Id = Guid.Parse("466e4744-4dc5-4987-aae0-b621acfc5e39"),
-            //     Status = Status.Live,
-            //     ReservePrice = 20000,
-            //     Seller = "Ragnaros",
-            //     AuctionEnd = DateTime.UtcNow.AddDays(30),
-            //     Item = new Item
-            //     {
-            //         Name = "Sulfuras, Hand of Ragnaros",
-            //         ItemDbId = 5,
-            //         ItemApiUrl = "http://localhost:7000/api/items/5",
-            //
-            //     }
-            // },
-            // new Auction
-            // {
-            //     Id = Guid.Parse("dc1e4071-d19d-459b-b848-b5c3cd3d151f"),
-            //     Status = Status.Live,
-            //     ReservePrice = 20000,
-            //     Seller = "Medivh",
-            //     AuctionEnd = DateTime.UtcNow.AddDays(45),
-            //     Item = new Item
-            //     {
-            //         Name = "Atiesh",
-            //         ItemDbId = 6,
-            //         ItemApiUrl = "http://localhost:7000/api/items/6",
-            //
-            //     }
-            // },
-            // new Auction
-            // {
-            //     Id = Guid.Parse("47111973-d176-4feb-848d-0ea22641c31a"),
-            //     Status = Status.Live,
-            //     ReservePrice = 150000,
-            //     Seller = "Wrathion",
-            //     AuctionEnd = DateTime.UtcNow.AddDays(13),
-            //     Item = new Item
-            //     {
-            //         Name = "The Fangs of the Father",
-            //         ItemDbId = 7,
-            //         ItemApiUrl = "http://localhost:7000/api/items/7",
-            //     }
-            // },
-            // new Auction
-            // {
-            //     Id = Guid.Parse("6a5011a1-fe1f-47df-9a32-b5346b289391"),
-            //     Status = Status.Live,
-            //     Seller = "Tarecgosa",
-            //     AuctionEnd = DateTime.UtcNow.AddDays(19),
-            //     Item = new Item
-            //     {
-            //         Name = "Dragonwrath, Tarecgosa’s Rest",
-            //         ItemDbId = 8,
-            //         ItemApiUrl = "http://localhost:7000/api/items/8",
-            //     }
-            // },
-            // new Auction
-            // {
-            //     Id = Guid.Parse("40490065-dac7-46b6-acc4-df507e0d6570"),
-            //     Status = Status.Live,
-            //     ReservePrice = 20000,
-            //     Seller = "Kil'jaeden",
-            //     AuctionEnd = DateTime.UtcNow.AddDays(20),
-            //     Item = new Item
-            //     {
-            //         Name = "Tori'Dal",
-            //         ItemDbId = 9,
-            //         ItemApiUrl = "http://localhost:7000/api/items/9",
-            //
-            //     }
-            // },
-            // new Auction
-            // {
-            //     Id = Guid.Parse("3659ac24-29dd-407a-81f5-ecfe6f924b9b"),
-            //     Status = Status.Live,
-            //     ReservePrice = 20000,
-            //     Seller = "Grom",
-            //     AuctionEnd = DateTime.UtcNow.AddDays(48),
-            //     Item = new Item
-            //     {
-            //         Name = "Gorehowl",
-            //         ItemDbId = 10,
-            //         ItemApiUrl = "http://localhost:7000/api/items/10",
-            //
-            //     }
-            // }
+            new Auction
+            {
+                Id = Guid.Parse("bbab4d5a-8565-48b1-9450-5ac2a5c4a654"),
+                Status = Status.Live,
+                Seller = "Arthas",
+                AuctionEnd = DateTime.UtcNow.AddDays(4),
+                ItemType = "armor",
+                ItemId = 1
+            },
+            new Auction
+            {
+                Id = Guid.Parse("155225c1-4448-4066-9886-6786536e05ea"),
+                Status = Status.ReserveNotMet,
+                ReservePrice = 50000,
+                Seller = "Uther",
+                AuctionEnd = DateTime.UtcNow.AddDays(-10),
+                ItemType = "weapon",
+                ItemId = 2
+            },
+            new Auction
+            {
+                Id = Guid.Parse("466e4744-4dc5-4987-aae0-b621acfc5e39"),
+                Status = Status.Live,
+                ReservePrice = 20000,
+                Seller = "Jaina",
+                AuctionEnd = DateTime.UtcNow.AddDays(30),
+                ItemType = "weapon",
+                ItemId = 3
+            },
+            new Auction
+            {
+                Id = Guid.Parse("dc1e4071-d19d-459b-b848-b5c3cd3d151f"),
+                Status = Status.Live,
+                ReservePrice = 20000,
+                Seller = "Kadgar",
+                AuctionEnd = DateTime.UtcNow.AddDays(45),
+                ItemType = "armor",
+                ItemId = 2
+            },
+            new Auction
+            {
+                Id = Guid.Parse("47111973-d176-4feb-848d-0ea22641c31a"),
+                Status = Status.Live,
+                ReservePrice = 150000,
+                Seller = "Kel-Thuzad",
+                ItemType = "weapon",
+                ItemId = 4
+            },
+            new Auction
+            {
+                Id = Guid.Parse("6a5011a1-fe1f-47df-9a32-b5346b289391"),
+                Status = Status.Live,
+                Seller = "Anub'arak",
+                AuctionEnd = DateTime.UtcNow.AddDays(19),
+                ItemType = "armor",
+                ItemId = 3
+            },
+            new Auction
+            {
+                Id = Guid.Parse("40490065-dac7-46b6-acc4-df507e0d6570"),
+                Status = Status.Live,
+                ReservePrice = 20000,
+                Seller = "Kil'jaeden",
+                AuctionEnd = DateTime.UtcNow.AddDays(20),
+                ItemType = "weapon",
+                ItemId = 5
+            },
+            new Auction
+            {
+                Id = Guid.Parse("3659ac24-29dd-407a-81f5-ecfe6f924b9b"),
+                Status = Status.Live,
+                ReservePrice = 20000,
+                Seller = "Grom",
+                AuctionEnd = DateTime.UtcNow.AddDays(48),
+                ItemType = "armor",
+                ItemId = 4
+            }
         ];
 
         context.Auctions.AddRange(auctions);

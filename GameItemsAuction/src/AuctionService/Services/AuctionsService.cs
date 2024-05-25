@@ -18,6 +18,28 @@ public class AuctionsService(
     IConfiguration configuration
 ) : IAuctionsService
 {
+    public async Task<IEnumerable<AuctionDto>> GetAllAuctions()
+    {
+        var auctions = await context.Auctions.ToListAsync();
+
+        List<AuctionDto> auctionsWithItemDetails = [];
+
+        foreach (var auction in auctions)
+        {
+            var auctionDto = mapper.Map<AuctionDto>(auction);
+
+            var itemDetails = await GetItemAsync(auction.ItemId, auction.ItemType);
+
+            if (itemDetails == null) throw new NotFoundException("Item details", auction.ItemId.ToString());
+
+            auctionDto.ItemDetails = itemDetails;
+            
+            auctionsWithItemDetails.Add(auctionDto);
+        }
+        
+        return auctionsWithItemDetails;
+    }
+
     public async Task<AuctionDto?> GetAuctionById(Guid auctionId)
     {
         var auction = await context.Auctions
@@ -42,7 +64,7 @@ public class AuctionsService(
         var path = configuration.GetSection("ItemsApiConfig")["Path"];
         var itemNameSpace = configuration.GetSection("ItemsApiConfig")["ItemNameSpace"];
 
-        var response = await httpClient.GetAsync($"{baseAddress}{path}{itemType + "s"}/{itemId}");
+        var response = await httpClient.GetAsync($"{baseAddress}/{path}/{itemType + "s"}/{itemId}");
 
         if (!response.IsSuccessStatusCode) return null;
 
