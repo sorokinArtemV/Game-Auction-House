@@ -1,4 +1,6 @@
 using AuctionService.Data;
+using AuctionService.Interfaces;
+using AuctionService.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +13,8 @@ builder.Services.AddDbContext<AuctionDbContext>(options =>
 {
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+
+builder.Services.AddScoped<IAuctionsService, AuctionsService>();
 
 builder.Services.AddHttpClient();
 

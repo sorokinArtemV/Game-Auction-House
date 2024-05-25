@@ -6,18 +6,17 @@ public class WeaponDetailsDto : IItemDetailsDto
 {
     public int Id { get; set; }
     public string Name { get; set; }
+    public bool IsOffHand { get; set; }
+    public string Quality { get; set; }
     public string Description { get; set; }
     public int ItemLevel { get; set; }
-    public string WeaponType { get; set; } = default!;
-    public string DamageType { get; set; } = default!;
+    public string WeaponType { get; set; }
+    public string DamageType { get; set; }
     public double MinDamage { get; set; }
     public double MaxDamage { get; set; }
     public double AttackSpeed { get; set; }
-    public double Dps => (MinDamage + MaxDamage) / 2 / AttackSpeed;
     public bool IsTwoHanded { get; set; }
     public bool IsMainHand { get; set; }
-    public bool IsOffHand { get; set; }
-    public string Quality { get; set; }
     public string Icon { get; set; }
     public bool IsStackable { get; set; }
     public int StackSize { get; set; }

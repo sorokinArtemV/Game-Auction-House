@@ -1,5 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using AuctionService.Entities.ItemParameters;
+﻿using AuctionService.Entities.ItemParameters;
 
 namespace AuctionService.DTO.ItemDto;
 

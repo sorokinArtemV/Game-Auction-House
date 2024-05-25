@@ -6,10 +6,10 @@ public class ArmorDetailsDto : IItemDetailsDto
 {
     public int Id { get; set; }
     public string Name { get; set; }
-    public string Description { get; set; }
-    public string ArmorType { get; set; } = default!;
     public int ArmorValue { get; set; }
     public string Quality { get; set; }
+    public string Description { get; set; }
+    public string ArmorType { get; set; }
     public int ItemLevel { get; set; }
     public string Icon { get; set; }
     public bool IsStackable { get; set; }
@@ -29,6 +29,5 @@ public class ArmorDetailsDto : IItemDetailsDto
     public bool IsLootable { get; set; }
     public PrimaryStats? PrimaryStats { get; set; }
     public SecondaryStats? SecondaryStats { get; set; }
-
     public List<BaseEffect> SpecialEffects { get; set; } = [];
 }

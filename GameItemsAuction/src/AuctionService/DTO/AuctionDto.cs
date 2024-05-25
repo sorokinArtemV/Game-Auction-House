@@ -1,5 +1,4 @@
 ﻿using AuctionService.DTO.ItemDto;
-using AuctionService.Entities.ItemTypes;
 
 namespace AuctionService.DTO;
 
@@ -16,5 +15,10 @@ public class AuctionDto
     public int CurrentHighBid { get; set; }
     public int ReservePrice { get; set; }
 
-    public IItemDetailsDto? ItemDetailsDto { get; set; }
+    public Object? ItemDetails { get; set; }
+    
+    // TODO: find solution - may be
+    // public T? ItemDetails { get; set; } // where T : Type { get; set; }
+    // where T : IItemDetailsDto
+
 }
