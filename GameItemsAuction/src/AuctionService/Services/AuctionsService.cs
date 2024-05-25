@@ -11,39 +11,47 @@ using Newtonsoft.Json;
 
 namespace AuctionService.Services;
 
-public class AuctionsService(HttpClient httpClient, AuctionDbContext context, IMapper mapper) : IAuctionsService
+public class AuctionsService(
+    HttpClient httpClient,
+    AuctionDbContext context,
+    IMapper mapper,
+    IConfiguration configuration
+) : IAuctionsService
 {
     public async Task<AuctionDto?> GetAuctionById(Guid auctionId)
     {
         var auction = await context.Auctions
             .FirstOrDefaultAsync(x => x.Id == auctionId);
-        
-        if (auction == null) throw new NotFoundException(nameof(Auction), auctionId.ToString()); 
+
+        if (auction == null) throw new NotFoundException(nameof(Auction), auctionId.ToString());
 
         var auctionDto = mapper.Map<AuctionDto>(auction);
 
         var itemDetails = await GetItemAsync(auction.ItemId, auction.ItemType);
-        
+
         if (itemDetails == null) throw new NotFoundException(nameof(auction.ItemType), auction.ItemId.ToString());
 
         auctionDto.ItemDetails = itemDetails;
 
         return auctionDto;
     }
-    
+
     private async Task<IItemDetailsDto?> GetItemAsync(int itemId, string itemType)
     {
-        // TODO: move to config settings
-        var response = await httpClient.GetAsync($"http://localhost:7000/api/items/{itemType + "s"}/{itemId}");
+        var baseAddress = configuration.GetSection("ItemsApiConfig")["BaseUrl"];
+        var path = configuration.GetSection("ItemsApiConfig")["Path"];
+        var itemNameSpace = configuration.GetSection("ItemsApiConfig")["ItemNameSpace"];
+
+        var response = await httpClient.GetAsync($"{baseAddress}{path}{itemType + "s"}/{itemId}");
 
         if (!response.IsSuccessStatusCode) return null;
 
         var content = await response.Content.ReadAsStringAsync();
-        
-        var type = Type.GetType($"AuctionService.DTO.ItemDto.{itemType.Capitalize()}DetailsDto");
-        
+
+        var type = Type.GetType($"{itemNameSpace}.{itemType.Capitalize()}DetailsDto");
+
         if (type != null) return JsonConvert.DeserializeObject(content, type) as IItemDetailsDto;
-        
+
         return null;
     }
 }
