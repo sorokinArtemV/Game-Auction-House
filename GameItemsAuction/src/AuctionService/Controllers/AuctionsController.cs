@@ -1,7 +1,9 @@
 using AuctionService.Data;
 using AuctionService.DTO;
 using AuctionService.DTO.ItemDto;
+using AuctionService.Extensions;
 using AutoMapper;
+using Humanizer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
@@ -33,20 +35,7 @@ public class AuctionsController : ControllerBase
 
         var auctionDto = _mapper.Map<AuctionDto>(auction);
 
-        // Dynamically get the item details based on the ItemType
-        IItemDetailsDto? itemDetails;
-        switch (auction.ItemType.ToLower())
-        {
-            case "weapon":
-                itemDetails = await GetItemAsync<WeaponDetailsDto>(auction.ItemId, auction.ItemType);
-                break;
-            case "armor":
-                itemDetails = await GetItemAsync<ArmorDetailsDto>(auction.ItemId, auction.ItemType);
-                break;
-            default:
-                return BadRequest("Invalid item type.");
-        }
-
+        var itemDetails = await GetItemAsync(auction.ItemId, auction.ItemType);
         if (itemDetails == null) return NotFound("Item details not found.");
 
         auctionDto.ItemDetailsDto = itemDetails;
@@ -54,13 +43,19 @@ public class AuctionsController : ControllerBase
         return Ok(auctionDto);
     }
 
-    private async Task<T?> GetItemAsync<T>(int itemId, string itemType) where T : IItemDetailsDto
+
+    private async Task<IItemDetailsDto?> GetItemAsync(int itemId, string itemType)
     {
+        // TODO: move to config settings
         var response = await _httpClient.GetAsync($"http://localhost:7000/api/items/{itemType}s/{itemId}");
         if (response.IsSuccessStatusCode)
         {
             var content = await response.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<T>(content);
+            var type = Type.GetType($"AuctionService.DTO.ItemDto.{itemType.Capitalize()}DetailsDto");
+            if (type != null)
+            {
+                return JsonConvert.DeserializeObject(content, type) as IItemDetailsDto;
+            }
         }
 
         return null;

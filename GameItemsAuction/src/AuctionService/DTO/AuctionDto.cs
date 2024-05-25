@@ -16,5 +16,5 @@ public class AuctionDto
     public int CurrentHighBid { get; set; }
     public int ReservePrice { get; set; }
 
-    public Object? ItemDetailsDto { get; set; }
+    public IItemDetailsDto? ItemDetailsDto { get; set; }
 }
