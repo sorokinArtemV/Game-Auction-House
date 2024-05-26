@@ -8,6 +8,7 @@ public interface IItemDetailsDto
     public string Name { get; set; }
     public string Quality { get; set; }
     public string Description { get; set; }
+    public string ItemType { get; set; }
     public int ItemLevel { get; set; }
     public string Icon { get; set; }
     public bool IsBound { get; set; }

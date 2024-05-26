@@ -9,6 +9,7 @@ public class WeaponDetailsDto : IItemDetailsDto
     public bool IsOffHand { get; set; }
     public string Quality { get; set; } = default!;
     public string Description { get; set; } = default!;
+    public string ItemType { get; set; } = default!;
     public int ItemLevel { get; set; }
     public string WeaponType { get; set; } = default!;
     public string DamageType { get; set; } = default!;

@@ -9,6 +9,7 @@ public class ArmorDetailsDto : IItemDetailsDto
     public int ArmorValue { get; set; }
     public string Quality { get; set; } = default!;
     public string Description { get; set; } = default!;
+    public string ItemType { get; set; } = default!;
     public string ArmorType { get; set; } = default!;
     public int ItemLevel { get; set; }
     public string Icon { get; set; } = default!;
