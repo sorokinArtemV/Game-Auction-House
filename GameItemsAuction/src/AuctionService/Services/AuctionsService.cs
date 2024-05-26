@@ -27,7 +27,7 @@ public class AuctionsService(
         return auctionsWithItemDetails;
     }
 
-    public async Task<AuctionDto?> GetAuctionById(Guid auctionId)
+    public async Task<AuctionDto> GetAuctionById(Guid auctionId)
     {
         var auction = await context.Auctions
             .FirstOrDefaultAsync(x => x.Id == auctionId);
@@ -39,9 +39,9 @@ public class AuctionsService(
         return auctionDto;
     }
 
-    public async Task<AuctionDto> CreateAuction(CreateAuctionDto auctionDto)
+    public async Task<AuctionDto> CreateAuction(CreateAuctionDto createAuctionDto)
     {
-        var auction = mapper.Map<Auction>(auctionDto);
+        var auction = mapper.Map<Auction>(createAuctionDto);
 
         // TODO: add current user as seller
         auction.Seller = "test";
@@ -51,8 +51,16 @@ public class AuctionsService(
         var isCreated = await context.SaveChangesAsync() > 0;
 
         if (!isCreated) throw new NotSavedToDatabaseException(nameof(Auction));
+        
+        var auctionDto = mapper.Map<AuctionDto>(auction);
 
-        return mapper.Map<AuctionDto>(auction);
+        var itemDetails = await GetItemAsync(auction.ItemId, auction.ItemType);
+        
+        if (itemDetails == null) throw new NotFoundException(nameof(auction.ItemType), auction.ItemId.ToString());
+
+        auctionDto.ItemDetails = itemDetails;
+
+        return auctionDto;
     }
 
     private async Task<AuctionDto> AddItemToAuction(Auction auction)

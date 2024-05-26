@@ -21,7 +21,7 @@ public class AuctionsController(IAuctionsService auctionsService) : ControllerBa
     {
         var auction = await auctionsService.GetAuctionById(auctionId);
 
-        return Ok(auction);
+        return auction;
     }
 
     [HttpPost]
@@ -29,6 +29,7 @@ public class AuctionsController(IAuctionsService auctionsService) : ControllerBa
     {
         var result = await auctionsService.CreateAuction(auctionDto);
 
-        return CreatedAtAction(nameof(GetAuctionById), new { result.Id }, result);
+        // fixes System.InvalidOperationException: No route matches the supplied values!
+        return CreatedAtAction(nameof(GetAuctionById), new { auctionId = result.Id }, result); 
     }
 }

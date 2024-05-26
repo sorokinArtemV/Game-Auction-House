@@ -10,7 +10,7 @@ namespace AuctionService.Extensions;
 
 public static class ServiceCollectionExtensions
 {
-    public static void AddApplication(this IServiceCollection services, WebApplicationBuilder builder)
+    public static void AddServices(this IServiceCollection services, WebApplicationBuilder builder)
     {
         var applicationAssembly = typeof(ServiceCollectionExtensions).Assembly;
         

@@ -13,7 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-builder.Services.AddApplication(builder);
+builder.Services.AddServices(builder);
 
 var app = builder.Build();
 
