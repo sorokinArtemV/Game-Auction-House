@@ -5,13 +5,10 @@ namespace AuctionService.DTO;
 public class CreateAuctionDto
 {
     [Required]
-    public string Name { get; set; }
+    public string ItemType { get; set; }
     
     [Required]
-    public int ItemDbId { get; set; }
-    
-    [Required]
-    public string ItemApiUrl { get; set; }    
+    public int ItemId { get; set; }
 
     [Required]
     public int ReservePrice { get; set; }

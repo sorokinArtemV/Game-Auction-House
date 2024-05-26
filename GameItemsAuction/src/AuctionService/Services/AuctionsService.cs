@@ -38,6 +38,14 @@ public class AuctionsService(
 
         return auctionDto;
     }
+    
+    public async Task<Auction> CreateAuction(CreateAuctionDto auctionDto)
+    {
+        var auction = mapper.Map<Auction>(auctionDto);
+        context.Auctions.Add(auction);
+        await context.SaveChangesAsync();
+        return auction;
+    }
 
     private async Task<AuctionDto> AddItemToAuction(Auction auction)
     {
@@ -48,6 +56,7 @@ public class AuctionsService(
         if (itemDetails == null) throw new NotFoundException(nameof(auction.ItemType), auction.ItemId.ToString());
 
         auctionDto.ItemDetails = itemDetails;
+        
         return auctionDto;
     }
 
