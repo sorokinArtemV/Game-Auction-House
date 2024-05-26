@@ -76,6 +76,13 @@ public class UpdateWeaponCommandValidator : AbstractValidator<UpdateWeaponComman
         "BanksBowsCrossbow",
         "Wand"
     ];
+    
+    private readonly IEnumerable<string> _itemType =
+    [
+        "weapon",
+        "armor"
+    ];
+
 
 
     public UpdateWeaponCommandValidator()
@@ -88,6 +95,11 @@ public class UpdateWeaponCommandValidator : AbstractValidator<UpdateWeaponComman
         RuleFor(dto => dto.Description)
             .Length(3, 300)
             .WithMessage("Description must be between 3 and 300 characters");
+        
+        RuleFor(dto => dto.ItemType)
+            .Must(_itemType.Contains)
+            .WithMessage("ItemType must be one of the following: " + string.Join(", ", _itemType));
+
 
         RuleFor(dto => dto.Quality)
             .Must(_qualityTypes.Contains)

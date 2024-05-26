@@ -8,6 +8,7 @@ public abstract class BaseItem
     public string Name { get; set; } = default!;
     public string Quality { get; set; } = default!;
     public string Description { get; set; } = default!;
+    public string ItemType { get; set; } = default!;
     public int ItemLevel { get; set; }
     public string Icon { get; set; } = default!;
     public bool IsStackable { get; set; }

@@ -59,6 +59,12 @@ public class CreateArmorCommandValidator : AbstractValidator<CreateArmorCommand>
         "Shield"
     ];
 
+    private readonly IEnumerable<string> _itemType =
+    [
+        "weapon",
+        "armor"
+    ];
+
 
     public CreateArmorCommandValidator()
     {
@@ -74,6 +80,10 @@ public class CreateArmorCommandValidator : AbstractValidator<CreateArmorCommand>
         RuleFor(dto => dto.Quality)
             .Must(_qualityTypes.Contains)
             .WithMessage("Quality must be one of the following: " + string.Join(", ", _qualityTypes));
+        
+        RuleFor(dto => dto.ItemType)
+            .Must(_itemType.Contains)
+            .WithMessage("ItemType must be one of the following: " + string.Join(", ", _itemType));
 
         RuleFor(dto => dto.Icon)
             .Length(3, 100)

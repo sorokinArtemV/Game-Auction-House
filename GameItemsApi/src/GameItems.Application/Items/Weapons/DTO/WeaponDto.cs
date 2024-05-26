@@ -7,6 +7,7 @@ public class WeaponDto
     public int Id { get; set; }
     public string Name { get; set; } = default!;
     public string Description { get; set; } = default!;
+    public string ItemType { get; set; } = default!;
     public string WeaponType { get; set; } = default!;
     public string DamageType { get; set; } = default!;
     public double MinDamage { get; set; }

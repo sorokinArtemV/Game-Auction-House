@@ -76,6 +76,13 @@ public class CreateWeaponCommandValidator : AbstractValidator<CreateWeaponComman
         "BanksBowsCrossbow",
         "Wand"
     ];
+    
+    private readonly IEnumerable<string> _itemType =
+    [
+        "weapon",
+        "armor"
+    ];
+
 
 
     public CreateWeaponCommandValidator()
@@ -92,6 +99,10 @@ public class CreateWeaponCommandValidator : AbstractValidator<CreateWeaponComman
         RuleFor(dto => dto.Quality)
             .Must(_qualityTypes.Contains)
             .WithMessage("Quality must be one of the following: " + string.Join(", ", _qualityTypes));
+        
+        RuleFor(dto => dto.ItemType)
+            .Must(_itemType.Contains)
+            .WithMessage("ItemType must be one of the following: " + string.Join(", ", _itemType));
 
         RuleFor(dto => dto.Icon)
             .Length(3, 100)

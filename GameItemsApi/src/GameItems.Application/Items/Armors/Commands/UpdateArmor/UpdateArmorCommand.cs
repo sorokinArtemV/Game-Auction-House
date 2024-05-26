@@ -9,6 +9,7 @@ public class UpdateArmorCommand : IRequest
     public int Id { get; set; }
     public string Name { get; set; } = default!;
     public string Description { get; set; } = default!;
+    public string ItemType { get; set; } = default!;
     public string? ArmorType { get; set; }
     public int ArmorValue { get; set; }
     public string Quality { get; set; } = default!;

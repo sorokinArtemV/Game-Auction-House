@@ -9,6 +9,7 @@ public class UpdateWeaponCommand : IRequest
     public int Id { get; set; }
     public string Name { get; set; } = default!;
     public string Description { get; set; } = default!;
+    public string ItemType { get; set; } = default!;
     public string Quality { get; set; } = default!;
     public int ItemLevel { get; set; }
     public string Icon { get; set; } = default!;

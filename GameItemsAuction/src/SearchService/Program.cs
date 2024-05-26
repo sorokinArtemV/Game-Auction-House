@@ -1,6 +1,5 @@
-using MongoDB.Driver;
-using MongoDB.Entities;
-using SearchService.Entities;
+using SearchService.Data;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,17 +9,21 @@ var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
-
 }
 
 app.UseAuthorization();
 
 app.MapControllers();
 
-await DB.InitAsync("SearchDb",
-    MongoClientSettings.FromConnectionString(builder.Configuration.GetConnectionString("MongoDbConnection")));
-
-await DB.Index<Item>()
-    .Key(x => x.ItemDetails.)
+try
+{
+ await DbInitializer.InitDb(app);
+}
+catch (Exception e)
+{
+    Console.WriteLine(e);
+    throw;
+}
 
 app.Run();
+

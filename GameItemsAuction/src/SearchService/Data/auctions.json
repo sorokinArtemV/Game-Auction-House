@@ -1,0 +1,686 @@
+﻿[
+  {
+    "id": "155225c1-4448-4066-9886-6786536e05ea",
+    "seller": "Uther",
+    "winner": null,
+    "soldAmount": 0,
+    "createdAt": "2024-05-26T07:27:23.43003Z",
+    "updatedAt": "2024-05-26T07:27:23.43003Z",
+    "auctionEnd": "2024-05-16T07:27:23.43003Z",
+    "status": "ReserveNotMet",
+    "currentHighBid": 0,
+    "reservePrice": 50000,
+    "itemDetails": {
+      "id": 2,
+      "name": "Flame Wrath, Protector of the Phoenix",
+      "isOffHand": false,
+      "quality": "Epic",
+      "description": "Forged in the heart of the Firelands, this blade is imbued with the essence of the phoenix.",
+      "itemLevel": 100,
+      "weaponType": "Axe",
+      "damageType": "Fire",
+      "minDamage": 310,
+      "maxDamage": 375,
+      "attackSpeed": 3,
+      "isTwoHanded": true,
+      "isMainHand": false,
+      "icon": "flame_wrath_icon.png",
+      "isBound": false,
+      "boundType": "BindOnEquip",
+      "isConjured": false,
+      "isUnique": false,
+      "durability": 150,
+      "isQuestItem": false,
+      "requiredRace": [
+        "NightElf",
+        "Dwarf"
+      ],
+      "requiredClasses": [
+        "Warrior",
+        "Hunter"
+      ],
+      "requiredLevel": 70,
+      "requiredSkill": [
+        "Axe"
+      ],
+      "primaryStats": {
+        "strength": 25,
+        "agility": null,
+        "stamina": 10,
+        "intellect": null,
+        "spirit": null
+      },
+      "secondaryStats": {
+        "criticalStrike": 12,
+        "attackPower": 20,
+        "spellPower": null,
+        "healingPower": null,
+        "manaRegenPerSecond": null
+      },
+      "specialEffects": [
+        {
+          "name": "Phoenix Rebirth",
+          "description": "Grants a chance to resurrect with full health upon defeat.",
+          "charges": 1,
+          "duration": "00:10:00",
+          "isPassive": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "3659ac24-29dd-407a-81f5-ecfe6f924b9b",
+    "seller": "Grom",
+    "winner": null,
+    "soldAmount": 0,
+    "createdAt": "2024-05-26T07:27:23.430031Z",
+    "updatedAt": "2024-05-26T07:27:23.430031Z",
+    "auctionEnd": "2024-07-13T07:27:23.430032Z",
+    "status": "Live",
+    "currentHighBid": 0,
+    "reservePrice": 20000,
+    "itemDetails": {
+      "id": 4,
+      "name": "Breastplate of Valor",
+      "armorValue": 700,
+      "quality": "Epic",
+      "description": "A plate chestpiece that radiates a sense of unyielding courage and strength.",
+      "armorType": "Plate",
+      "itemLevel": 60,
+      "icon": "breastplate_of_valor_icon.png",
+      "isBound": false,
+      "boundType": "BindOnEquip",
+      "isConjured": false,
+      "isUnique": true,
+      "durability": 165,
+      "isQuestItem": false,
+      "requiredRace": [
+        "Dwarf",
+        "Human",
+        "Tauren"
+      ],
+      "requiredClasses": [
+        "Warrior",
+        "Paladin"
+      ],
+      "requiredLevel": 55,
+      "requiredSkill": [],
+      "primaryStats": {
+        "strength": 25,
+        "agility": null,
+        "stamina": 20,
+        "intellect": null,
+        "spirit": null
+      },
+      "secondaryStats": {
+        "criticalStrike": null,
+        "attackPower": null,
+        "spellPower": null,
+        "healingPower": null,
+        "manaRegenPerSecond": null
+      },
+      "specialEffects": [
+        {
+          "name": "Valor's Might",
+          "description": "Temporarily increases defense and block chance.",
+          "charges": 3,
+          "duration": "00:02:00",
+          "isPassive": false
+        },
+        {
+          "name": "Inspiring Presence",
+          "description": "Boosts the morale of nearby allies, increasing their stamina.",
+          "charges": 1,
+          "duration": "00:05:00",
+          "isPassive": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "40490065-dac7-46b6-acc4-df507e0d6570",
+    "seller": "Kil'jaeden",
+    "winner": null,
+    "soldAmount": 0,
+    "createdAt": "2024-05-26T07:27:23.430031Z",
+    "updatedAt": "2024-05-26T07:27:23.430031Z",
+    "auctionEnd": "2024-06-15T07:27:23.430031Z",
+    "status": "Live",
+    "currentHighBid": 0,
+    "reservePrice": 20000,
+    "itemDetails": {
+      "id": 5,
+      "name": "Earthshaker, Might of the Mountain",
+      "isOffHand": false,
+      "quality": "Epic",
+      "description": "Rumored to be forged within the molten core of Blackrock Mountain, this hammer resonates with the strength of the earth.",
+      "itemLevel": 95,
+      "weaponType": "Hammer",
+      "damageType": "Physical",
+      "minDamage": 295,
+      "maxDamage": 360,
+      "attackSpeed": 3.2,
+      "isTwoHanded": true,
+      "isMainHand": false,
+      "icon": "earthshaker_icon.png",
+      "isBound": false,
+      "boundType": "BindOnEquip",
+      "isConjured": false,
+      "isUnique": false,
+      "durability": 165,
+      "isQuestItem": false,
+      "requiredRace": [
+        "Dwarf",
+        "Tauren"
+      ],
+      "requiredClasses": [
+        "Warrior",
+        "Druid"
+      ],
+      "requiredLevel": 68,
+      "requiredSkill": [
+        "Hammer"
+      ],
+      "primaryStats": {
+        "strength": 28,
+        "agility": null,
+        "stamina": 12,
+        "intellect": null,
+        "spirit": null
+      },
+      "secondaryStats": {
+        "criticalStrike": 10,
+        "attackPower": 22,
+        "spellPower": null,
+        "healingPower": null,
+        "manaRegenPerSecond": null
+      },
+      "specialEffects": [
+        {
+          "name": "Seismic Wave",
+          "description": "Unleashes a wave of earth energy, damaging and stunning nearby enemies.",
+          "charges": 3,
+          "duration": "00:01:30",
+          "isPassive": false
+        },
+        {
+          "name": "Mountain's Fortitude",
+          "description": "Increases your resistance to stun and knockback effects.",
+          "charges": 0,
+          "duration": "00:00:00",
+          "isPassive": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "466e4744-4dc5-4987-aae0-b621acfc5e39",
+    "seller": "Jaina",
+    "winner": null,
+    "soldAmount": 0,
+    "createdAt": "2024-05-26T07:27:23.43003Z",
+    "updatedAt": "2024-05-26T07:27:23.43003Z",
+    "auctionEnd": "2024-06-25T07:27:23.43003Z",
+    "status": "Live",
+    "currentHighBid": 0,
+    "reservePrice": 20000,
+    "itemDetails": {
+      "id": 3,
+      "name": "Frostbite, Harbinger of Winter",
+      "isOffHand": true,
+      "quality": "Rare",
+      "description": "The chill of the Frostwolf clan's homeland is captured within the edge of this blade.",
+      "itemLevel": 90,
+      "weaponType": "Dagger",
+      "damageType": "Frost",
+      "minDamage": 180,
+      "maxDamage": 220,
+      "attackSpeed": 1.8,
+      "isTwoHanded": false,
+      "isMainHand": true,
+      "icon": "frostbite_icon.png",
+      "isBound": false,
+      "boundType": "BindOnPickup",
+      "isConjured": false,
+      "isUnique": true,
+      "durability": 80,
+      "isQuestItem": false,
+      "requiredRace": [
+        "Orc",
+        "Troll"
+      ],
+      "requiredClasses": [
+        "Rogue",
+        "Shaman"
+      ],
+      "requiredLevel": 65,
+      "requiredSkill": [
+        "Dagger"
+      ],
+      "primaryStats": {
+        "strength": null,
+        "agility": 20,
+        "stamina": 8,
+        "intellect": null,
+        "spirit": null
+      },
+      "secondaryStats": {
+        "criticalStrike": 15,
+        "attackPower": 18,
+        "spellPower": null,
+        "healingPower": null,
+        "manaRegenPerSecond": null
+      },
+      "specialEffects": [
+        {
+          "name": "Ice Shard",
+          "description": "Your attacks have a chance to release a shard of ice, dealing additional frost damage.",
+          "charges": 3,
+          "duration": "00:02:00",
+          "isPassive": false
+        },
+        {
+          "name": "Glacial Speed",
+          "description": "Increases movement speed on ice or snow.",
+          "charges": 0,
+          "duration": "00:00:00",
+          "isPassive": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "47111973-d176-4feb-848d-0ea22641c31a",
+    "seller": "Kel-Thuzad",
+    "winner": null,
+    "soldAmount": 0,
+    "createdAt": "2024-05-26T07:27:23.430031Z",
+    "updatedAt": "2024-05-26T07:27:23.430031Z",
+    "auctionEnd": "0001-01-01T00:00:00",
+    "status": "Live",
+    "currentHighBid": 0,
+    "reservePrice": 150000,
+    "itemDetails": {
+      "id": 4,
+      "name": "Starshatter, Gaze of the Cosmos",
+      "isOffHand": false,
+      "quality": "Legendary",
+      "description": "Crafted from a meteorite that fell from the Great Dark Beyond, this weapon holds the power of the stars.",
+      "itemLevel": 110,
+      "weaponType": "Mace",
+      "damageType": "Arcane",
+      "minDamage": 340,
+      "maxDamage": 410,
+      "attackSpeed": 3.5,
+      "isTwoHanded": true,
+      "isMainHand": false,
+      "icon": "starshatter_icon.png",
+      "isBound": false,
+      "boundType": "BindOnPickup",
+      "isConjured": false,
+      "isUnique": true,
+      "durability": 200,
+      "isQuestItem": false,
+      "requiredRace": [
+        "Human",
+        "Gnome"
+      ],
+      "requiredClasses": [
+        "Paladin",
+        "Mage"
+      ],
+      "requiredLevel": 75,
+      "requiredSkill": [
+        "Mace"
+      ],
+      "primaryStats": {
+        "strength": null,
+        "agility": null,
+        "stamina": null,
+        "intellect": 30,
+        "spirit": 15
+      },
+      "secondaryStats": {
+        "criticalStrike": null,
+        "attackPower": null,
+        "spellPower": 35,
+        "healingPower": null,
+        "manaRegenPerSecond": 5
+      },
+      "specialEffects": [
+        {
+          "name": "Celestial Alignment",
+          "description": "Aligns you with the stars, increasing your critical strike chance.",
+          "charges": 2,
+          "duration": "00:05:00",
+          "isPassive": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "6a5011a1-fe1f-47df-9a32-b5346b289391",
+    "seller": "Anub'arak",
+    "winner": null,
+    "soldAmount": 0,
+    "createdAt": "2024-05-26T07:27:23.430031Z",
+    "updatedAt": "2024-05-26T07:27:23.430031Z",
+    "auctionEnd": "2024-06-14T07:27:23.430031Z",
+    "status": "Live",
+    "currentHighBid": 0,
+    "reservePrice": 0,
+    "itemDetails": {
+      "id": 3,
+      "name": "Vest of the Wild",
+      "armorValue": 250,
+      "quality": "Uncommon",
+      "description": "A durable leather vest that grants the wearer increased agility and stamina.",
+      "armorType": "Leather",
+      "itemLevel": 76,
+      "icon": "vest_of_the_wild_icon.png",
+      "isBound": false,
+      "boundType": "BindOnPickup",
+      "isConjured": false,
+      "isUnique": false,
+      "durability": 85,
+      "isQuestItem": false,
+      "requiredRace": [
+        "NightElf",
+        "Troll"
+      ],
+      "requiredClasses": [
+        "Druid",
+        "Rogue"
+      ],
+      "requiredLevel": 50,
+      "requiredSkill": [],
+      "primaryStats": {
+        "strength": null,
+        "agility": 20,
+        "stamina": 15,
+        "intellect": null,
+        "spirit": null
+      },
+      "secondaryStats": {
+        "criticalStrike": 10,
+        "attackPower": 30,
+        "spellPower": null,
+        "healingPower": null,
+        "manaRegenPerSecond": null
+      },
+      "specialEffects": [
+        {
+          "name": "Nature's Swiftness",
+          "description": "Increases movement speed for a short duration.",
+          "charges": 1,
+          "duration": "00:00:30",
+          "isPassive": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "afbee524-5972-4075-8800-7d1f9d7b0a0c",
+    "seller": "Trall",
+    "winner": null,
+    "soldAmount": 0,
+    "createdAt": "2024-05-26T07:27:23.429665Z",
+    "updatedAt": "2024-05-26T07:27:23.429665Z",
+    "auctionEnd": "2024-06-05T07:27:23.429895Z",
+    "status": "Live",
+    "currentHighBid": 0,
+    "reservePrice": 20000,
+    "itemDetails": {
+      "id": 1,
+      "name": "Thunderfury, Blessed Blade of the Windseeker",
+      "isOffHand": false,
+      "quality": "Legendary",
+      "description": "Once carried by the son of Al'Akir, Thunderaan the Windlord, this blade crackles with the fury of a thousand storms.",
+      "itemLevel": 80,
+      "weaponType": "Sword",
+      "damageType": "Physical",
+      "minDamage": 250,
+      "maxDamage": 320,
+      "attackSpeed": 2.7,
+      "isTwoHanded": false,
+      "isMainHand": true,
+      "icon": "thunderfury_icon.png",
+      "isBound": false,
+      "boundType": "BindOnPickup",
+      "isConjured": false,
+      "isUnique": true,
+      "durability": 120,
+      "isQuestItem": false,
+      "requiredRace": [
+        "Human",
+        "Orc"
+      ],
+      "requiredClasses": [
+        "Warrior",
+        "Paladin"
+      ],
+      "requiredLevel": 60,
+      "requiredSkill": [
+        "Sword"
+      ],
+      "primaryStats": {
+        "strength": 20,
+        "agility": 15,
+        "stamina": 5,
+        "intellect": null,
+        "spirit": null
+      },
+      "secondaryStats": {
+        "criticalStrike": 9,
+        "attackPower": 15,
+        "spellPower": null,
+        "healingPower": null,
+        "manaRegenPerSecond": null
+      },
+      "specialEffects": [
+        {
+          "name": "Lightning Strike",
+          "description": "Strikes the enemy with a bolt of lightning, dealing extra electric damage.",
+          "charges": 5,
+          "duration": "00:03:00",
+          "isPassive": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "bbab4d5a-8565-48b1-9450-5ac2a5c4a654",
+    "seller": "Arthas",
+    "winner": null,
+    "soldAmount": 0,
+    "createdAt": "2024-05-26T07:27:23.430029Z",
+    "updatedAt": "2024-05-26T07:27:23.430029Z",
+    "auctionEnd": "2024-05-30T07:27:23.430029Z",
+    "status": "Live",
+    "currentHighBid": 0,
+    "reservePrice": 0,
+    "itemDetails": {
+      "id": 1,
+      "name": "Wall of the dead",
+      "armorValue": 8500,
+      "quality": "Epic",
+      "description": "\"Forged in the heart of the Naxxramas necropolis, the Wall of the Dead stands as a grim sentinel against the Scourge.",
+      "armorType": "Shield",
+      "itemLevel": 232,
+      "icon": "aegis_of_the_coliseum_icon.png",
+      "isBound": false,
+      "boundType": "BindOnEquip",
+      "isConjured": false,
+      "isUnique": false,
+      "durability": 100,
+      "isQuestItem": false,
+      "requiredRace": [
+        "Dwarf",
+        "Tauren"
+      ],
+      "requiredClasses": [
+        "Paladin",
+        "Warrior"
+      ],
+      "requiredLevel": 80,
+      "requiredSkill": [
+        "Shield"
+      ],
+      "primaryStats": {
+        "strength": 30,
+        "agility": null,
+        "stamina": 25,
+        "intellect": null,
+        "spirit": null
+      },
+      "secondaryStats": {
+        "criticalStrike": null,
+        "attackPower": null,
+        "spellPower": null,
+        "healingPower": null,
+        "manaRegenPerSecond": null
+      },
+      "specialEffects": [
+        {
+          "name": "Titanic Bulwark",
+          "description": "Grants a chance to reflect spells and reduce incoming damage.",
+          "charges": 3,
+          "duration": "00:02:00",
+          "isPassive": false
+        }
+      ]
+    }
+  },
+  {
+    "id": "c8c3ec17-01bf-49db-82aa-1ef80b833a9f",
+    "seller": "Illidan",
+    "winner": null,
+    "soldAmount": 0,
+    "createdAt": "2024-05-26T07:27:23.430028Z",
+    "updatedAt": "2024-05-26T07:27:23.430028Z",
+    "auctionEnd": "2024-07-25T07:27:23.430029Z",
+    "status": "Live",
+    "currentHighBid": 0,
+    "reservePrice": 90000,
+    "itemDetails": {
+      "id": 4,
+      "name": "Breastplate of Valor",
+      "armorValue": 700,
+      "quality": "Epic",
+      "description": "A plate chestpiece that radiates a sense of unyielding courage and strength.",
+      "armorType": "Plate",
+      "itemLevel": 60,
+      "icon": "breastplate_of_valor_icon.png",
+      "isBound": false,
+      "boundType": "BindOnEquip",
+      "isConjured": false,
+      "isUnique": true,
+      "durability": 165,
+      "isQuestItem": false,
+      "requiredRace": [
+        "Dwarf",
+        "Human",
+        "Tauren"
+      ],
+      "requiredClasses": [
+        "Warrior",
+        "Paladin"
+      ],
+      "requiredLevel": 55,
+      "requiredSkill": [],
+      "primaryStats": {
+        "strength": 25,
+        "agility": null,
+        "stamina": 20,
+        "intellect": null,
+        "spirit": null
+      },
+      "secondaryStats": {
+        "criticalStrike": null,
+        "attackPower": null,
+        "spellPower": null,
+        "healingPower": null,
+        "manaRegenPerSecond": null
+      },
+      "specialEffects": [
+        {
+          "name": "Valor's Might",
+          "description": "Temporarily increases defense and block chance.",
+          "charges": 3,
+          "duration": "00:02:00",
+          "isPassive": false
+        },
+        {
+          "name": "Inspiring Presence",
+          "description": "Boosts the morale of nearby allies, increasing their stamina.",
+          "charges": 1,
+          "duration": "00:05:00",
+          "isPassive": true
+        }
+      ]
+    }
+  },
+  {
+    "id": "dc1e4071-d19d-459b-b848-b5c3cd3d151f",
+    "seller": "Kadgar",
+    "winner": null,
+    "soldAmount": 0,
+    "createdAt": "2024-05-26T07:27:23.43003Z",
+    "updatedAt": "2024-05-26T07:27:23.43003Z",
+    "auctionEnd": "2024-07-10T07:27:23.43003Z",
+    "status": "Live",
+    "currentHighBid": 0,
+    "reservePrice": 20000,
+    "itemDetails": {
+      "id": 2,
+      "name": "Robes of Insight",
+      "armorValue": 150,
+      "quality": "Rare",
+      "description": "Enchanted robes that heighten the wearer's awareness and connection to the arcane.",
+      "armorType": "Cloth",
+      "itemLevel": 58,
+      "icon": "robes_of_insight_icon.png",
+      "isBound": false,
+      "boundType": "BindOnEquip",
+      "isConjured": false,
+      "isUnique": true,
+      "durability": 80,
+      "isQuestItem": false,
+      "requiredRace": [
+        "Gnome",
+        "Human"
+      ],
+      "requiredClasses": [
+        "Mage",
+        "Warlock",
+        "Priest"
+      ],
+      "requiredLevel": 40,
+      "requiredSkill": [],
+      "primaryStats": {
+        "strength": null,
+        "agility": null,
+        "stamina": null,
+        "intellect": 15,
+        "spirit": 10
+      },
+      "secondaryStats": {
+        "criticalStrike": null,
+        "attackPower": null,
+        "spellPower": 25,
+        "healingPower": null,
+        "manaRegenPerSecond": 5
+      },
+      "specialEffects": [
+        {
+          "name": "Arcane Empowerment",
+          "description": "Temporarily increases spell power.",
+          "charges": 2,
+          "duration": "00:01:00",
+          "isPassive": false
+        }
+      ]
+    }
+  }
+]
+
