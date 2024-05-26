@@ -1,7 +1,10 @@
 using AuctionService.Data;
+using AuctionService.Extensions;
 using AuctionService.Interfaces;
 using AuctionService.Middleware;
 using AuctionService.Services;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,24 +13,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-builder.Services.AddScoped<ErrorHandlingMiddleware>();
-
-builder.Services.AddDbContext<AuctionDbContext>(options =>
-{
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
-});
-
-builder.Services.AddScoped<IAuctionsService, AuctionsService>();
-
-builder.Services.AddHttpClient();
-
-builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddApplication(builder);
 
 var app = builder.Build();
 
 // app.UseMiddleware<ErrorHandlingMiddleware>();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
 }

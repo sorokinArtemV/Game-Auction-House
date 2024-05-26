@@ -8,23 +8,27 @@ namespace AuctionService.Controllers;
 [ApiController]
 public class AuctionsController(IAuctionsService auctionsService) : ControllerBase
 {
-    
     [HttpGet]
     public async Task<ActionResult<List<AuctionDto>>> GetAllAuctions()
     {
         var auctions = await auctionsService.GetAllAuctions();
-        
+
         return Ok(auctions);
     }
-    
+
     [HttpGet("{auctionId}")]
     public async Task<ActionResult<AuctionDto>> GetAuctionById(Guid auctionId)
     {
         var auction = await auctionsService.GetAuctionById(auctionId);
-        
+
         return Ok(auction);
     }
+
+    [HttpPost]
+    public async Task<ActionResult<AuctionDto>> CreateAuction(CreateAuctionDto auctionDto)
+    {
+        var result = await auctionsService.CreateAuction(auctionDto);
+
+        return CreatedAtAction(nameof(GetAuctionById), new { result.Id }, result);
+    }
 }
-
-
-

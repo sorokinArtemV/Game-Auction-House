@@ -11,8 +11,9 @@ public class MappingProfiles : Profile
     public MappingProfiles()
     {
         CreateMap<Auction, AuctionDto>();
-        CreateMap<Weapon, WeaponDetailsDto>();
-        CreateMap<Armor, ArmorDetailsDto>();
+        CreateMap<CreateAuctionDto, Auction>();
+        // CreateMap<Weapon, WeaponDetailsDto>();
+        // CreateMap<Armor, ArmorDetailsDto>();
         // CreateMap<BaseItem, AuctionDto>()
         //     .Include<Weapon, AuctionDto>(); // Include derived type Weapon
         // CreateMap<Weapon, AuctionDto>()
