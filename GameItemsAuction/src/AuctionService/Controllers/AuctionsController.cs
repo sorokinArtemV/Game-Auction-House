@@ -32,4 +32,12 @@ public class AuctionsController(IAuctionsService auctionsService) : ControllerBa
         // fixes System.InvalidOperationException: No route matches the supplied values!
         return CreatedAtAction(nameof(GetAuctionById), new { auctionId = result.Id }, result); 
     }
+    
+    [HttpDelete("{auctionId}")]
+    public async Task<ActionResult> DeleteAuction(Guid auctionId)
+    {
+        await auctionsService.DeleteAuction(auctionId);
+        
+        return NoContent();
+    }
 }

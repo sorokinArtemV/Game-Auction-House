@@ -63,12 +63,24 @@ public class AuctionsService(
         return auctionDto;
     }
 
+    public async Task DeleteAuction(Guid auctionId)
+    {
+        var auction = await context.Auctions.FindAsync(auctionId);
+        
+        // TODO: check seller == username
+        if (auction == null) throw new NotFoundException(nameof(Auction), auctionId.ToString());
+        
+        context.Auctions.Remove(auction);
+        
+        await context.SaveChangesAsync();
+    }
+
     private async Task<AuctionDto> AddItemToAuction(Auction auction)
     {
         var auctionDto = mapper.Map<AuctionDto>(auction);
 
         var itemDetails = await GetItemAsync(auction.ItemId, auction.ItemType);
-
+        
         if (itemDetails == null) throw new NotFoundException(nameof(auction.ItemType), auction.ItemId.ToString());
 
         auctionDto.ItemDetails = itemDetails;

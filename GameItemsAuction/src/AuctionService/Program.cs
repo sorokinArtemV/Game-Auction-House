@@ -1,11 +1,5 @@
 using AuctionService.Data;
 using AuctionService.Extensions;
-using AuctionService.Interfaces;
-using AuctionService.Middleware;
-using AuctionService.Services;
-using FluentValidation;
-using FluentValidation.AspNetCore;
-using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
