@@ -5,13 +5,13 @@ namespace AuctionService.DTO.ItemDto;
 public class WeaponDetailsDto : IItemDetailsDto
 {
     public int Id { get; set; }
-    public string Name { get; set; }
+    public string Name { get; set; } = default!;
     public bool IsOffHand { get; set; }
-    public string Quality { get; set; }
-    public string Description { get; set; }
+    public string Quality { get; set; } = default!;
+    public string Description { get; set; } = default!;
     public int ItemLevel { get; set; }
-    public string WeaponType { get; set; }
-    public string DamageType { get; set; }
+    public string WeaponType { get; set; } = default!;
+    public string DamageType { get; set; } = default!;
     public double MinDamage { get; set; }
     public double MaxDamage { get; set; }
     public double AttackSpeed { get; set; }

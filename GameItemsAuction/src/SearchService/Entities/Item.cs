@@ -1,8 +1,9 @@
-﻿namespace AuctionService.DTO;
+﻿using MongoDB.Entities;
 
-public class AuctionDto
+namespace SearchService.Entities;
+
+public class Item : Entity
 {
-    public Guid Id { get; set; }
     public string? Seller { get; set; }
     public string? Winner { get; set; }
     public int SoldAmount { get; set; }
@@ -12,11 +13,5 @@ public class AuctionDto
     public string? Status { get; set; }
     public int CurrentHighBid { get; set; }
     public int ReservePrice { get; set; }
-
     public object? ItemDetails { get; set; }
-    
-    // TODO: find solution - may be
-    // public T? ItemDetails { get; set; } // where T : Type { get; set; }
-    // where T : IItemDetailsDto
-
 }

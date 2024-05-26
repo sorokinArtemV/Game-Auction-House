@@ -5,15 +5,15 @@ namespace AuctionService.DTO.ItemDto;
 public class ArmorDetailsDto : IItemDetailsDto
 {
     public int Id { get; set; }
-    public string Name { get; set; }
+    public string Name { get; set; } = default!;
     public int ArmorValue { get; set; }
-    public string Quality { get; set; }
-    public string Description { get; set; }
-    public string ArmorType { get; set; }
+    public string Quality { get; set; } = default!;
+    public string Description { get; set; } = default!;
+    public string ArmorType { get; set; } = default!;
     public int ItemLevel { get; set; }
-    public string Icon { get; set; }
+    public string Icon { get; set; } = default!;
     public bool IsBound { get; set; }
-    public string BoundType { get; set; }
+    public string BoundType { get; set; } = default!;
     public bool IsConjured { get; set; }
     public bool IsUnique { get; set; }
     public int Durability { get; set; }

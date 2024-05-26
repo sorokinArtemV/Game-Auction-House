@@ -1,7 +1,5 @@
 ﻿using AuctionService.DTO;
-using AuctionService.DTO.ItemDto;
 using AuctionService.Entities;
-using AuctionService.Entities.ItemTypes;
 using AutoMapper;
 
 namespace AuctionService.Helpers;

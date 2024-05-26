@@ -6,6 +6,7 @@
     environment:
       - POSTGRES_DB=itemsapi
       - POSTGRES_PASSWORD=postgres
+      - itemsapi-pgdata:/var/lib/postgresql/data
     volumes:
       - itemsapi-pgdata:/var/lib/postgresql/data
 
@@ -18,6 +19,17 @@
       - POSTGRES_PASSWORD=postgres
       - auctions-pgdata:/var/lib/postgresql/data
 
+  mongodb:
+    image: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - search-mongodata:/var/lib/mongodb/data
+
 volumes:
   itemsapi-pgdata:
   auctions-pgdata:
+  search-mongodata:
