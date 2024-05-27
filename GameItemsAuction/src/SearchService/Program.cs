@@ -1,9 +1,15 @@
+using SearchService.Controllers;
 using SearchService.Data;
+using SearchService.Helpers;
 
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddNewtonsoftJson(options =>
+    {
+        options.SerializerSettings.ContractResolver = new ExcludeNullPropertiesContractResolver();
+    });
 
 var app = builder.Build();
 
