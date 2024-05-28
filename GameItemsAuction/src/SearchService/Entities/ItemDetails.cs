@@ -1,11 +1,11 @@
-﻿using Newtonsoft.Json;
-
+﻿
 namespace SearchService.Entities;
 
 public class ItemDetails
 {
     public int Id { get; set; }
     public string? Name { get; set; }
+    public string? ItemType { get; set; }
     public string? ArmorType { get; set; }
     public string? WeaponType { get; set; }
     public string? DamageType { get; set; }

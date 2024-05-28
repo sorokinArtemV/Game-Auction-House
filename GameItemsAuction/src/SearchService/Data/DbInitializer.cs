@@ -33,7 +33,7 @@ public class DbInitializer
         var items = JsonSerializer.Deserialize<List<Item>>(itemData, options);
 
 
-        await DB.SaveAsync(items);
+        await DB.SaveAsync(items!);
     }
 }
 

@@ -16,5 +16,6 @@ public class Item : Entity
     public int CurrentHighBid { get; set; }
     public int ReservePrice { get; set; }
     public int RequiredLevel { get; set; }
-    public ItemDetails? ItemDetails { get; set; } 
+    public string? ItemType { get; set; }
+    public ItemDetails? ItemDetails { get; set; }
 }

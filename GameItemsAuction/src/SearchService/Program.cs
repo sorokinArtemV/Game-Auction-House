@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using SearchService.Controllers;
 using SearchService.Data;
 using SearchService.Helpers;
@@ -6,9 +7,9 @@ using SearchService.Helpers;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers()
-    .AddNewtonsoftJson(options =>
+    .AddJsonOptions(options =>
     {
-        options.SerializerSettings.ContractResolver = new ExcludeNullPropertiesContractResolver();
+        options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
     });
 
 var app = builder.Build();
