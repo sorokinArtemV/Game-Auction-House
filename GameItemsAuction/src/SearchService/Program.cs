@@ -1,4 +1,5 @@
-using System.Text.Json.Serialization;
+using System.Text.Json.Serialization;using Polly;
+using Polly.Extensions.Http;
 using SearchService.Data;
 using SearchService.Services;
 
@@ -11,7 +12,8 @@ builder.Services.AddControllers()
         options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
     });
 
-builder.Services.AddHttpClient<AuctionServiceHttpClient>();
+builder.Services.AddHttpClient<AuctionServiceHttpClient>()
+    .AddPolicyHandler(GetPolicy());
 
 var app = builder.Build();
 
@@ -23,15 +25,26 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-try
+app.Lifetime.ApplicationStarted.Register(async () =>
 {
- await DbInitializer.InitDb(app);
-}
-catch (Exception e)
-{
-    Console.WriteLine(e);
-    throw;
-}
+    try
+    {
+        await DbInitializer.InitDb(app);
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine(e);
+        throw;
+    }
+});
+
+
 
 app.Run();
+
+static IAsyncPolicy<HttpResponseMessage> GetPolicy() 
+    => HttpPolicyExtensions
+        .HandleTransientHttpError()
+        .OrResult(msg => msg.StatusCode == System.Net.HttpStatusCode.NotFound)
+        .WaitAndRetryAsync(6, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)));
 
