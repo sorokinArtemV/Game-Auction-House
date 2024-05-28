@@ -9,9 +9,9 @@ namespace AuctionService.Controllers;
 public class AuctionsController(IAuctionsService auctionsService) : ControllerBase
 {
     [HttpGet]
-    public async Task<ActionResult<List<AuctionDto>>> GetAllAuctions()
+    public async Task<ActionResult<List<AuctionDto>>> GetAllAuctions(string? date)
     {
-        var auctions = await auctionsService.GetAllAuctions();
+        var auctions = await auctionsService.GetAllAuctions(date);
 
         return Ok(auctions);
     }
@@ -30,14 +30,14 @@ public class AuctionsController(IAuctionsService auctionsService) : ControllerBa
         var result = await auctionsService.CreateAuction(auctionDto);
 
         // fixes System.InvalidOperationException: No route matches the supplied values!
-        return CreatedAtAction(nameof(GetAuctionById), new { auctionId = result.Id }, result); 
+        return CreatedAtAction(nameof(GetAuctionById), new { auctionId = result.Id }, result);
     }
-    
+
     [HttpDelete("{auctionId}")]
     public async Task<ActionResult> DeleteAuction(Guid auctionId)
     {
         await auctionsService.DeleteAuction(auctionId);
-        
+
         return NoContent();
     }
 }

@@ -1,7 +1,6 @@
 using System.Text.Json.Serialization;
-using SearchService.Controllers;
 using SearchService.Data;
-using SearchService.Helpers;
+using SearchService.Services;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +10,8 @@ builder.Services.AddControllers()
     {
         options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
     });
+
+builder.Services.AddHttpClient<AuctionServiceHttpClient>();
 
 var app = builder.Build();
 

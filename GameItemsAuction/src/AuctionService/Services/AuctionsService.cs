@@ -18,9 +18,17 @@ public class AuctionsService(
     IConfiguration configuration
 ) : IAuctionsService
 {
-    public async Task<IEnumerable<AuctionDto>> GetAllAuctions()
+    public async Task<IEnumerable<AuctionDto>> GetAllAuctions(string? date)
     {
-        var auctions = await context.Auctions.ToListAsync();
+        var query = context.Auctions.OrderByDescending(x => x.ItemType).AsQueryable();
+
+
+        if (!string.IsNullOrEmpty(date))
+        {
+            query = query.Where(x => x.UpdatedAt.CompareTo(DateTime.Parse(date).ToUniversalTime()) > 0);
+        }
+
+        var auctions = await query.ToListAsync();
 
         var auctionsWithItemDetails = await Task.WhenAll(auctions.Select(AddItemToAuction));
 
@@ -51,11 +59,11 @@ public class AuctionsService(
         var isCreated = await context.SaveChangesAsync() > 0;
 
         if (!isCreated) throw new NotSavedToDatabaseException(nameof(Auction));
-        
+
         var auctionDto = mapper.Map<AuctionDto>(auction);
 
-        var itemDetails = await GetItemAsync(auction.ItemId, auction.ItemType);
-        
+        var itemDetails = await GetItemAsync(auction.ItemId, auction.ItemType!);
+
         if (itemDetails == null) throw new NotFoundException(nameof(auction.ItemType), auction.ItemId.ToString());
 
         auctionDto.ItemDetails = itemDetails;
@@ -66,12 +74,12 @@ public class AuctionsService(
     public async Task DeleteAuction(Guid auctionId)
     {
         var auction = await context.Auctions.FindAsync(auctionId);
-        
+
         // TODO: check seller == username
         if (auction == null) throw new NotFoundException(nameof(Auction), auctionId.ToString());
-        
+
         context.Auctions.Remove(auction);
-        
+
         await context.SaveChangesAsync();
     }
 
@@ -79,8 +87,8 @@ public class AuctionsService(
     {
         var auctionDto = mapper.Map<AuctionDto>(auction);
 
-        var itemDetails = await GetItemAsync(auction.ItemId, auction.ItemType);
-        
+        var itemDetails = await GetItemAsync(auction.ItemId, auction.ItemType!);
+
         if (itemDetails == null) throw new NotFoundException(nameof(auction.ItemType), auction.ItemId.ToString());
 
         auctionDto.ItemDetails = itemDetails;
