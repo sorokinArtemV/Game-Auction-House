@@ -6,6 +6,9 @@ using AuctionService.Exceptions;
 using AuctionService.Extensions;
 using AuctionService.Interfaces;
 using AutoMapper;
+using Contracts;
+using MassTransit;
+using MassTransit.RabbitMqTransport;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
@@ -15,7 +18,8 @@ public class AuctionsService(
     HttpClient httpClient,
     AuctionDbContext context,
     IMapper mapper,
-    IConfiguration configuration
+    IConfiguration configuration,
+    IPublishEndpoint publisher
 ) : IAuctionsService
 {
     public async Task<IEnumerable<AuctionDto>> GetAllAuctions(string? date)
@@ -56,19 +60,19 @@ public class AuctionsService(
 
         context.Auctions.Add(auction);
 
+        var newAuction = mapper.Map<AuctionDto>(auction);
+        
+        await publisher.Publish(mapper.Map<AuctionCreated>(newAuction));
+        
         var isCreated = await context.SaveChangesAsync() > 0;
-
         if (!isCreated) throw new NotSavedToDatabaseException(nameof(Auction));
-
-        var auctionDto = mapper.Map<AuctionDto>(auction);
-
+        
         var itemDetails = await GetItemAsync(auction.ItemId, auction.ItemType!);
-
         if (itemDetails == null) throw new NotFoundException(nameof(auction.ItemType), auction.ItemId.ToString());
+        newAuction.ItemDetails = itemDetails;
 
-        auctionDto.ItemDetails = itemDetails;
-
-        return auctionDto;
+        
+        return newAuction;
     }
 
     public async Task DeleteAuction(Guid auctionId)

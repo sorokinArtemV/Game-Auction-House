@@ -1,6 +1,7 @@
 ﻿using AuctionService.DTO;
 using AuctionService.Entities;
 using AutoMapper;
+using Contracts;
 
 namespace AuctionService.Helpers;
 
@@ -10,20 +11,6 @@ public class MappingProfiles : Profile
     {
         CreateMap<Auction, AuctionDto>();
         CreateMap<CreateAuctionDto, Auction>();
-        // CreateMap<Weapon, WeaponDetailsDto>();
-        // CreateMap<Armor, ArmorDetailsDto>();
-        // CreateMap<BaseItem, AuctionDto>()
-        //     .Include<Weapon, AuctionDto>(); // Include derived type Weapon
-        // CreateMap<Weapon, AuctionDto>()
-        //     .ForMember(dest => dest.BaseItem, opt => opt.MapFrom(src => src)); // Map Weapon to BaseItem
-
-        // CreateMap<Auction, AuctionDto>().IncludeMembers(x => x.Item);
-        //
-        // CreateMap<Item, AuctionDto>();
-        //
-        // CreateMap<CreateAuctionDto, Auction>()
-        //     .ForMember(d => d.Item, opt => opt.MapFrom(s => s));
-        //
-        // CreateMap<CreateAuctionDto, Item>();
+        CreateMap<AuctionDto, AuctionCreated>();
     }
 }

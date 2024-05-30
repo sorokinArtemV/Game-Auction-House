@@ -1,5 +1,8 @@
-using System.Text.Json.Serialization;using Polly;
+using System.Text.Json.Serialization;
+using MassTransit;
+using Polly;
 using Polly.Extensions.Http;
+using SearchService.Consumers;
 using SearchService.Data;
 using SearchService.Services;
 
@@ -14,6 +17,19 @@ builder.Services.AddControllers()
 
 builder.Services.AddHttpClient<AuctionServiceHttpClient>()
     .AddPolicyHandler(GetPolicy());
+
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+builder.Services.AddMassTransit(x =>
+{
+    x.AddConsumersFromNamespaceContaining<AuctionCreatedConsumer>();
+            
+    x.SetEndpointNameFormatter(new KebabCaseEndpointNameFormatter("search", false));
+
+    
+    x.UsingRabbitMq((context, cfg) => { cfg.ConfigureEndpoints(context); });
+});
+
 
 var app = builder.Build();
 
@@ -39,12 +55,10 @@ app.Lifetime.ApplicationStarted.Register(async () =>
 });
 
 
-
 app.Run();
 
-static IAsyncPolicy<HttpResponseMessage> GetPolicy() 
+static IAsyncPolicy<HttpResponseMessage> GetPolicy()
     => HttpPolicyExtensions
         .HandleTransientHttpError()
         .OrResult(msg => msg.StatusCode == System.Net.HttpStatusCode.NotFound)
         .WaitAndRetryAsync(6, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)));
-
