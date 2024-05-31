@@ -1,0 +1,297 @@
+﻿[
+  {
+    "Name": "Thunderfury, Blessed Blade of the Windseeker",
+    "Quality": "Legendary",
+    "Description": "Once carried by the son of Al'Akir, Thunderaan the Windlord, this blade crackles with the fury of a thousand storms.",
+    "ItemLevel": 80,
+    "Icon": "thunderfury_icon.png",
+    "ItemType": "weapon",
+    "WeaponType": "Sword",
+    "DamageType": "Physical",
+    "MinDamage": 250.0,
+    "MaxDamage": 320.0,
+    "AttackSpeed": 2.7,
+    "IsTwoHanded": false,
+    "IsMainHand": true,
+    "IsOffHand": false,
+    "IsStackable": false,
+    "StackSize": 1,
+    "IsBound": true,
+    "BoundType": "BindOnPickup",
+    "IsConjured": false,
+    "IsUnique": true,
+    "Durability": 120,
+    "IsQuestItem": false,
+    "StartsQuest": false,
+    "RequiredRace": [
+      "Human",
+      "Orc"
+    ],
+    "RequiredClasses": [
+      "Warrior",
+      "Paladin"
+    ],
+    "RequiredLevel": 60,
+    "RequiredSkill": [
+      "Sword"
+    ],
+    "IsLocked": false,
+    "IsLootable": true,
+    "PrimaryStats": {
+      "Strength": 20,
+      "Agility": 15,
+      "Stamina": 5
+    },
+    "SecondaryStats": {
+      "CriticalStrike": 9,
+      "AttackPower": 15
+    },
+    "SpecialEffects": [
+      {
+        "Name": "Lightning Strike",
+        "Description": "Strikes the enemy with a bolt of lightning, dealing extra electric damage.",
+        "Charges": 5,
+        "Duration": "00:03:00",
+        "IsPassive": false
+      }
+    ]
+  },
+  {
+    "Name": "Flame Wrath, Protector of the Phoenix",
+    "Quality": "Epic",
+    "Description": "Forged in the heart of the Firelands, this blade is imbued with the essence of the phoenix.",
+    "ItemLevel": 100,
+    "Icon": "flame_wrath_icon.png",
+    "ItemType": "weapon",
+    "WeaponType": "Axe",
+    "DamageType": "Fire",
+    "MinDamage": 310.0,
+    "MaxDamage": 375.0,
+    "AttackSpeed": 3.0,
+    "IsTwoHanded": true,
+    "IsMainHand": false,
+    "IsOffHand": false,
+    "IsStackable": false,
+    "StackSize": 1,
+    "IsBound": true,
+    "BoundType": "BindOnEquip",
+    "IsConjured": false,
+    "IsUnique": false,
+    "Durability": 150,
+    "IsQuestItem": false,
+    "StartsQuest": false,
+    "RequiredRace": [
+      "NightElf",
+      "Dwarf"
+    ],
+    "RequiredClasses": [
+      "Warrior",
+      "Hunter"
+    ],
+    "RequiredLevel": 70,
+    "RequiredSkill": [
+      "Axe"
+    ],
+    "IsLocked": false,
+    "IsLootable": true,
+    "PrimaryStats": {
+      "Strength": 25,
+      "Stamina": 10
+    },
+    "SecondaryStats": {
+      "CriticalStrike": 12,
+      "AttackPower": 20
+    },
+    "SpecialEffects": [
+      {
+        "Name": "Phoenix Rebirth",
+        "Description": "Grants a chance to resurrect with full health upon defeat.",
+        "Charges": 1,
+        "Duration": "00:10:00",
+        "IsPassive": true
+      }
+    ]
+  },
+  {
+    "Name": "Frostbite, Harbinger of Winter",
+    "Quality": "Rare",
+    "Description": "The chill of the Frostwolf clan's homeland is captured within the edge of this blade.",
+    "ItemLevel": 90,
+    "Icon": "frostbite_icon.png",
+    "ItemType": "weapon",
+    "WeaponType": "Dagger",
+    "DamageType": "Frost",
+    "MinDamage": 180.0,
+    "MaxDamage": 220.0,
+    "AttackSpeed": 1.8,
+    "IsTwoHanded": false,
+    "IsMainHand": true,
+    "IsOffHand": true,
+    "IsStackable": false,
+    "StackSize": 1,
+    "IsBound": true,
+    "BoundType": "BindOnPickup",
+    "IsConjured": false,
+    "IsUnique": true,
+    "Durability": 80,
+    "IsQuestItem": false,
+    "StartsQuest": false,
+    "RequiredRace": [
+      "Orc",
+      "Troll"
+    ],
+    "RequiredClasses": [
+      "Rogue",
+      "Shaman"
+    ],
+    "RequiredLevel": 65,
+    "RequiredSkill": [
+      "Dagger"
+    ],
+    "IsLocked": false,
+    "IsLootable": true,
+    "PrimaryStats": {
+      "Agility": 20,
+      "Stamina": 8
+    },
+    "SecondaryStats": {
+      "CriticalStrike": 15,
+      "AttackPower": 18
+    },
+    "SpecialEffects": [
+      {
+        "Name": "Ice Shard",
+        "Description": "Your attacks have a chance to release a shard of ice, dealing additional frost damage.",
+        "Charges": 3,
+        "Duration": "00:02:00",
+        "IsPassive": false
+      },
+      {
+        "Name": "Glacial Speed",
+        "Description": "Increases movement speed on ice or snow.",
+        "Charges": 0,
+        "Duration": "00:00:00",
+        "IsPassive": true
+      }
+    ]
+  },
+  {
+    "Name": "Starshatter, Gaze of the Cosmos",
+    "Quality": "Legendary",
+    "Description": "Crafted from a meteorite that fell from the Great Dark Beyond, this weapon holds the power of the stars.",
+    "ItemLevel": 110,
+    "Icon": "starshatter_icon.png",
+    "ItemType": "weapon",
+    "WeaponType": "Mace",
+    "DamageType": "Arcane",
+    "MinDamage": 340.0,
+    "MaxDamage": 410.0,
+    "AttackSpeed": 3.5,
+    "IsTwoHanded": true,
+    "IsMainHand": false,
+    "IsOffHand": false,
+    "IsStackable": false,
+    "StackSize": 1,
+    "IsBound": true,
+    "BoundType": "BindOnPickup",
+    "IsConjured": false,
+    "IsUnique": true,
+    "Durability": 200,
+    "IsQuestItem": false,
+    "StartsQuest": false,
+    "RequiredRace": [
+      "Human",
+      "Gnome"
+    ],
+    "RequiredClasses": [
+      "Paladin",
+      "Mage"
+    ],
+    "RequiredLevel": 75,
+    "RequiredSkill": [
+      "Mace"
+    ],
+    "IsLocked": false,
+    "IsLootable": true,
+    "PrimaryStats": {
+      "Intellect": 30,
+      "Spirit": 15
+    },
+    "SecondaryStats": {
+      "SpellPower": 35,
+      "ManaRegenPerSecond": 5
+    },
+    "SpecialEffects": [
+      {
+        "Name": "Celestial Alignment",
+        "Description": "Aligns you with the stars, increasing your critical strike chance.",
+        "Charges": 2,
+        "Duration": "00:05:00",
+        "IsPassive": false
+      }
+    ]
+  },
+  {
+    "Name": "Earthshaker, Might of the Mountain",
+    "Quality": "Epic",
+    "Description": "Rumored to be forged within the molten core of Blackrock Mountain, this hammer resonates with the strength of the earth.",
+    "ItemLevel": 95,
+    "Icon": "earthshaker_icon.png",
+    "ItemType": "weapon",
+    "WeaponType": "Hammer",
+    "DamageType": "Physical",
+    "MinDamage": 295.0,
+    "MaxDamage": 360.0,
+    "AttackSpeed": 3.2,
+    "IsTwoHanded": true,
+    "IsMainHand": false,
+    "IsOffHand": false,
+    "IsStackable": false,
+    "StackSize": 1,
+    "IsBound": true,
+    "BoundType": "BindOnEquip",
+    "IsConjured": false,
+    "IsUnique": false,
+    "Durability": 165,
+    "IsQuestItem": false,
+    "StartsQuest": false,
+    "RequiredRace": [
+      "Dwarf",
+      "Tauren"
+    ],
+    "RequiredClasses": [
+      "Warrior",
+      "Druid"
+    ],
+    "RequiredLevel": 68,
+    "RequiredSkill": [
+      "Hammer"
+    ],
+    "IsLocked": false,
+    "IsLootable": true,
+    "PrimaryStats": {
+      "Strength": 28,
+      "Stamina": 12
+    },
+    "SecondaryStats": {
+      "CriticalStrike": 10,
+      "AttackPower": 22
+    },
+    "SpecialEffects": [
+      {
+        "Name": "Seismic Wave",
+        "Description": "Unleashes a wave of earth energy, damaging and stunning nearby enemies.",
+        "Charges": 3,
+        "Duration": "00:01:30",
+        "IsPassive": false
+      },
+      {
+        "Name": "Mountain's Fortitude",
+        "Description": "Increases your resistance to stun and knockback effects.",
+        "Charges": 0,
+        "Duration": "00:00:00",
+        "IsPassive": true
+      }
+    ]
+  }
+]

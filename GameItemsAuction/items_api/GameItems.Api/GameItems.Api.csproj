@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <RootNamespace>ItemsService</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="AutoMapper" Version="13.0.1"/>
+        <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0"/>
+        <PackageReference Include="MediatR" Version="12.2.0"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.4"/>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.4">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.2"/>
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.2"/>
+        <PackageReference Include="Serilog" Version="4.0.0-dev-02174"/>
+        <PackageReference Include="Serilog.AspNetCore" Version="8.0.1"/>
+        <PackageReference Include="Serilog.Extensions.Hosting" Version="8.0.0"/>
+        <PackageReference Include="Serilog.Sinks.Seq" Version="8.0.0-dev-00299"/>
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0"/>
+        <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.6.1"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Folder Include="Controllers\"/>
+        <Folder Include="Logs\"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\GameItems.Application\GameItems.Application.csproj"/>
+        <ProjectReference Include="..\GameItems.Core\GameItems.Core.csproj"/>
+        <ProjectReference Include="..\GameItems.Infrastructure\GameItems.Infrastructure.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="Seeders\SeedingData\ArmorsSeeder.json" />
+      <None Include="Seeders\SeedingData\WeaponsSeeder.json" />
+    </ItemGroup>
+
+</Project>
