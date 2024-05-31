@@ -62,7 +62,6 @@ public class AuctionsService(
 
         var newAuction = mapper.Map<AuctionDto>(auction);
         
-        await publisher.Publish(mapper.Map<AuctionCreated>(newAuction));
         
         var isCreated = await context.SaveChangesAsync() > 0;
         if (!isCreated) throw new NotSavedToDatabaseException(nameof(Auction));
@@ -70,7 +69,8 @@ public class AuctionsService(
         var itemDetails = await GetItemAsync(auction.ItemId, auction.ItemType!);
         if (itemDetails == null) throw new NotFoundException(nameof(auction.ItemType), auction.ItemId.ToString());
         newAuction.ItemDetails = itemDetails;
-
+        
+        await publisher.Publish(mapper.Map<AuctionCreated>(newAuction));
         
         return newAuction;
     }
